@@ -10,9 +10,9 @@ BASICS
 
 CONTAINER
 
-- Package of our application including dependencies + configuration.
-- Portable actifacts between development team <-> operation team.
-- Improved development/deployment part of an application.
+- To package our application with its dependencies & configuration.
+- Portable actifact between development & operation team.
+- To improve development/deployment of an application.
 
 
 DEMO
