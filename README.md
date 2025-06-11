@@ -1,11 +1,15 @@
 # docker-basics
 
 BASICS
-- Container & docker 
-- Docker vs VM
-- Docker installation
-- Docker commands
-- Debug a container
+- What is Container & docker
+- Docker vs VM.
+- Docker installation.
+- Docker commands.
+- Debug a container.
+- Developing with containers.
+- Docker compose - Running multiple services.
+- Docker file
+- Private Docker Repository ( AWS )
 
 
 CONTAINER
