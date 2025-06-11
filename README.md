@@ -7,12 +7,13 @@ BASICS
 - Docker commands.
 - Debug a container.
 - Developing with containers.
-- Docker compose - Running multiple services.
+- Docker compose
+  - Running multiple services.
 - Docker file
 - Private Docker Repository ( AWS )
 - Deploying containerized application.
 - Volumes
-- - Persisting data.
+  - Persisting data.
 - Volumes Demo
 
 
