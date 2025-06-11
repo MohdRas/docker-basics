@@ -10,6 +10,10 @@ BASICS
 - Docker compose - Running multiple services.
 - Docker file
 - Private Docker Repository ( AWS )
+- Deploying containerized application.
+- Volumes
+- - Persisting data.
+- Volumes Demo
 
 
 CONTAINER
