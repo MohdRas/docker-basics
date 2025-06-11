@@ -2,11 +2,12 @@
 
 BASICS
 - What is Container & docker
-  - base image layer - basic OS & dependencies
-  - dependency layer - library + framework
-  - code layer - code + configuration
-  - build layer - tools & scripts to compile the application
-  - run layer - runtime dependencies + configuration
+  - Layers of a container
+      - base image layer - basic OS & dependencies
+      - dependency layer - library + framework
+      - code layer - code + configuration
+      - build layer - tools & scripts to compile the application
+      - run layer - runtime dependencies + configuration
   - To package an application with all its dependencies & configuration.
   - Portable actifact. It can move between development & operation team.
   - Development & deployment of an application is more efficient now.
@@ -18,6 +19,7 @@ BASICS
       - Companies have their own private repository for their own containers.
   - Public Repository ( DockerHub ) for Docker Containers 
       - Only docker containers can reside.
+      - Official & non-official container images ( Jenkins ) .
 
 - Docker vs VM.
 - Docker installation.
