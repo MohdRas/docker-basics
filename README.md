@@ -2,37 +2,38 @@
 
 BASICS
 - What is Container & docker
-  - Own isolated environment ( application + dependencies + configuration)
-    - No need to install any application directly on OS.
-    - One commmand to fetch the container & start it.
-    - Different versions of the same application can be installed & used.
-    - docker run postgres:9.6 -->> download + run
-    - find first locally ->> then from docker hub.
-    - each layer is downloaded separately.
-    - Advantage of downloading two versions on the same machine - >> only additional layers from the second verison will be downloaded.
-    - docker ps - All running containers
+  - container has its own isolated environment ( application + dependencies + configuration)
+    - With containers, no need to install any application directly on OS.
+    - One commmand to fetch the image & start it.
+    - Different versions of the image can be downloaded and run.
+    - docker run postgres:9.6 -->> download + run an image->> postgres:9.6=name of the image:version
+    - find first image locally ->> then download it from docker hub.
+    - each layer of the image is downloaded separately.
+    - Downloading two versions of the same image - >> If we download second version then the layers which were aleady downloaded as per of first version, won't be downloaded again.
+    - docker ps - All running containers on my local machine.
   - docker image vs docker container
     - docker image is the one which actually reside on repository ( docker hub)
     - docker image is the portable/movable arftifact.
-    - docker image is pulled and started on my local machine ->> it is became a container running on my local machine-->> it creates a container environment.
+    - docker image is pulled and started on my local machine ->> it is now "a container running on my local machine". ->> it creates a container environment.
   - To package an application in a container with all its dependencies & configuration.
-  - With Containers, development & operations team work together to package application in a container.
-  - Portable actifact(JAR/WAR + Database service + Instructions ). Development to Operations team. Operations team deploy the application.
+  - With Containers, development & operations team work together to package an application in a container.
+  - Deployment before containers - 
+    - Portable actifact(JAR/WAR + Database service + Instructions ). Development team give it to Operations team. Operations team deploy the application.
     - Dependency versions conflicts.
     - Misunderstanding between development & operations team.
     - Textual guide for deployment about External Dependencies & configurations.
   - Development & deployment of an application is more efficient now.
   - Development improvement - No need to follow different instructions to install applications ( DB ) for each OS & Application.
   - Deployment imporovement - No need to share steps to deploy it along with its artifact, dependencies and configuration.
-  - Where to store these containers? 
-    - container repository is used for this.
-  - Private repository of containers. 
-    - Companies have their own private repository for their own containers.
-  - Public Repository ( DockerHub ) for Docker Containers 
-    - Only docker containers can reside.
+  - Where to store these images? 
+    - image repository is used for this.
+  - Private repository of images. 
+    - Companies have their own private repository for their own images.
+  - Public Repository ( DockerHub ) for Docker images 
+    - Only docker images can reside.
     - Official & non-official container images ( Jenkins ) .
    
-  - Layers of a container
+  - Layers of a image
     - base image ->> intermediate image ->> application image
     - base image layer (Linux based image - small in size ) - basic OS & dependencies
     - dependency layer - library + framework
