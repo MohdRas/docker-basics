@@ -58,8 +58,16 @@ BASICS
     - This can be achieved through WSL2 ( Windows subsystem for Linux), Linex based Kernel inside VM of Windows.
     - This means Linux image container is not directly running on windows kernel rather on the linux kernel inside windows VM.
     - Host kernel can natively support docker images or not ( Windows kernel can not run Linux based image natively)
-    - Docker ToolBox is used to run any OS based image on any Host OS.
+    - Docker ToolBox(Legacy Solution) is used to run any OS based image on any Host OS.
 # Docker installation.
+- Installation will differ for each OS and its version.
+- Install docker on Windows/Mac/Linux
+- Community Edition ( CE ) & Enterprise Edition ( EE ) 
+- Prerequisites ( System Requirements )
+  - OS version & Hardware criteria (RAM)
+  - Docker natively runs only on Windows 10.
+  - Installation includes - Docker Engine, Docker CLI, Docker Compose, Docker Machine and Kitematic
+  - If there are multiple account on a machine then quit Docker on one account to run it on another account. 
 # Docker commands.
 # Debug a container.
 # Developing with containers.
