@@ -6,7 +6,15 @@ BASICS
     - No need to install any application directly on OS.
     - One commmand to fetch the container & start it.
     - Different versions of the same application can be installed & used.
-    - docker run posgresql
+    - docker run postgres:9.6 -->> download + run
+    - find first locally ->> then from docker hub.
+    - each layer is downloaded separately.
+    - Advantage of downloading two versions on the same machine - >> only additional layers from the second verison will be downloaded.
+    - docker ps - All running containers
+  - docker image vs docker container
+    - docker image is the one which actually reside on repository ( docker hub)
+    - docker image is the portable/movable arftifact.
+    - docker image is pulled and started on my local machine ->> it is became a container running on my local machine-->> it creates a container environment.
   - To package an application in a container with all its dependencies & configuration.
   - With Containers, development & operations team work together to package application in a container.
   - Portable actifact(JAR/WAR + Database service + Instructions ). Development to Operations team. Operations team deploy the application.
