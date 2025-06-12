@@ -1,7 +1,7 @@
-# docker-basics
+#  docker-basics
 
 BASICS
-#What is Container & docker
+# What is Container & docker
   - container has its own isolated environment ( application + dependencies + configuration)
     - With containers, no need to install any application directly on OS.
     - One commmand to fetch the image & start it.
@@ -41,7 +41,7 @@ BASICS
     - build layer - tools & scripts to compile the application
     - run layer - runtime dependencies + configuration
 
-  #Docker vs VM.
+  # Docker vs VM.
   - Both are virtualization tools.
   - What part of OS they virtualize ?
   - Docker virtualize the Applications layer and uses the Kernel of the Host machine.
@@ -59,17 +59,17 @@ BASICS
     - This means Linux image container is not directly running on windows kernel rather on the linux kernel inside windows VM.
     - Host kernel can natively support docker images or not ( Windows kernel can not run Linux based image natively)
     - Docker ToolBox is used to run any OS based image on any Host OS.
-#Docker installation.
-#Docker commands.
-#Debug a container.
-#Developing with containers.
-#Docker compose
+# Docker installation.
+# Docker commands.
+# Debug a container.
+# Developing with containers.
+# Docker compose
   - Running multiple services.
-#Docker file
-#Private Docker Repository ( AWS )
-#Deploying containerized application.
-#Volumes
+# Docker file
+# Private Docker Repository ( AWS )
+# Deploying containerized application.
+# Volumes
   - Persisting data.
-#Volumes Demo
+# Volumes Demo
 
 
