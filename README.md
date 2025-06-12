@@ -1,7 +1,7 @@
 # docker-basics
 
 BASICS
-- What is Container & docker
+#What is Container & docker
   - container has its own isolated environment ( application + dependencies + configuration)
     - With containers, no need to install any application directly on OS.
     - One commmand to fetch the image & start it.
@@ -41,7 +41,7 @@ BASICS
     - build layer - tools & scripts to compile the application
     - run layer - runtime dependencies + configuration
 
-- Docker vs VM.
+  #Docker vs VM.
   - Both are virtualization tools.
   - What part of OS they virtualize ?
   - Docker virtualize the Applications layer and uses the Kernel of the Host machine.
@@ -59,38 +59,17 @@ BASICS
     - This means Linux image container is not directly running on windows kernel rather on the linux kernel inside windows VM.
     - Host kernel can natively support docker images or not ( Windows kernel can not run Linux based image natively)
     - Docker ToolBox is used to run any OS based image on any Host OS.
-- Docker installation.
-- Docker commands.
-- Debug a container.
-- Developing with containers.
-- Docker compose
+#Docker installation.
+#Docker commands.
+#Debug a container.
+#Developing with containers.
+#Docker compose
   - Running multiple services.
-- Docker file
-- Private Docker Repository ( AWS )
-- Deploying containerized application.
-- Volumes
+#Docker file
+#Private Docker Repository ( AWS )
+#Deploying containerized application.
+#Volumes
   - Persisting data.
-- Volumes Demo
+#Volumes Demo
 
 
-CONTAINER
-
-- To package our application with its dependencies & configuration.
-- Portable actifact between development & operation team.
-- To improve development/deployment of an application.
-- Development improvement - No need to follow different steps for each OS & Application.
-- Deployment imporovement - No need to share steps to deploy it with artifacts, dependencies, configuration
-- base image layer - basic OS & dependencies
-- dependency layer - library + framework
-- code layer - code + configuration
-- build layer - tools & scripts to compile the application
-- run layer - runtime dependencies + configuration
-
-
-DEMO
- - Developing with container.
- - Docker compose - running multiple services.
- - Docker file - to build docker image
- - Private Docker Repository (AWS)  - push docker image
- - Deploy containerized application.
- - Volumes - Persist data in docker
