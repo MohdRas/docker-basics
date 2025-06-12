@@ -42,6 +42,18 @@ BASICS
     - run layer - runtime dependencies + configuration
 
 - Docker vs VM.
+- Both are virtualization tools.
+- What part of OS they virtualize ?
+- Docker virtualize the Applications layer and uses the Kernel of the Host machine.
+- Size -->> Docker image smaller than VM
+- Speed ->> Docker containers run faster than VM
+- Compatibility -->> VM of any OS can run on Host OS.
+- VM virtualizes the applications layer and OS Kernel layer. Virtualizes the complete OS.
+ - Hardware + OS + Software Applications - 
+    - Applications layer-  run on Kernel Layer
+    - OS Kernel layer - communicate with Hardware ( CPU + MEMORY )
+    - Hardware laqyer
+    - OS Layer (OS Kernel + Applications )
 - Docker installation.
 - Docker commands.
 - Debug a container.
