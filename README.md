@@ -46,7 +46,7 @@ BASICS
   - What part of OS they virtualize ?
   - Docker virtualize the Applications layer and uses the Kernel of the Host machine.
   - Size -->> Docker image smaller than VM
-  - Speed ->> Docker containers run faster than VM
+  - Speed ->> Docker containers start & run faster than VM
   - Compatibility -->> VM of any OS can run on Host OS.
   - VM virtualizes the applications layer and OS Kernel layer. Virtualizes the complete OS.
   - Hardware + OS + Software Applications - 
@@ -54,6 +54,11 @@ BASICS
     - OS Kernel layer - communicate with Hardware ( CPU + MEMORY )
     - Hardware laqyer
     - OS Layer (OS Kernel + Applications )
+    - Run Linux based image might not be compatible on windows machine ( Windows Kernel + Windows Applications ) for windows version < 10 and old mac versions.
+    - This can be achieved through WSL2 ( Windows subsystem for Linux), Linex based Kernel inside VM of Windows.
+    - This means Linux image container is not directly running on windows kernel rather on the linux kernel inside windows VM.
+    - Host kernel can natively support docker images or not ( Windows kernel can not run Linux based image natively)
+    - Docker ToolBox is used to run any OS based image on any Host OS.
 - Docker installation.
 - Docker commands.
 - Debug a container.
