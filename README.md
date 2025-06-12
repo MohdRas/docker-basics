@@ -3,29 +3,30 @@
 BASICS
 - What is Container & docker
   - Own isolated environment ( application + dependencies + configuration)
-      - No need to install any application directly on OS.
-      - One commmand to fetch the container & start it.
-      - Different versions of the same application can be installed & used.
-      - docker run posgresql
+    - No need to install any application directly on OS.
+    - One commmand to fetch the container & start it.
+    - Different versions of the same application can be installed & used.
+    - docker run posgresql
   - To package an application in a container with all its dependencies & configuration.
   - With Containers, development & operations team work together to package application in a container.
   - Portable actifact(JAR/WAR + Database service + Instructions ). Development to Operations team. Operations team deploy the application.
-      - Dependency versions conflicts.
-      - Misunderstanding between development & operations team.
-      - Textual guide for deployment about External Dependencies & configurations.
+    - Dependency versions conflicts.
+    - Misunderstanding between development & operations team.
+    - Textual guide for deployment about External Dependencies & configurations.
   - Development & deployment of an application is more efficient now.
   - Development improvement - No need to follow different instructions to install applications ( DB ) for each OS & Application.
   - Deployment imporovement - No need to share steps to deploy it along with its artifact, dependencies and configuration.
   - Where to store these containers? 
-      - container repository is used for this.
+    - container repository is used for this.
   - Private repository of containers. 
-      - Companies have their own private repository for their own containers.
+    - Companies have their own private repository for their own containers.
   - Public Repository ( DockerHub ) for Docker Containers 
-      - Only docker containers can reside.
-      - Official & non-official container images ( Jenkins ) .
+    - Only docker containers can reside.
+    - Official & non-official container images ( Jenkins ) .
    
   - Layers of a container
-    - base image layer - basic OS & dependencies
+    - base image ->> intermediate image ->> application image
+    - base image layer (Linux based image - small in size ) - basic OS & dependencies
     - dependency layer - library + framework
     - code layer - code + configuration
     - build layer - tools & scripts to compile the application
