@@ -65,12 +65,14 @@ BASICS
 - Community Edition ( CE ) & Enterprise Edition ( EE ) 
 - Prerequisites ( System Requirements )
   - OS version & Hardware criteria (RAM)
-  - Docker natively runs only on Windows 10.
   - Installation includes - Docker Engine, Docker CLI, Docker Compose, Docker Machine and Kitematic
-  - If there are multiple account on a machine then quit Docker on one account to run it on another account. 
+  - Docker for Mac
+    - If there are multiple account on a machine then quit Docker on one account to run it on another account. 
   - Docker for windows
     - windows version must be compatible.
     - virtualization must be enabled ( CPU under performance tab, virtualization enabled )
+    - Docker natively runs only on Windows 10.
+
 # Docker commands.
 # Debug a container.
 # Developing with containers.
