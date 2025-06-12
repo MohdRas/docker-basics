@@ -7,12 +7,6 @@ BASICS
       - One commmand to fetch the container & start it.
       - Different versions of the same application can be installed & used.
       - docker run posgresql
-  - Layers of a container
-      - base image layer - basic OS & dependencies
-      - dependency layer - library + framework
-      - code layer - code + configuration
-      - build layer - tools & scripts to compile the application
-      - run layer - runtime dependencies + configuration
   - To package an application in a container with all its dependencies & configuration.
   - With Containers, development & operations team work together to package application in a container.
   - Portable actifact(JAR/WAR + Database service + Instructions ). Development to Operations team. Operations team deploy the application.
@@ -29,6 +23,13 @@ BASICS
   - Public Repository ( DockerHub ) for Docker Containers 
       - Only docker containers can reside.
       - Official & non-official container images ( Jenkins ) .
+   
+  - Layers of a container
+    - base image layer - basic OS & dependencies
+    - dependency layer - library + framework
+    - code layer - code + configuration
+    - build layer - tools & scripts to compile the application
+    - run layer - runtime dependencies + configuration
 
 - Docker vs VM.
 - Docker installation.
