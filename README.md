@@ -97,7 +97,10 @@ BASICS
   - host port - port of the host machine. Host ports can be multiple but must be unique.
   - container port - port of a container. Multiple container can have same port.
   - All containers can have same port but the corresponding host ports must be unique.
-  - host port : container port - mapping must be unique. ( 8080:5000, 8089:5000, 8081:5000) 
+  - host port : container port - mapping must be unique. ( 8080:5000, 8089:5000, 8081:5000)
+  - Container will listen to the request if binding of host port to container port is done while running a container.
+  - docker run -p6000:6379 redis - Binding host port 6000 to container port 6379.
+  - docker run -p6001:6379 redis:4.0 - Binding host port 6001 to container port 6379.
 
 # Debug a container.
 # Developing with containers.
