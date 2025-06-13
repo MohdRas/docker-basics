@@ -76,12 +76,20 @@ BASICS
 # Docker commands.
 - container and image
   - container is a running environment of an image.
-- version and tag
-- docker pull
-- docker run
-- docker start
-- docker stop
-- docker ps
+  - all the environment stuffs ( file system, environment config ) are provided by the container other than the image from the repository. 
+  - container has a port 5000.
+  - file system is vitual in containers.
+- Tag - tag is basically the version of an image.  Example - lastest/ 9.6 
+- docker pull - pull an image locally. 
+  - docker pull redis
+- docker run - pull an image & start the container. Optionally it will download if an image is not present on my system.
+- docker images - list existing images irrespective of their status ( running/downoaded )
+- docker ps - list running containers.
+- docker run -d redis - run a container in a detached mode. We will get the ID of the container as an output.
+- docker start container_id - start a STOPPED container. This container_id is taken from the docker ps command. 
+- docker stop container_id - stop the container. This container_id is taken from the docker ps command.
+- docker ps -a - List all running / non-running containers. Non-running containers can be started again.
+- docker run redis:4.0
 - docker exec -it
 - docker logs
 # Debug a container.
