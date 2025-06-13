@@ -83,7 +83,7 @@ BASICS
 - docker pull - pull an image locally. 
   - docker pull redis
 - docker run - pull an image & start the container. Optionally it will download if an image is not present on my system.
-- docker images - list existing images irrespective of their status ( running/downoaded )
+- docker images - list down all images locally.
 - docker ps - list RUNNING containers.
 - docker run -d redis - run a container in a DETACHED MODE. We will get the ID of the container as an output.
 - docker start container_id - start a STOPPED container. This container_id is taken from the docker ps command. 
@@ -91,7 +91,8 @@ BASICS
 - docker ps -a - List all RUNNING / NOT-RUNNING containers. NOT-RUNNING containers can be started again.
 - docker run redis:4.0
 - docker exec -it
-- docker logs
+- docker logs container_id - print the logs of a container.
+- docker logs name_of_container - print the logs of a container. name_of_container = taken from docker ps command.
 - container port vs host port
   - multiple containers can run on a single host machine.
   - host port - port of the host machine. Host ports can be multiple but must be unique.
@@ -101,7 +102,7 @@ BASICS
   - Container will listen to the request if binding of host port to container port is done while running a container.
   - docker run -p6000:6379 redis - Binding host port 6000 to container port 6379.
   - docker run -p6001:6379 redis:4.0 - Binding host port 6001 to container port 6379.
-
+  - docker run -p6002:6379 --name old-redis redis:4.0  - running a container and defining its name at the same time.
 # Debug a container.
 # Developing with containers.
 # Docker compose
