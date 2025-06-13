@@ -84,15 +84,20 @@ BASICS
   - docker pull redis
 - docker run - pull an image & start the container. Optionally it will download if an image is not present on my system.
 - docker images - list existing images irrespective of their status ( running/downoaded )
-- docker ps - list running containers.
-- docker run -d redis - run a container in a detached mode. We will get the ID of the container as an output.
+- docker ps - list RUNNING containers.
+- docker run -d redis - run a container in a DETACHED MODE. We will get the ID of the container as an output.
 - docker start container_id - start a STOPPED container. This container_id is taken from the docker ps command. 
-- docker stop container_id - stop the container. This container_id is taken from the docker ps command.
-- docker ps -a - List all running / non-running containers. Non-running containers can be started again.
+- docker stop container_id - stop the RUNNING container. This container_id is taken from the docker ps command.
+- docker ps -a - List all RUNNING / NOT-RUNNING containers. NOT-RUNNING containers can be started again.
 - docker run redis:4.0
 - docker exec -it
 - docker logs
-- container port vs host port - host port will always be unique. container port can be same. But the combination of host port and container port must be unique.
+- container port vs host port
+  - multiple containers can run on a single host machine.
+  - host port - port of the host machine. Host ports can be multiple but must be unique.
+  - container port - port of a container. Multiple container can have same port.
+  - All containers can have same port but the corresponding host ports must be unique.
+  - host port : container port - mapping must be unique. ( 8080:5000, 8089:5000, 8081:5000) 
 
 # Debug a container.
 # Developing with containers.
