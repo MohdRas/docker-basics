@@ -74,6 +74,16 @@ BASICS
     - Docker natively runs only on Windows 10.
 
 # Docker commands.
+- container and image
+  - container is a running environment of an image.
+- version and tag
+- docker pull
+- docker run
+- docker start
+- docker stop
+- docker ps
+- docker exec -it
+- docker logs
 # Debug a container.
 # Developing with containers.
 # Docker compose
