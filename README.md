@@ -92,6 +92,8 @@ BASICS
 - docker run redis:4.0
 - docker exec -it
 - docker logs
+- container port vs host port - host port will always be unique. container port can be same. But the combination of host port and container port must be unique.
+
 # Debug a container.
 # Developing with containers.
 # Docker compose
