@@ -20,7 +20,7 @@ BASICS
   - With Containers, development & operations team work together, to package an application in a container with all its dependencies & configuration.
   - Deployment before containers - 
     - Portable actifact(JAR/WAR + Database service + Instructions ). 
-    - Development team give Portable actifact to the Operations team. Operations team deploy the application.
+    - Development team give the Portable actifact to the Operations team. Operations team deploy the application.
     - Dependency versions conflicts.
     - Misunderstanding between development & operations team.
     - Textual guide for deployment about External Dependencies, instructions & configurations.
@@ -47,26 +47,26 @@ BASICS
 
   # Docker vs VM.
   - Both are virtualization tools.
-  - What part of OS Docker virtualize ?
+  - What part of OS, Docker virtualize ?
     - Docker virtualize the Applications layer and uses the Kernel of the Host machine.
     - Size -->> Docker image smaller than VM
     - Speed ->> Docker containers start & run faster than VM
-    - Compatibility -->> VM of any OS can run on Host OS.
+    - Compatibility -->> VM of any OS can run on any Host OS.
   - What part of OS, VM virtualize ?
     - VM virtualizes the applications layer and OS Kernel layer. 
-    - it virtualizes the complete OS (OS Kernel + Applications).
+    - it virtualizes the complete OS layer (OS Kernel + Applications).
   - OS architecture ( Hardware -> OS -> Software Applications (Excel) )
   - Layers of any OS
     - Applications layer 
-      - run on Kernel Layer
+      - run on OS Kernel Layer
     - OS Kernel layer 
       - communicate with Hardware ( CPU + MEMORY )
     - Hardware laqyer
       - CPU + MEMORY
     - Running Linux based image might not be compatible on windows host ( Windows Kernel + Windows Applications ) 
       - it is true for windows version < 10 and old mac versions.
-      - This problem can be solved through WSL2 ( Windows subsystem for Linux). It is Linux based Kernel inside VM of Windows.
-      - This means Linux image container is not directly running on windows kernel rather on the linux kernel inside windows VM.
+      - This problem can be solved through WSL2 ( WINDOWS SUB SYSTEM FOR LINUX ). It is Linux-based Kernel inside VM of Windows.
+      - This means Linux image is not directly running on windows kernel, rather on the Linux kernel inside windows VM.
       - Windows kernel can not run Linux based image natively
       - Docker ToolBox(Legacy Solution) is used to run any OS based image on any Host OS.
 # Docker installation.
@@ -75,44 +75,62 @@ BASICS
 - Community Edition ( CE ) & Enterprise Edition ( EE ) 
 - Prerequisites ( System Requirements )
   - OS version & Hardware criteria (RAM)
-  - Installation includes - Docker Engine, Docker CLI, Docker Compose, Docker Machine and Kitematic
+  - Installation includes - DOCKER ENGINE, DOCKER CLI, DOCKER COMPOSE, DOCKER MACHINE and KITEMATIC
   - Docker for Mac
-    - If there are multiple account on a machine then quit Docker on one account to run it on another account. 
+    - If there are multiple account on a machine, then quit Docker on one account, to run it on another account. 
   - Docker for windows
-    - windows version must be compatible.
-    - virtualization must be enabled ( CPU under performance tab, virtualization enabled )
-    - Docker natively runs only on Windows 10.
+    - windows version docker must be compatible.
+    - virtualization must be enabled 
+      - CPU under performance tab, virtualization enabled
+    - Docker NATIVELY runs only on Windows 10 & above versions
 
 # Docker commands.
 - container and image
-  - container is a running environment of an image.
-  - all the environment stuffs ( file system, environment config ) are provided by the container other than the image from the repository. 
+  - container is a running environment(STATE) on local machine for an image.
+  - all the environment stuffs ( virtual file system, environment config ) are provided by the container other than the image from the repository. 
   - container has a port 5000.
   - file system is vitual in containers.
-- Tag - tag is basically the version of an image.  Example - lastest/ 9.6 
-- docker pull - pull an image LOCALLY. 
+- Tag 
+  - tag is basically the version of an image.  Example - lastest/ 9.6 
+- docker pull 
+  - pull an image LOCALLY. 
   - docker pull redis
-- docker run - pull an image & start the container. Optionally it will download if an image is not present on my system.
-- docker images - list down all images LOCALLY.
-- docker ps - list RUNNING containers. ps standS for PROCESS STATUS.
-- docker run -d redis - run a container in a DETACHED MODE. We will get the ID of the container as an output.
-- docker start container_id - start a STOPPED container. This container_id is taken from the docker ps command. 
-- docker stop container_id - stop the RUNNING container. This container_id is taken from the docker ps command.
-- docker ps -a - List all RUNNING / NOT-RUNNING containers. NOT-RUNNING containers can be started again.
+- docker run 
+  - pull an image & start the container. Optionally it will download if an image is not present on my system.
+- docker images 
+  - list down all images LOCALLY.
+- docker ps 
+  - list RUNNING containers. ps standS for PROCESS STATUS.
+- docker run -d redis 
+  - run a container in a DETACHED MODE. We will get the ID of the container as an output.
+- docker start container_id 
+  - start a STOPPED container. This container_id is taken from the docker ps command. 
+- docker stop container_id 
+  - stop the RUNNING container. This container_id is taken from the docker ps command.
+- docker ps -a 
+  - List all RUNNING / NOT-RUNNING containers. NOT-RUNNING containers can be started again.
 - docker run redis:4.0
 - docker exec -it
-- docker logs container_id - print the logs of a container.
-- docker logs name_of_container - print the logs of a container. name_of_container = taken from docker ps command.
+- docker logs container_id 
+  - print the logs of a container.
+- docker logs name_of_container 
+  - print the logs of a container. name_of_container = taken from docker ps command.
 - container port vs host port
   - multiple containers can run on a single host machine.
-  - host port - port of the host machine. Host ports can be multiple but must be unique.
-  - container port - port of a container. Multiple container can have same port.
+  - host port 
+    - port of the host machine. Host ports can be multiple but must be unique.
+  - container port 
+    - port of a container. Multiple container can have same port.
   - All containers can have same port but the corresponding host ports must be unique.
-  - host port : container port - mapping must be unique. ( 8080:5000, 8089:5000, 8081:5000)
-  - Container will listen to the request if binding of host port to container port is done while running a container.
-  - docker run -p6000:6379 redis - Binding host port 6000 to container port 6379.
-  - docker run -p6001:6379 redis:4.0 - Binding host port 6001 to container port 6379.
-  - docker run -p6002:6379 --name old-redis redis:4.0  - running a container and defining its name at the same time.
+  - host port : container port - mapping/binding must be unique. 
+    - ( 8080:5000, 8089:5000, 8081:5000)
+  - Container will listen to the request if binding is done while running a container.
+  - docker run -p6000:6379 redis 
+    - Binding host port 6000 to container port 6379.
+  - docker run -p6001:6379 redis:4.0 
+    - Binding host port 6001 to container port 6379.
+  - docker run -p6002:6379 --name old-redis redis:4.0  
+    - running a container and defining its name at the same time.
 # Debug a container.
 # Developing with containers.
 # Docker compose
