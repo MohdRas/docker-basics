@@ -100,37 +100,36 @@ BASICS
 - docker images 
   - list down all images LOCALLY.
 - docker ps 
-  - list RUNNING containers. ps standS for PROCESS STATUS.
+  - list RUNNING containers. 
+  - ps stands for PROCESS STATUS.
 - docker run -d redis 
   - run a container in a DETACHED MODE. We will get the ID of the container as an output.
-- docker start container_id 
-  - start a STOPPED container. This container_id is taken from the docker ps command. 
-- docker stop container_id 
-  - stop the RUNNING container. This container_id is taken from the docker ps command.
+- docker start CONTAINER_ID 
+  - start a STOPPED container. This CONTAINER_ID is taken from the docker ps command. 
+- docker stop CONTAINER_ID 
+  - stop the RUNNING container. This CONTAINER_ID is taken from the docker ps command.
+- docker logs CONTAINER_ID 
+  - print the logs of a container.
+- docker logs CONTAINER_NAME 
+  - print the logs of a container. CONTAINER_NAME is taken from docker ps command.
 - docker ps -a 
-  - List all RUNNING / NOT-RUNNING containers. NOT-RUNNING containers can be started again.
+  - List all RUNNING / NOT-RUNNING containers. 
+  - NOT-RUNNING containers can be started again.
 - docker run redis:4.0
 - docker exec -it
-- docker logs container_id 
-  - print the logs of a container.
-- docker logs name_of_container 
-  - print the logs of a container. name_of_container = taken from docker ps command.
 - container port vs host port
   - multiple containers can run on a single host machine.
-  - host port 
-    - port of the host machine. Host ports can be multiple but must be unique.
-  - container port 
-    - port of a container. Multiple container can have same port.
-  - All containers can have same port but the corresponding host ports must be unique.
-  - host port : container port - mapping/binding must be unique. 
-    - ( 8080:5000, 8089:5000, 8081:5000)
-  - Container will listen to the request if binding is done while running a container.
+  - each container will have a port.
+  - Multiple container can have the same port.
+  - HOST_PORT to CONTAINER_PORT binding must be UNIQUE on a SINGLE host machine.
+  - Container will listen to the request only if HOST_PORT to CONTAINER_PORT binding is present.
+  - This binding is done while running an image.
   - docker run -p6000:6379 redis 
-    - Binding host port 6000 to container port 6379.
+    - Binding HOST_PORT 6000 to CONTAINER_PORT 6379.
   - docker run -p6001:6379 redis:4.0 
-    - Binding host port 6001 to container port 6379.
+    - Binding HOST_PORT 6001 to CONTAINER_PORT 6379.
   - docker run -p6002:6379 --name old-redis redis:4.0  
-    - running a container and defining its name at the same time.
+    - old-redis is the CONTAINER_NAME
 # Debug a container.
 # Developing with containers.
 # Docker compose
