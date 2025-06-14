@@ -17,7 +17,7 @@ BASICS
     - docker image is pulled and started on my local machine (host)
       - it is now "a container running on my local machine".
       - it creates a container environment.
-  - With Containers, development & operations team work together, to package an application in a containe with all its dependencies & configuration.
+  - With Containers, development & operations team work together, to package an application in a container with all its dependencies & configuration.
   - Deployment before containers - 
     - Portable actifact(JAR/WAR + Database service + Instructions ). 
     - Development team give Portable actifact to the Operations team. Operations team deploy the application.
@@ -27,7 +27,7 @@ BASICS
   - Development & deployment improvement
     - Development improvement 
       - No need to follow different instructions to install applications ( DB ) for each OS & Application.
-   - Deployment imporovement 
+    - Deployment imporovement 
       - No need to share steps to deploy it along with its artifact, dependencies and configuration.
   - Where to store these images? 
     - image repository is used to store images.
@@ -52,7 +52,7 @@ BASICS
     - Size -->> Docker image smaller than VM
     - Speed ->> Docker containers start & run faster than VM
     - Compatibility -->> VM of any OS can run on Host OS.
-  - What part of OS Docker virtualize ?
+  - What part of OS, VM virtualize ?
     - VM virtualizes the applications layer and OS Kernel layer. 
     - it virtualizes the complete OS (OS Kernel + Applications).
   - OS architecture ( Hardware -> OS -> Software Applications (Excel) )
