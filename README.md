@@ -116,7 +116,9 @@ BASICS
   - List all RUNNING / NOT-RUNNING containers. 
   - NOT-RUNNING containers can be started again.
 - docker run redis:4.0
-- docker exec -it
+- docker exec -it CONTAINER_ID
+  - going inside a container.
+  - open an interactive terminal (-it) of a container.
 - container port vs host port
   - multiple containers can run on a single host machine.
   - each container will have a port.
