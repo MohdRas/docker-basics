@@ -4,17 +4,19 @@ BASICS
 # What is Container & docker
   - container has its own isolated environment ( application + dependencies + configuration)
     - With containers, no need to install any application directly on OS.
-    - One commmand to fetch the image & start it.
-    - Different versions of the image can be downloaded and run.
-    - docker run postgres:9.6 -->> download + run an image->> postgres:9.6=name of the image:version
-    - find first image locally ->> then download it from docker hub.
-    - each layer of the image is downloaded separately.
-    - Downloading two versions of the same image - >> If we download second version then the layers which were aleady downloaded as per of first version, won't be downloaded again.
-    - docker ps - All running containers on my local machine.
+    - One commmand to fetch the image & start the container.
+    - docker run postgres:9.6 -->> download + run an image->> postgres:9.6 => name of the image:version
+      - find first image LOCALLY ( on the host ) ->> if not found then download it from docker hub.
+      - Different versions of the image can be downloaded and run on the same host machi
+      - each layer of the image is downloaded separately.
+      - Downloading two versions of the same image
+        - After downloading first version if we download second version then the layers which are present LOCALLY, won't be downloaded again. 
   - docker image vs docker container
     - docker image is the one which actually reside on repository ( docker hub)
     - docker image is the portable/movable arftifact.
-    - docker image is pulled and started on my local machine ->> it is now "a container running on my local machine". ->> it creates a container environment.
+    - docker image is pulled and started on my local machine (host)
+      - it is now "a container running on my local machine".
+      - it creates a container environment.
   - To package an application in a container with all its dependencies & configuration.
   - With Containers, development & operations team work together to package an application in a container.
   - Deployment before containers - 
@@ -80,11 +82,11 @@ BASICS
   - container has a port 5000.
   - file system is vitual in containers.
 - Tag - tag is basically the version of an image.  Example - lastest/ 9.6 
-- docker pull - pull an image locally. 
+- docker pull - pull an image LOCALLY. 
   - docker pull redis
 - docker run - pull an image & start the container. Optionally it will download if an image is not present on my system.
-- docker images - list down all images locally.
-- docker ps - list RUNNING containers.
+- docker images - list down all images LOCALLY.
+- docker ps - list RUNNING containers. ps standS for PROCESS STATUS.
 - docker run -d redis - run a container in a DETACHED MODE. We will get the ID of the container as an output.
 - docker start container_id - start a STOPPED container. This container_id is taken from the docker ps command. 
 - docker stop container_id - stop the RUNNING container. This container_id is taken from the docker ps command.
