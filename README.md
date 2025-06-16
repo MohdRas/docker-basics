@@ -166,17 +166,13 @@ BASICS
   - Docker Network (Connection between mango and mango-expres)
     - docker creates isolated docker-network where containers are running in.
     - two containers in the same docker network can talk to each other with just the container name.
-    - docker network ls
+    - "docker network ls" command
         - docker networks by defaults.
-    - docker network create mango-network 
-        - creates our own custom docker network "mango-network"
+    - "docker network create mango-network" command 
+        - creates our own custom network "mango-network"
     - run mangodb in "mango-network".
-        - "docker run -p 27017:27017 /"                                                      -> PORT
-        - "-d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password /"  -> USERNAME & PASSWORD
-        - "--name mangodb /"                                                                 -> CONTAINER_NAME
-        - "--net mango-network /"                                                            -> DOCKER NETWORK
-        - "mango"                                                                            -> IMAGE NAME
-
+        - "docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango"
+        
 - applications which run outside of our docker network (our js application), will connect to docker network (mangodb & mango-express) using the localhost:27017
 - browser(which is on the host, outside the docker network) will connect to our js application using host:port number (localhost:8080)
 - our node js application will connect with the "mangodb" database.
