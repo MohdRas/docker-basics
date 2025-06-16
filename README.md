@@ -158,6 +158,27 @@ BASICS
   - exit -> out of the terminal.
 
 # Developing with containers.
+- JS application wants to use MangoDB database. 
+- MangoDB is downloaded and run from the docker repository.
+- Once this application is built, we will push the codebase to GIT. Jenkins will build and create an image out of this.
+- This image can be pushed back to docker repository. 
+- This image and MangoDB need to be FECTHED from the docker repository and deployed on a DEPLOYMENT SERVER. 
+- docker pull mango -> pulling lastest version of MangoDB image.
+- docker pull mango-express -> pulling lastest version of Mango-express image.
+- Need to connect mango-express to the MangoDB.
+- Need to connect MangoDB to the application we are developing.
+- Docker Network (Connection between mango and mango-expres)
+  - docker creates isolated docker-network where containers are running in.
+  - two containers in the same docker network can talk to each other with just the container name.
+  - docker network ls
+    - docker networks by defaults.
+  - docker network create mango-network 
+      -creates our own custom docker network.
+  - docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango
+    - creating container with name "mangodb", port biding, username, password and with network as "mango-network" 
+  - applications which run outside of our docker network (our js application), will connect to docker network (mangodb & mango-express) using the localhost:27017
+  - browser(which is on the host, outside the docker network) will connect to our js application using host:port number (localhost:8080)
+
 # Docker compose
   - Running multiple services.
 # Docker file
