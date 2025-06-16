@@ -133,12 +133,12 @@ BASICS
   - docker run -p6002:6379 --name old-redis redis:4.0  
     - old-redis is the CONTAINER_NAME
 - docker run vs docker start command
-  - docker run optionally download the image if it is not present LOCALLY.
+  - docker run -> optionally download the image if it is not present LOCALLY.
   - both commands start the container. 
-  - docker run start a NEW container.
-  - docker start a STOPPED container.
-  - Docker run can have multiple options ( -d -p --name ) while starting running itself.
-  - docker start will start the container with all the options which were already given in docker run command. New options cannot be given.
+  - docker run -> start a NEW container.
+  - docker start -> start a STOPPED container.
+  - Docker run -> can have multiple options ( -d -p --name ) while starting running itself.
+  - docker start -> will start the container with all the options which were already given in docker run command. New options cannot be given.
 # Debug a container.
 - docker run -d -p 60001:6379 --name redis-older redis:4.0
   - creating a container with name "redis-older"
