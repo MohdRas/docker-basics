@@ -132,11 +132,30 @@ BASICS
     - Binding HOST_PORT 6001 to CONTAINER_PORT 6379.
   - docker run -p6002:6379 --name old-redis redis:4.0  
     - old-redis is the CONTAINER_NAME
+- docker run vs docker start command
+  - docker run optionally download the image if it is not present LOCALLY.
+  - both commands start the container. 
+  - docker run start a NEW container.
+  - docker start a STOPPED container.
+  - Docker run can have multiple options ( -d -p --name ) while starting running itself.
+  - docker start will start the container with all the options which were already given in docker run command. New options cannot be given.
 # Debug a container.
 - docker run -d -p 60001:6379 --name redis-older redis:4.0
   - creating a container with name "redis-older"
 - docker run -d -p 60001:6379 --name redis-latest redis
   - creating a container with name 'redis-latest'
+- docker logs CONTAINER_ID -> Logs of a container
+- docker logs CONTAINER_NAME -> Logs of a container
+- docker exec -it CONTAINER_ID /bin/bash
+  - inside the container as a root user.
+  - virtual file system inside the container.
+  - these containers are light weight linux images hence all the linux command won't be available like "curl" command.
+  - ls -> list all the child folder.
+  - pwd -> print out the directory.
+  - cd / -> go to homme directory.
+  - ls -> what is inside the home directory.
+  - env -> print all the environment variables.
+  - exit -> out of the terminal.
 
 # Developing with containers.
 # Docker compose
