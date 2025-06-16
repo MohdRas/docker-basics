@@ -133,6 +133,11 @@ BASICS
   - docker run -p6002:6379 --name old-redis redis:4.0  
     - old-redis is the CONTAINER_NAME
 # Debug a container.
+- docker run -d -p 60001:6379 --name redis-older redis:4.0
+  - creating a container with name "redis-older"
+- docker run -d -p 60001:6379 --name redis-latest redis
+  - creating a container with name 'redis-latest'
+
 # Developing with containers.
 # Docker compose
   - Running multiple services.
