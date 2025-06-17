@@ -110,6 +110,10 @@ BASICS
   - stop the RUNNING container. This CONTAINER_ID is taken from the docker ps command.
 - docker logs CONTAINER_ID 
   - print the logs of a container.
+- docker logs CONTAINER_ID | tail
+  - print the LAST PART of the logs
+- docker logs CONTAINER_ID -f
+  - STREAM the logs
 - docker logs CONTAINER_NAME 
   - print the logs of a container. CONTAINER_NAME is taken from docker ps command.
 - docker ps -a 
@@ -190,7 +194,13 @@ BASICS
         - mango-express is the IMAGE_NAME.
         - mango-network is the DOCKER_NETWORK.
         
-- applications which run outside of our docker network (our js application), will connect to docker network (mangodb & mango-express) using the localhost:27017
+- our application will connect to "mangodb" database using the localhost:27017
+    - db URL in the codebase
+        - "mangodb://admin:password@localhost:27017"
+        - mangodb is the PROTOCAL.
+        - admin is the USER_NAME while running mangodb container.
+        - password is the PASSWORD while running mangodb container.
+
 - browser(which is on the host, outside the docker network) will connect to our js application using host:port number (localhost:8080)
 - our node js application will connect with the "mangodb" database.
 - Once this application is built, we will push the codebase to GIT. Jenkins will build and create an image out of this.
