@@ -172,6 +172,11 @@ BASICS
         - creates our own custom network "mango-network"
     - run mangodb in "mango-network".
         - "docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango"
+    - check if mangodb started or not
+        - docker logs CONTAINER_ID
+    - connecting mango-express to mango container
+        - "docker run -p 27017:27017 -d --name mango-express --net mango-network -e ME_CONFIG_MANGODB_ADMINUSERNAME=admin -e ME_CONFIG_MANGODB_ADMINPASSWORD=password -e ME_CONFIG_MANGODB_SERVER=mangodb  mango-express"
+        - mangodb is the CONTAINER_NAME, mango-express is the IMAGE_NAME.
         
 - applications which run outside of our docker network (our js application), will connect to docker network (mangodb & mango-express) using the localhost:27017
 - browser(which is on the host, outside the docker network) will connect to our js application using host:port number (localhost:8080)
