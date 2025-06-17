@@ -210,15 +210,21 @@ BASICS
 
 # Docker compose
   - Running multiple containers ( services ) .
+  - if we restart the mangodb containers, everything which was saved earlier, will be lost after restart.
+  - there is no data persistence in the container itself. Data Volumes resolve this problem.
   - create docker network
       - docker network create mango-network
   - start mangodb
       - docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango
   - start mango-express
       - docker run -p 8081:8081 -d --name mango-expressdb --net mango-network -e ME_CONFIG_MANGODB_ADMINUSERNAME=admin -e ME_CONFIG_MANGODB_ADMINPASSWORD=password -e ME_CONFIG_MANGODB_SERVER=mangodb  mango-express
-  - All above 3 can be done using docker-compose file.
-      - docker-compose -f FILE_NAME up.
-      - docker-compose -f FILE_NAME down.
+  - All above 3 can be done using docker-compose file and commmand.
+      - docker-compose -f FILE_NAME.yaml up.
+          - FILE_NAME is docker-compose-file.
+          - create DOCKER_NETWORK and starts the CONTAINERS.
+      - docker-compose -f FILE_NAME.yaml down.
+          - FILE_NAME is docker-compose-file.
+          - stop & remove DOCKER_NETWORK and CONTAINERS.
       - docker-compose-file.yaml
         - version : '3'
         - mangodb:
