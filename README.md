@@ -181,9 +181,14 @@ BASICS
     - check if mangodb started or not
         - docker logs CONTAINER_ID
     - connecting mango-express to mango container
-        - "docker run -p 27017:27017 -d --name mango-express --net mango-network -e ME_CONFIG_MANGODB_ADMINUSERNAME=admin -e ME_CONFIG_MANGODB_ADMINPASSWORD=password -e ME_CONFIG_MANGODB_SERVER=mangodb  mango-express"
-        - mangodb is the CONTAINER_NAME.
+        - "docker run -p 8081:8081 -d --name mango-expressdb --net mango-network -e ME_CONFIG_MANGODB_ADMINUSERNAME=admin -e ME_CONFIG_MANGODB_ADMINPASSWORD=password -e ME_CONFIG_MANGODB_SERVER=mangodb  mango-express"
+        - 8081:8081 is the PORT_BINDING.
+        - admin is the USER_NAME.
+        - password is the PASSWORD.
+        - mango is the CONTAINER_NAME to connect with
+        - mango-expressdb is the CONTAINER_NAME, which we are creating now.
         - mango-express is the IMAGE_NAME.
+        - mango-network is the DOCKER_NETWORK.
         
 - applications which run outside of our docker network (our js application), will connect to docker network (mangodb & mango-express) using the localhost:27017
 - browser(which is on the host, outside the docker network) will connect to our js application using host:port number (localhost:8080)
