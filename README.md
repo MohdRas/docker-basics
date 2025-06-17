@@ -242,7 +242,26 @@ BASICS
                 - ME_CONFIG_MANGODB_ADMINUSERNAME : admin
                 - ME_CONFIG_MANGODB_ADMINPASSWORD : password
                 - ME_CONFIG_MANGODB_SERVER : mangodb
-# Docker file
+# Dockerfile
+- blueprint for creating docker images.
+- our application ----> Dockerfile -----> docker image.
+- our application developed -----> git commit --------> CI (Jenkins) -------> build application , create docker image and push it to docker repository.
+- copy artifacts ( war, jar, bundle.js ) to Dockerfile.
+- Dockerfile
+    - FROM node:13-alpine
+        - base image for the image to be created. 
+        - when we create container from our image then node commands will be available inside the container by defaults.
+    - ENV MANGO_DB_USERNAME = admin MANGO_DB_PWD = password
+    - RUN mkdir -p /home/app
+        - create /home/app folder inside the container.
+        - Multiple RUN commands can be in a Dockerfile.
+    - COPY . /home/app
+        - copy current folder files to /home/app folder which is inside the container.
+    - CMD ["node", "server.js']   
+        - start the app with "node server.js". 
+        - Node is preinstalled because of the base image. Entry point command.
+- docker build -t myapp:1.0 .
+    - building an image from current dicrectory.
 # Private Docker Repository ( AWS )
 # Deploying containerized application.
 # Volumes
