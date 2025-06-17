@@ -209,7 +209,33 @@ BASICS
 
 
 # Docker compose
-  - Running multiple services.
+  - Running multiple containers ( services ) .
+  - create docker network
+      - docker network create mango-network
+  - start mangodb
+      - docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango
+  - start mango-express
+      - docker run -p 8081:8081 -d --name mango-expressdb --net mango-network -e ME_CONFIG_MANGODB_ADMINUSERNAME=admin -e ME_CONFIG_MANGODB_ADMINPASSWORD=password -e ME_CONFIG_MANGODB_SERVER=mangodb  mango-express
+  - All above 3 can be done using docker-compose file.
+      - docker-compose -f FILE_NAME up.
+      - docker-compose -f FILE_NAME down.
+      - docker-compose-file.yaml
+        - version : '3'
+        - mangodb:
+            - image : mango
+            - ports :
+                - 27017:27017
+            - environments :
+                - MANGO_INITDB_ROOT_USERNAME : admin
+                - MANGO_INITDB_ROOT_PASSWORD : password
+        - mango-express:
+            - image : mango-express
+            - ports :
+                - 8081:8081
+            - environments :
+                - ME_CONFIG_MANGODB_ADMINUSERNAME : admin
+                - ME_CONFIG_MANGODB_ADMINPASSWORD : password
+                - ME_CONFIG_MANGODB_SERVER : mangodb
 # Docker file
 # Private Docker Repository ( AWS )
 # Deploying containerized application.
