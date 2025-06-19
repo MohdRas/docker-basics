@@ -94,6 +94,9 @@ BASICS
   - tag is basically the version of an image.  Example - lastest/ 9.6 
 - docker pull IMAGE_NAME : TAG
   - docker pull redis:4.0
+  - docker pull docker.io/library/redis:4.0
+      - "docker.io/library/" is registry domain.
+      - In private repository (AWS ECR), we cannot skip registry domain.
   - pull an image LOCALLY. 
 - docker run IMAGE_NAME : TAG
   - docker run redis:4.0
@@ -295,7 +298,36 @@ BASICS
     - ls /home/app 
     - if "/bin/bash" does not work
     - "exit" to leave the terminal.
-# Private Docker Repository ( AWS )
+# Private Repository ( Registry ) for docker images on AWS - Elastic Container Registry ( ECR )
+- create private repository on ECR with AWS credentials.
+    - repository_domain/REPOSITORY_NAME
+    - REPOSITORY_NAME(my-app) is same as IMAGE_NAME(my-app).
+    - In ECR, ONE repository per image.
+    - PUSHING different VERSIONS/TAGS of the same image.
+- PUSHING docker image to AWS
+    - login to AWS
+        - Login is MANDATORY for private repository.
+        - "view push commands" on repository will show commands to LOGIN into AWS.
+        - past the same command in CMD.
+    - TAG/RENAME docker image to include repository_domain
+        - docker tag my-app:1.0 repository_domain/my-app:1.0
+        - docker tag IMAGE_NAME:TAG repository_domain/IMAGE_NAME:TAG 
+        - "docker images" will show 2 images with TAG 1.0
+    - push TAGGED image
+        - docker push repository_domain/my-app:1.0
+        - docker push repository_domain/IMAGE_NAME:TAG
+- change codebase and change the Dockerfile.txt
+    - rename "/home/app" to "/home/node-app"
+    - docker build -t my-app:1.1 .
+    - docker images 
+    - docker tag my-app:1.1 repository_domain/my-app:1.1
+    - docker images
+    - docker push repository_domain/my-app:1.1
+        - The layers which are already pushed as part of image my-app:1.0, won't be pushed again.
+    - Now, 2 images in ECR with tag "1.0" and "1.1"
+
+
+
 # Deploying containerized application.
 # Volumes
   - Persisting data.
