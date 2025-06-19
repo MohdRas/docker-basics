@@ -251,12 +251,17 @@ BASICS
     - FROM node:13-alpine
         - base image for the image to be created. 
         - when we create container from our image then node commands will be available inside the container by defaults.
-    - ENV MANGO_DB_USERNAME = admin MANGO_DB_PWD = password
+    - ENV MANGO_DB_USERNAME=admin MANGO_DB_PWD=password
+        - Optional Environment variables.
+        - Environment variables can be defined in docker-compose file too.
     - RUN mkdir -p /home/app
-        - create /home/app folder inside the container.
+        - run any linux command. 
+        - It runs inside a container.
+        - create VIRTUAL FOLDER /home/app
         - Multiple RUN commands can be in a Dockerfile.
     - COPY . /home/app
-        - copy current folder files to /home/app folder which is inside the container.
+        - It runs on HOST machine.
+        - copy CURRENT FOLDER . to VIRTUAL FOLDER /home/app
     - CMD ["node", "server.js']   
         - start the app with "node server.js". 
         - Node is preinstalled because of the base image. Entry point command.
