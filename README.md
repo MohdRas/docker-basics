@@ -268,6 +268,7 @@ BASICS
     - COPY . /home/app
         - It runs on HOST machine.
         - copy CURRENT FOLDER . to VIRTUAL FOLDER /home/app
+        - CURRENT FOLDER is the folder containing the Dockerfile.txt.
     - CMD ["node", "/home/app/server.js']
         - ONLY ONE entrypoint comment.   
         - start the app with "node server.js". 
@@ -288,6 +289,12 @@ BASICS
 - docker build -t IMAGE_NAME : TAG CURRENT_FOLDER
     - docker build -t myapp:1.0 .
     - buiding image again.
+- try docker exec -it CONTAINER_ID /bin/sh
+    - ls
+    - env
+    - ls /home/app 
+    - if "/bin/bash" does not work
+    - "exit" to leave the terminal.
 # Private Docker Repository ( AWS )
 # Deploying containerized application.
 # Volumes
