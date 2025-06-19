@@ -92,33 +92,39 @@ BASICS
   - file system is vitual in containers.
 - Tag 
   - tag is basically the version of an image.  Example - lastest/ 9.6 
-- docker pull 
+- docker pull IMAGE_NAME:TAG
+  - docker pull redis:4.0
   - pull an image LOCALLY. 
-  - docker pull redis
-- docker run 
-  - pull an image & start the container. Optionally it will download if an image is not present on my system.
+- docker run IMAGE_NAME:TAG
+  - docker run redis:4.0
+  - pull an image & start the container. 
+  - Optionally it will download if an image is not present on my system.
 - docker images 
   - list down all images LOCALLY.
 - docker ps 
-  - list RUNNING containers. 
+  - RUNNING containers. 
   - ps stands for PROCESS STATUS.
-- docker run -d redis 
+- docker ps -a 
+  - RUNNING / NOT-RUNNING containers. 
+  - NOT-RUNNING containers can be started again.
+- docker run -d IMAGE:TAG
+  - docker run -d redis:4.0
   - run a container in a DETACHED MODE. We will get the ID of the container as an output.
 - docker start CONTAINER_ID 
-  - start a STOPPED container. This CONTAINER_ID is taken from the docker ps command. 
+  - start a STOPPED container.
+  - CONTAINER_ID can be found with "docker ps" 
 - docker stop CONTAINER_ID 
-  - stop the RUNNING container. This CONTAINER_ID is taken from the docker ps command.
+  - stop the RUNNING container.
+  - CONTAINER_ID can be found with "docker ps"
 - docker logs CONTAINER_ID 
   - print the logs of a container.
 - docker logs CONTAINER_ID | tail
   - print the LAST PART of the logs
 - docker logs CONTAINER_ID -f
-  - STREAM the logs
+  - -f for STREAM the logs.
 - docker logs CONTAINER_NAME 
-  - print the logs of a container. CONTAINER_NAME is taken from docker ps command.
-- docker ps -a 
-  - List all RUNNING / NOT-RUNNING containers. 
-  - NOT-RUNNING containers can be started again.
+  - print the logs of a container.
+  - CONTAINER_NAME can be found with "docker ps"
 - docker run redis:4.0
 - docker exec -it CONTAINER_ID
   - going inside a container.
@@ -242,7 +248,7 @@ BASICS
                 - ME_CONFIG_MANGODB_ADMINUSERNAME : admin
                 - ME_CONFIG_MANGODB_ADMINPASSWORD : password
                 - ME_CONFIG_MANGODB_SERVER : mangodb
-# Dockerfile
+# Dockerfile.txt
 - blueprint for creating docker images.
 - our application ----> Dockerfile -----> docker image.
 - our application developed -----> git commit --------> CI (Jenkins) -------> build application , create docker image and push it to docker repository.
@@ -251,22 +257,38 @@ BASICS
     - FROM node:13-alpine
         - base image for the image to be created. 
         - when we create container from our image then node commands will be available inside the container by defaults.
-    - ENV MANGO_DB_USERNAME=admin MANGO_DB_PWD=password
+    - ENV MANGO_DB_USERNAME=admin /
+        - MANGO_DB_PWD=password
         - Optional Environment variables.
         - Environment variables can be defined in docker-compose file too.
     - RUN mkdir -p /home/app
         - run any linux command. 
         - It runs inside a container.
         - create VIRTUAL FOLDER /home/app
-        - Multiple RUN commands can be in a Dockerfile.
+        - MULTIPLE RUN commands allowed.
     - COPY . /home/app
         - It runs on HOST machine.
         - copy CURRENT FOLDER . to VIRTUAL FOLDER /home/app
-    - CMD ["node", "server.js']   
+    - CMD ["node", "/home/app/server.js']
+        - ONLY ONE entrypoint comment.   
         - start the app with "node server.js". 
         - Node is preinstalled because of the base image. Entry point command.
-- docker build -t myapp:1.0 .
-    - building an image from current dicrectory.
+- docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
+    - docker build -t myapp:1.0 .
+    - Dockerfile.txt is in the CURRENT_FOLDER (.)
+    - building an image from CURRENT_FOLDER(.)
+- running our own IMAGE
+    - docker run myapp:1.0
+- When we update the Dockerfile.txt then we need to build the image again.
+    - docker rm CONTAINER_ID
+        - CONTAINER_ID can be found with command "docker ps -a | grep myapp"
+        - remove the container
+    - docker rmi IMAGE_ID
+       - IMAGE_ID can be found with "docker images"
+       - remove an image AFTER removing container.
+- docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
+    - docker build -t myapp:1.0 .
+    - buiding image again.
 # Private Docker Repository ( AWS )
 # Deploying containerized application.
 # Volumes
