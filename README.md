@@ -326,9 +326,33 @@ BASICS
         - The layers which are already pushed as part of image my-app:1.0, won't be pushed again.
     - Now, 2 images in ECR with tag "1.0" and "1.1"
 
-
-
 # Deploying containerized application.
+- "my-app" image pulled from the private repository (ECR). Login is needed.
+- "mangodb" and "mango-express" image pulled from dockerhub.
+- docker-compose to deploy "my-app" to "dev" environment.
+- "dev" environment must need to LOGIN to ECR.
+- docker-compose -f docker-compose-file.yaml up                                                                                                                                       
+- docker-compose-file.yaml
+- version : '3'
+        - my-app :
+            - image : repository_domain/my-app:1.0
+            - ports : 
+                - 3000:3000
+        - mangodb :
+            - image : mango
+            - ports :
+                - 27017:27017
+            - environments :
+                - MANGO_INITDB_ROOT_USERNAME : admin
+                - MANGO_INITDB_ROOT_PASSWORD : password
+        - mango-express :
+            - image : mango-express
+            - ports :
+                - 8081:8081
+            - environments :
+                - ME_CONFIG_MANGODB_ADMINUSERNAME : admin
+                - ME_CONFIG_MANGODB_ADMINPASSWORD : password
+                - ME_CONFIG_MANGODB_SERVER : mangodb
 # Volumes
   - Persisting data.
 # Volumes Demo
