@@ -92,22 +92,22 @@ BASICS
   - file system is vitual in containers.
 - Tag 
   - tag is basically the version of an image.  Example - lastest/ 9.6 
-- docker pull IMAGE_NAME:TAG
+- docker pull IMAGE_NAME : TAG
   - docker pull redis:4.0
   - pull an image LOCALLY. 
-- docker run IMAGE_NAME:TAG
+- docker run IMAGE_NAME : TAG
   - docker run redis:4.0
   - pull an image & start the container. 
   - Optionally it will download if an image is not present on my system.
 - docker images 
-  - list down all images LOCALLY.
+  - images LOCALLY.
 - docker ps 
   - RUNNING containers. 
   - ps stands for PROCESS STATUS.
 - docker ps -a 
   - RUNNING / NOT-RUNNING containers. 
   - NOT-RUNNING containers can be started again.
-- docker run -d IMAGE:TAG
+- docker run -d IMAGE_NAME : TAG
   - docker run -d redis:4.0
   - run a container in a DETACHED MODE. We will get the ID of the container as an output.
 - docker start CONTAINER_ID 
@@ -119,16 +119,15 @@ BASICS
 - docker logs CONTAINER_ID 
   - print the logs of a container.
 - docker logs CONTAINER_ID | tail
-  - print the LAST PART of the logs
+  - LAST PART of the logs
 - docker logs CONTAINER_ID -f
-  - -f for STREAM the logs.
+  - STREAM the logs.
 - docker logs CONTAINER_NAME 
   - print the logs of a container.
   - CONTAINER_NAME can be found with "docker ps"
-- docker run redis:4.0
 - docker exec -it CONTAINER_ID
-  - going inside a container.
-  - open an interactive terminal (-it) of a container.
+  - INSIDE a container.
+  - INTERACTIVE TERMINAL (-it) of a container.
 - container port vs host port
   - multiple containers can run on a single host machine.
   - each container will have a port.
@@ -136,12 +135,12 @@ BASICS
   - HOST_PORT to CONTAINER_PORT binding must be UNIQUE on a SINGLE host machine.
   - Container will listen to the request only if HOST_PORT to CONTAINER_PORT binding is present.
   - This binding is done while running an image.
-  - docker run -p6000:6379 redis 
+  - docker run -p HOST_PORT:CONTAINER_PORT redis
+    - docker run -p 6000:6379 redis 
     - Binding HOST_PORT 6000 to CONTAINER_PORT 6379.
-  - docker run -p6001:6379 redis:4.0 
-    - Binding HOST_PORT 6001 to CONTAINER_PORT 6379.
-  - docker run -p6002:6379 --name old-redis redis:4.0  
-    - old-redis is the CONTAINER_NAME
+  - docker run -p 6000:6379 --name CONTAINER_NAME redis:4.0
+    - docker run -p 6000:6379 --name old-redis redis:4.0   
+    - "old-redis" is the CONTAINER_NAME
 - docker run vs docker start command
   - docker run -> optionally download the image if it is not present LOCALLY.
   - both commands start the container. 
@@ -273,7 +272,7 @@ BASICS
         - ONLY ONE entrypoint comment.   
         - start the app with "node server.js". 
         - Node is preinstalled because of the base image. Entry point command.
-- docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
+- docker build -t IMAGE_NAME : TAG CURRENT_FOLDER
     - docker build -t myapp:1.0 .
     - Dockerfile.txt is in the CURRENT_FOLDER (.)
     - building an image from CURRENT_FOLDER(.)
@@ -286,7 +285,7 @@ BASICS
     - docker rmi IMAGE_ID
        - IMAGE_ID can be found with "docker images"
        - remove an image AFTER removing container.
-- docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
+- docker build -t IMAGE_NAME : TAG CURRENT_FOLDER
     - docker build -t myapp:1.0 .
     - buiding image again.
 # Private Docker Repository ( AWS )
