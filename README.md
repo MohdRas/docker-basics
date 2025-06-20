@@ -1,6 +1,6 @@
 #  docker-basics
+https://www.youtube.com/watch?v=3c-iBn73dDE
 
-BASICS
 # What is Container & docker
   - container has its own isolated environment ( application + dependencies + configuration)
     - With containers, no need to install any application directly on OS.
