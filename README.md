@@ -3,7 +3,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 # Docker Engine vs WSL 2 vs Docker Desktop
 - Docker Engine
-                - background service (called a daemon "dockerd") that run instructions for containers, images, storage, and networking.
+  - background service (called a daemon "dockerd") that run instructions for containers, images, storage, and networking.
                 - Docker Engine is Linux kernel based. it can only run natively on Linux. It cannot run directly on the Windows kernel.
 - WSL 2 (Windows Subsystem for Linux)
                 - Linux kernel based VM.
