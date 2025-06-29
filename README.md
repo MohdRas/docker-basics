@@ -141,18 +141,21 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - docker run redis:4.0
       - pull an image & start the container. 
       - "pull an image" is optional. It will pull if it is not present LOCALLY.
+      - 
   - "docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango"
+      - 
       - "p 27017:27017"
           - exposing container to the host(6000).
-          - services running inside this container will be accessible to the external worlld using "host IP" and "host PORT".
+          - services running inside this container will be accessible to the external world using "host IP" and "host PORT".
+          - host IP:host PORT will be accesible in browser.
       - "-d"
-          - to run container in "BACKGROUND"
+          - to run container in the "BACKGROUND"
       - "-e"
           - environment variables
           - MANGO_INITDB_ROOT_USERNAME=admin
           - MANGO_INITDB_ROOT_PASSWORD=password
       - "--name mangodb"
-          - give a name to the container.
+          - define a name to the container.
        - "--net mango-network"
           - attaching a network to this container.
 - docker images 
