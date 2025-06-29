@@ -105,7 +105,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - starting docker desktop from CMD
     - copy past in CMD "C:\Program Files\Docker\Docker\Docker Desktop.exe" 
     - "docker info" command
-        - info about docker enginer 
+        - info about docker engine
  
 - "docker info" command
     - Docker Root Dir: /var/lib/docker
@@ -122,7 +122,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - docker container --help
     - docker image --help 
 - Tag 
-  - tag is basically the version of an image.  Example - lastest/ 9.6 
+  - tag is basically the version of an image.
+  - Example - lastest/ 9.6 
 - docker pull IMAGE_NAME:TAG
   - docker pull redis:4.0
   - pull an image from docker hub.
@@ -136,39 +137,39 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
               - bitnami/mongodb or jfrog/artifactory-pro
                   - the part before the slash (bitnami or jfrog) is the user/organization namespace
 
-- docker run IMAGE_NAME:TAG
+- docker run -d IMAGE_NAME:TAG
   - docker run redis:4.0
   - pull an image & start the container. 
-  - Optionally it will download if an image is not present on my system.
+  - "pull an image" is optional. It will pull if it is not present LOCALLY.
+  - "-d" to run container in "BACKGROUND"
+
 - docker images 
-  - images LOCALLY.
+  - list images LOCALLY.
 - docker ps 
   - RUNNING containers. 
   - ps stands for PROCESS STATUS.
 - docker ps -a 
   - RUNNING / NOT-RUNNING containers. 
   - NOT-RUNNING containers can be started again.
-- docker run -d IMAGE_NAME:TAG
-  - docker run -d redis:4.0
-  - Run container in background and print container ID
-- docker start CONTAINER_ID 
+- docker run -d redis:4.0
+- docker logs CONTAINER_ID/CONTAINER_NAME -f
+  - print the logs of a container running in the "BACKGROUND".
+  - "-f" for streaming the logs. Now we won't be able to execute any command from this CMD as it is continuosly logging the logs.
+- docker start CONTAINER_ID/CONTAINER_NAME 
   - start a STOPPED container.
-  - CONTAINER_ID can be found with "docker ps" 
-- docker stop CONTAINER_ID 
+- docker stop CONTAINER_ID/CONTAINER_NAME 
   - stop the RUNNING container.
-  - CONTAINER_ID can be found with "docker ps"
-- docker logs CONTAINER_ID 
-  - print the logs of a container.
-- docker logs CONTAINER_ID | tail
-  - LAST PART of the logs
-- docker logs CONTAINER_ID -f
-  - STREAM the logs.
-- docker logs CONTAINER_NAME 
-  - print the logs of a container.
-  - CONTAINER_NAME can be found with "docker ps"
-- docker exec -it CONTAINER_ID
-  - INSIDE a container.
-  - INTERACTIVE TERMINAL (-it) of a container.
+- docker exec -it CONTAINER_ID/CONTAINER_NAME /bin/bash
+   - docker exec -it CONTAINER_ID/CONTAINER_NAME /bin/sh 
+   - run a linux command from inside a container.
+   - All Linux command won't be available as it is light weight linux image.
+   - open "bash" or "sh" shell inside the container
+      - exit -> to come out of the terminal.
+      - env -> print all the environment variables.
+      - ls -> list all the child folder.
+      - pwd -> print out the directory.
+      - cd / -> go to homme directory.
+      - ls -> what is inside the home directory.
 - container port vs host port
   - multiple containers can run on a single host machine.
   - each container will have a port.
@@ -194,9 +195,9 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - creating a container with name "redis-older"
 - docker run -d -p 60001:6379 --name redis-latest redis
   - creating a container with name 'redis-latest'
-- docker logs CONTAINER_ID -> Logs of a container
+- docker logs CONTAINER_ID/CONTAINER_NAME -> Logs of a container
 - docker logs CONTAINER_NAME -> Logs of a container
-- docker exec -it CONTAINER_ID /bin/bash
+- docker exec -it CONTAINER_ID/CONTAINER_NAME /bin/bash
   - inside the container as a root user.
   - virtual file system inside the container.
   - these containers are light weight linux images hence all the linux command won't be available like "curl" command.
@@ -229,7 +230,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
         - mango-network is the DOCKER_NETWORK.
         - mangodb is the CONTAINER_NAME. It will be used by mango-express to connect to it.
     - check if mangodb started or not
-        - docker logs CONTAINER_ID
+        - docker logs CONTAINER_ID/CONTAINER_NAME
     - connecting mango-express to mango container
         - "docker run -p 8081:8081 -d --name mango-expressdb --net mango-network -e ME_CONFIG_MANGODB_ADMINUSERNAME=admin -e ME_CONFIG_MANGODB_ADMINPASSWORD=password -e ME_CONFIG_MANGODB_SERVER=mangodb  mango-express"
         - 8081:8081 is the PORT_BINDING.
@@ -321,8 +322,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - running our own IMAGE
     - docker run myapp:1.0
 - When we update the Dockerfile.txt then we need to build the image again.
-    - docker rm CONTAINER_ID
-        - CONTAINER_ID can be found with command "docker ps -a | grep myapp"
+    - docker rm CONTAINER_ID/CONTAINER_NAME
+        - CONTAINER_ID/CONTAINER_NAME can be found with command "docker ps -a | grep myapp"
         - remove the container
     - docker rmi IMAGE_ID
        - IMAGE_ID can be found with "docker images"
@@ -330,7 +331,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
     - docker build -t myapp:1.0 .
     - buiding image again.
-- try docker exec -it CONTAINER_ID /bin/sh
+- try docker exec -it CONTAINER_ID/CONTAINER_NAME /bin/sh
     - ls
     - env
     - ls /home/app 
