@@ -102,24 +102,36 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - all the environment stuffs ( virtual file system, environment config ) are provided by the container. Only images comes from the registry. 
   - each container has a port.
   - file system is vitual in containers.
-- stating docker desktop from CMD
+- starting docker desktop from CMD
     - copy past in CMD "C:\Program Files\Docker\Docker\Docker Desktop.exe" 
-    - "docker info" command to verify docker desktop is installed or not.
+    - "docker info" command
+        - info about docker enginer 
  
 - "docker info" command
+    - Docker Root Dir: /var/lib/docker
     - Server:
         - Images: 3
         - Containers: 33
             - Running: 31
             - Paused: 0
             - Stopped: 2
-    - Docker Root Dir: /var/lib/docker
+- "help" about a "command"
+    - docker run --help
+    - docker pull --help
+    - docker network --help
+    - docker container --help
+    - docker image --help 
 - Tag 
   - tag is basically the version of an image.  Example - lastest/ 9.6 
 - docker pull IMAGE_NAME:TAG
   - docker pull redis:4.0
-  - docker pull docker.io/library/redis:4.0
-      - "docker.io/library/" is registry domain.
+  - docker pull docker.io/library/redis:4.0 = [REGISTRY]/[NAMESPACE]/[IMAGE]:[TAG]
+      - REGISTRY = "docker.io" for "docker hub"
+      - NAMESPACE
+          - "library" for "official docker" images.
+          - for custom images
+              - bitnami/mongodb or jfrog/artifactory-pro
+                  - the part before the slash (bitnami or jfrog) is the user/organization namespace
       - In private repository (AWS ECR), we cannot skip registry domain.
   - pull an image LOCALLY. 
 - docker run IMAGE_NAME:TAG
@@ -136,7 +148,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - NOT-RUNNING containers can be started again.
 - docker run -d IMAGE_NAME:TAG
   - docker run -d redis:4.0
-  - run a container in a DETACHED MODE. We will get the ID of the container as an output.
+  - Run container in background and print container ID
 - docker start CONTAINER_ID 
   - start a STOPPED container.
   - CONTAINER_ID can be found with "docker ps" 
