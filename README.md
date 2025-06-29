@@ -7,7 +7,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - Docker Engine is Linux kernel based. it can only run natively on Linux. It cannot run directly on the Windows kernel.
 - WSL 2 (Windows Subsystem for Linux)
   - Linux kernel based VM.
-    - It creates the necessary Linux environment that the Docker Engine needs to run.
+  - It creates the necessary Linux environment that the Docker Engine needs to run.
 - Docker Desktop for Windows
   - A desktop application with GUI and CMD integration.
   - Installs & Manages WSL 2
