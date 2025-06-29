@@ -143,7 +143,6 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
       - "pull an image" is optional. It will pull if it is not present LOCALLY.
       - 
   - "docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango"
-      - 
       - "p 27017:27017"
           - exposing container to the host(6000).
           - services running inside this container will be accessible to the external world using "host IP" and "host PORT".
