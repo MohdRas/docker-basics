@@ -87,18 +87,18 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 # Docker commands.
 - container and image
   - container is a running environment(STATE) on local machine for an image.
-  - all the environment stuffs ( virtual file system, environment config ) are provided by the container other than the image from the repository. 
-  - container has a port 5000.
+  - all the environment stuffs ( virtual file system, environment config ) are provided by the container. Only images comes from the registry. 
+  - each container has a port.
   - file system is vitual in containers.
 - Tag 
   - tag is basically the version of an image.  Example - lastest/ 9.6 
-- docker pull IMAGE_NAME : TAG
+- docker pull IMAGE_NAME:TAG
   - docker pull redis:4.0
   - docker pull docker.io/library/redis:4.0
       - "docker.io/library/" is registry domain.
       - In private repository (AWS ECR), we cannot skip registry domain.
   - pull an image LOCALLY. 
-- docker run IMAGE_NAME : TAG
+- docker run IMAGE_NAME:TAG
   - docker run redis:4.0
   - pull an image & start the container. 
   - Optionally it will download if an image is not present on my system.
@@ -110,7 +110,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - docker ps -a 
   - RUNNING / NOT-RUNNING containers. 
   - NOT-RUNNING containers can be started again.
-- docker run -d IMAGE_NAME : TAG
+- docker run -d IMAGE_NAME:TAG
   - docker run -d redis:4.0
   - run a container in a DETACHED MODE. We will get the ID of the container as an output.
 - docker start CONTAINER_ID 
@@ -276,7 +276,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
         - ONLY ONE entrypoint comment.   
         - start the app with "node server.js". 
         - Node is preinstalled because of the base image. Entry point command.
-- docker build -t IMAGE_NAME : TAG CURRENT_FOLDER
+- docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
     - docker build -t myapp:1.0 .
     - Dockerfile.txt is in the CURRENT_FOLDER (.)
     - building an image from CURRENT_FOLDER(.)
@@ -289,7 +289,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - docker rmi IMAGE_ID
        - IMAGE_ID can be found with "docker images"
        - remove an image AFTER removing container.
-- docker build -t IMAGE_NAME : TAG CURRENT_FOLDER
+- docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
     - docker build -t myapp:1.0 .
     - buiding image again.
 - try docker exec -it CONTAINER_ID /bin/sh
