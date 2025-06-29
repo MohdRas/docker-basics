@@ -125,15 +125,17 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - tag is basically the version of an image.  Example - lastest/ 9.6 
 - docker pull IMAGE_NAME:TAG
   - docker pull redis:4.0
+  - pull an image from docker hub.
+      - "docker images" command will show this image.
   - docker pull docker.io/library/redis:4.0 = [REGISTRY]/[NAMESPACE]/[IMAGE]:[TAG]
+      - In private repository (AWS ECR), we cannot skip [REGISTRY]/[NAMESPACE].
       - REGISTRY = "docker.io" for "docker hub"
       - NAMESPACE
           - "library" for "official docker" images.
           - for custom images
               - bitnami/mongodb or jfrog/artifactory-pro
                   - the part before the slash (bitnami or jfrog) is the user/organization namespace
-      - In private repository (AWS ECR), we cannot skip registry domain.
-  - pull an image LOCALLY. 
+
 - docker run IMAGE_NAME:TAG
   - docker run redis:4.0
   - pull an image & start the container. 
