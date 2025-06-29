@@ -1,7 +1,7 @@
 #  docker-basics
 https://www.youtube.com/watch?v=3c-iBn73dDE
 
-# 
+# Docker Desktop ( WSL 2 ( Docker Engine ( Linux Kernel base Engine )
 
 - Docker Engine
     - This is the core, underlying technology of Docker. It's a background service (called a daemon) that actually builds, runs, and manages your containers.
