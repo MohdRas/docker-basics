@@ -1,6 +1,34 @@
 #  docker-basics
 https://www.youtube.com/watch?v=3c-iBn73dDE
 
+# 
+
+1. Docker Engine
+This is the core, underlying technology of Docker. It's a background service (called a daemon) that actually builds, runs, and manages your containers.
+    What it is: A program that runs constantly, waiting for instructions.
+    What it does: Manages containers, images, storage, and networking.
+    The Key Detail: Docker Engine was built using features of the Linux kernel (the core of the Linux operating system). Therefore, it can only run natively on Linux. It cannot run directly on the Windows kernel.
+2. WSL 2 (Windows Subsystem for Linux)
+    Because the Docker Engine needs Linux, Microsoft created a brilliant way to run a real Linux environment inside Windows.
+    What it is: A compatibility layer that lets you run a full, real Linux kernel and Linux distributions (like Ubuntu) directly within Windows 11.
+    What it does: It creates the necessary Linux environment that the Docker Engine needs to run.
+    Why "2"? WSL 1 translated Linux commands into Windows commands, which was clever but slow and not fully compatible. WSL 2 runs a lightweight virtual machine with a real Linux kernel, which is much faster and 100% compatible. It's the "race track" instead of a "driving simulator."
+3. Docker Desktop for Windows
+    This is the user-friendly application you install and interact with. It's the glue that holds everything together and hides the complexity.
+    What it is: A desktop application with a graphical user interface (GUI) and command-line integration.
+    What it does:
+    Installs & Manages WSL 2: It handles the entire setup of the WSL 2 backend for you.
+    Installs & Manages Docker Engine: It automatically installs and runs the Docker Engine inside the WSL 2 environment.
+    Provides the docker command: It places the docker.exe command in your Windows path, so when you type docker run... in CMD or PowerShell, it seamlessly relays that command to the Docker Engine running inside WSL 2.
+    Provides a GUI: Gives you a dashboard to see your running containers, manage images, and configure settings without using the command line.
+Putting It All Together: The Flow
+Here is the chain of command when you type docker ps in your Windows CMD:
+    You type docker ps in Windows CMD.
+    The docker.exe client (installed by Docker Desktop) receives this command.
+    Docker Desktop forwards the command to the Docker Engine...
+    ...which is running silently inside the WSL 2 Linux environment.
+    The Docker Engine processes the command and sends the result back along the same path to your CMD window.
+
 # What is Container & docker
   - container has its own isolated environment ( application + dependencies + configuration)
     - With containers, no need to install any application directly on OS.
@@ -90,6 +118,18 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - all the environment stuffs ( virtual file system, environment config ) are provided by the container. Only images comes from the registry. 
   - each container has a port.
   - file system is vitual in containers.
+- stating docker desktop from CMD
+    - copy past in CMD "C:\Program Files\Docker\Docker\Docker Desktop.exe" 
+    - "docker info" command to verify docker desktop is installed or not.
+ 
+- "docker info" command
+    - Server:
+        - Images: 3
+        - Containers: 33
+            - Running: 31
+            - Paused: 0
+            - Stopped: 2
+    - Docker Root Dir: /var/lib/docker
 - Tag 
   - tag is basically the version of an image.  Example - lastest/ 9.6 
 - docker pull IMAGE_NAME:TAG
