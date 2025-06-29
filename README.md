@@ -137,12 +137,24 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
               - bitnami/mongodb or jfrog/artifactory-pro
                   - the part before the slash (bitnami or jfrog) is the user/organization namespace
 
-- docker run -d IMAGE_NAME:TAG
+- docker run IMAGE_NAME:TAG
   - docker run redis:4.0
-  - pull an image & start the container. 
-  - "pull an image" is optional. It will pull if it is not present LOCALLY.
-  - "-d" to run container in "BACKGROUND"
-
+      - pull an image & start the container. 
+      - "pull an image" is optional. It will pull if it is not present LOCALLY.
+  - "docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango"
+      - "p 27017:27017"
+          - exposing container to the host(6000).
+          - services running inside this container will be accessible to the external worlld using "host IP" and "host PORT".
+      - "-d"
+          - to run container in "BACKGROUND"
+      - "-e"
+          - environment variables
+          - MANGO_INITDB_ROOT_USERNAME=admin
+          - MANGO_INITDB_ROOT_PASSWORD=password
+      - "--name mangodb"
+          - give a name to the container.
+       - "--net mango-network"
+          - attaching a network to this container.
 - docker images 
   - list images LOCALLY.
 - docker ps 
@@ -151,10 +163,9 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - docker ps -a 
   - RUNNING / NOT-RUNNING containers. 
   - NOT-RUNNING containers can be started again.
-- docker run -d redis:4.0
 - docker logs CONTAINER_ID/CONTAINER_NAME -f
-  - print the logs of a container running in the "BACKGROUND".
-  - "-f" for streaming the logs. Now we won't be able to execute any command from this CMD as it is continuosly logging the logs.
+  - print the logs of a RUNNING container.
+  - "-f" for streaming the logs.
 - docker start CONTAINER_ID/CONTAINER_NAME 
   - start a STOPPED container.
 - docker stop CONTAINER_ID/CONTAINER_NAME 
