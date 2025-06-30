@@ -406,7 +406,14 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
                 - ME_CONFIG_MANGODB_ADMINPASSWORD : password
                 - ME_CONFIG_MANGODB_SERVER : mangodb
 # Volumes
-  - Persisting data.
+  - data persistence for databases and other statefull applications.
+  - The data of a container is stored in its virtual file system. It is not-persist.
+  - when we start a container, a FRESH virtual file system is created. Hence data lost.
+  - use "docker volume" or "bind mounts".
+  - we mount host file system to virtual file system.
+      - -v host_file_system:virtual_file_system
+      - -v mango_data:/data/db
+      - 
 # Volumes Demo
 
 
