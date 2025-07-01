@@ -1,6 +1,8 @@
 #  docker-basics
 https://www.youtube.com/watch?v=3c-iBn73dDE
 
+# how to navigate to directoty on the host and container to check the data stored so far ?
+
 # Docker Engine vs WSL 2 vs Docker Desktop
 - Docker Engine
   - background service (called a docker daemon "dockerd") that run instructions for containers, images, storage, and networking.
@@ -168,6 +170,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - docker logs CONTAINER_ID/CONTAINER_NAME -f
   - print the logs of a RUNNING container.
   - "-f" for streaming the logs.
+- docker inspect CONTAINER_ID/CONTAINER_NAME
+  - All details about the container
+  - "Mounts" key will show details about the volume type.
+  - SOURCE & DESTINATION of the volume.
 - docker start CONTAINER_ID/CONTAINER_NAME 
   - start a STOPPED container.
 - docker stop CONTAINER_ID/CONTAINER_NAME 
