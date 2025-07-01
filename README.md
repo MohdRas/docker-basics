@@ -174,6 +174,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - All details about the container
   - "Mounts" key will show details about the volume type.
   - SOURCE & DESTINATION of the volume.
+- docker inspect VOLUME_NAME
+  - All details about the volume.
 - docker start CONTAINER_ID/CONTAINER_NAME 
   - start a STOPPED container.
 - docker stop CONTAINER_ID/CONTAINER_NAME 
