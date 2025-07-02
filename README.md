@@ -240,10 +240,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - two containers in the same docker network can talk to each other with just the container name.
     - "docker network ls" command
         - docker networks by defaults.
-    - "docker network create mango-network" command 
+    - "docker network create mongo-network" command 
         - creates our own custom network "mango-network"
     - run mangodb in "mango-network".
-        - "docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango"
+        - "docker run -d --name mongodb --network mongo-network -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password mongo"
         - 27017:27017 is the PORT_BINDING.
         - admin is the USER_NAME.
         - password is the PASSWORD.
@@ -253,7 +253,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - check if mangodb started or not
         - docker logs CONTAINER_ID/CONTAINER_NAME
     - connecting mango-express to mango container
-        - "docker run -p 8081:8081 -d --name mango-expressdb --net mango-network -e ME_CONFIG_MANGODB_ADMINUSERNAME=admin -e ME_CONFIG_MANGODB_ADMINPASSWORD=password -e ME_CONFIG_MANGODB_SERVER=mangodb  mango-express"
+        - "docker run -d --name mongo-express --network mongo-network -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express"
         - 8081:8081 is the PORT_BINDING.
         - admin is the USER_NAME.
         - password is the PASSWORD.
