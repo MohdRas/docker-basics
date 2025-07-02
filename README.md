@@ -159,6 +159,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
           - define a name to the container.
        - "--net mango-network"
           - attaching a network to this container.
+
 - docker images 
   - list images LOCALLY.
 - docker ps 
@@ -421,7 +422,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - we mount host file system to virtual file system.
       - -v host_file_system:virtual_file_system
       - -v mango_data:/data/db
-      - 
+  - docker exec -it 12a053d917c1 /bin/bash
+        - inside shell of the container.
+        - cd /data/db
+        - ls -l
 # Volumes Demo
 
 
