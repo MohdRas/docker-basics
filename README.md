@@ -144,7 +144,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
       - pull an image & start the container. 
       - "pull an image" is optional. It will pull if it is not present LOCALLY.
       - 
-  - "docker run -p 27017:27017 -d -e MANGO_INITDB_ROOT_USERNAME=admin -e MANGO_INITDB_ROOT_PASSWORD=password --name mangodb --net mango-network mango"
+  - "docker run -d --name mongo-db -p 27027:27017 --network mongo-network -e MONGO_INITDB_ROOT_USERNAME=admin -e  MONGO_INITDB_ROOT_PASSWORD=password mongodb/mongodb-community-server"
       - "p 27017:27017"
           - exposing container to the host(6000).
           - services running inside this container will be accessible to the external world using "host IP" and "host PORT".
