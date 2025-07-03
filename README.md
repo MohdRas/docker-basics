@@ -420,12 +420,17 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - when we start a container, a FRESH virtual file system is created. Hence data lost.
   - use "docker volume" or "bind mounts".
   - we mount host file system to virtual file system.
-      - -v host_file_system:virtual_file_system
+      - -v docker_volume_name:directory in virtual_file_system
       - -v mango_data:/data/db
-  - docker exec -it 12a053d917c1 /bin/bash
-        - inside shell of the container.
-        - cd /data/db
-        - ls -l
+          - mango_data is the docker volume created automatically. It can be seen using docker volumes ls.
+          - /data/db is the directory inside the container which store data of a container.
+          - docker exec -it 12a053d917c1 /bin/bash
+          - inside shell of the container.
+          - cd /data/db
+          - ls -l
+      - -v c_drive_path:/data/db
+          -  c_drive_path = "C:\Users\mohd.rasid\file_name", if WSL is not used.
+          -  c_drive_path = "/mnt/C:/Users/mohd.rasid/file_name", if wsl used.
 # Volumes Demo
 
 
