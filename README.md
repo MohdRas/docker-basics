@@ -149,8 +149,12 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
           - exposing container to the host(6000).
           - services running inside this container will be accessible to the external world using "host IP" and "host PORT".
           - host IP:host PORT will be accesible in browser.
+          - docker port CONTAINER_ID/NAME
+            - display the port binding of a container. 
       - "-d"
           - to run container in the "BACKGROUND"
+          - manually attaching to the DOCKER CONSOLE
+            - docker attach CONTAINER_ID/NAME
       - "-e"
           - environment variables
           - MANGO_INITDB_ROOT_USERNAME=admin
@@ -168,21 +172,21 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - docker ps -a 
   - RUNNING / NOT-RUNNING containers. 
   - NOT-RUNNING containers can be started again.
-- docker logs CONTAINER_ID/CONTAINER_NAME -f
+- docker logs CONTAINER_ID/NAME -f
   - print the logs of a RUNNING container.
   - "-f" for streaming the logs.
-- docker inspect CONTAINER_ID/CONTAINER_NAME
+- docker inspect CONTAINER_ID/NAME
   - All details about the container
   - "Mounts" key will show details about the volume type.
   - SOURCE & DESTINATION of the volume.
 - docker inspect VOLUME_NAME
   - All details about the volume.
-- docker start CONTAINER_ID/CONTAINER_NAME 
+- docker start CONTAINER_ID/NAME 
   - start a STOPPED container.
-- docker stop CONTAINER_ID/CONTAINER_NAME 
+- docker stop CONTAINER_ID/NAME 
   - stop the RUNNING container.
-- docker exec -it CONTAINER_ID/CONTAINER_NAME /bin/bash
-   - docker exec -it CONTAINER_ID/CONTAINER_NAME /bin/sh 
+- docker exec -it CONTAINER_ID/NAME /bin/bash
+   - docker exec -it CONTAINER_ID/NAME /bin/sh 
    - run a linux command from inside a container.
    - All Linux command won't be available as it is light weight linux image.
    - open "bash" or "sh" shell inside the container
@@ -217,9 +221,9 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - creating a container with name "redis-older"
 - docker run -d -p 60001:6379 --name redis-latest redis
   - creating a container with name 'redis-latest'
-- docker logs CONTAINER_ID/CONTAINER_NAME -> Logs of a container
+- docker logs CONTAINER_ID/NAME -> Logs of a container
 - docker logs CONTAINER_NAME -> Logs of a container
-- docker exec -it CONTAINER_ID/CONTAINER_NAME /bin/bash
+- docker exec -it CONTAINER_ID/NAME /bin/bash
   - inside the container as a root user.
   - virtual file system inside the container.
   - these containers are light weight linux images hence all the linux command won't be available like "curl" command.
@@ -252,7 +256,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
         - mango-network is the DOCKER_NETWORK.
         - mangodb is the CONTAINER_NAME. It will be used by mango-express to connect to it.
     - check if mangodb started or not
-        - docker logs CONTAINER_ID/CONTAINER_NAME
+        - docker logs CONTAINER_ID/NAME
     - connecting mango-express to mango container
         - "docker run -d --name mongo-express --network mongo-network -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express"
         - 8081:8081 is the PORT_BINDING.
@@ -344,8 +348,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - running our own IMAGE
     - docker run myapp:1.0
 - When we update the Dockerfile.txt then we need to build the image again.
-    - docker rm CONTAINER_ID/CONTAINER_NAME
-        - CONTAINER_ID/CONTAINER_NAME can be found with command "docker ps -a | grep myapp"
+    - docker rm CONTAINER_ID/NAME
+        - CONTAINER_ID/NAME can be found with command "docker ps -a | grep myapp"
         - remove the container
     - docker rmi IMAGE_ID
        - IMAGE_ID can be found with "docker images"
@@ -353,7 +357,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
     - docker build -t myapp:1.0 .
     - buiding image again.
-- try docker exec -it CONTAINER_ID/CONTAINER_NAME /bin/sh
+- try docker exec -it CONTAINER_ID/NAME /bin/sh
     - ls
     - env
     - ls /home/app 
