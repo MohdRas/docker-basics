@@ -42,8 +42,9 @@ This is the most common interaction. When you run a container and publish a port
 Example: You run an Nginx web server container.
 
 Generated bash
-docker run --name my-webserver -p 8080:80 -d nginx
 
+      docker run --name my-webserver -p 8080:80 -d nginx
+    
 
 Nginx is listening on port 80 inside the container.
 
@@ -66,10 +67,11 @@ Example: You are running a PostgreSQL database directly on your Windows PC on po
 postgres://myuser:mypassword@host.docker.internal:5432/mydatabase
 
 Summary Table
-Scenario	Where are you?	What are you trying to reach?	What address/hostname should you use?
-Accessing a web server running in a container	On your Windows PC	A container	localhost:<published-port> (e.g., localhost:8080)
-Accessing a database running on your Windows machine	Inside a container	Your Windows PC	host.docker.internal
-A process inside a container talking to another process	Inside a container	The same container	localhost
-A container talking to another container	Inside a container	A different container	The other container's name (on a shared Docker network)
+
+Scenario
+Accessing a web server running in a container
+Accessing a database running on your Windows machine
+A process inside a container talking to another process
+A container talking to another container
 
 Key Takeaway: The "Docker Host" is a Linux VM. Use localhost on Windows to reach your containers (thanks to port forwarding), and use host.docker.internal from inside a container to reach your Windows machine.
