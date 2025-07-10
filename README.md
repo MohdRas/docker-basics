@@ -428,19 +428,27 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - data persistence for databases and other statefull applications.
   - The data of a container is stored in its virtual file system. It is not-persist.
   - when we start a container, a FRESH virtual file system is created. Hence data lost.
-  - use "docker volume" or "bind mounts".
-  - we mount host file system to virtual file system.
-      - -v docker_volume_name:directory in virtual_file_system
-      - -v mango_data:/data/db
-          - mango_data is the docker volume created automatically. It can be seen using docker volumes ls.
-          - /data/db is the directory inside the container which store data of a container.
-          - docker exec -it 12a053d917c1 /bin/bash
-          - inside shell of the container.
-          - cd /data/db
-          - ls -l
+  - use mounts ( volume or bind )
       - -v c_drive_path:/data/db
-          -  c_drive_path = "C:\Users\mohd.rasid\file_name", if WSL is not used.
+          -  c_drive_path = "C:\Users\mohd.rasid\data-folder", if WSL is not used.
           -  c_drive_path = "/mnt/C:/Users/mohd.rasid/file_name", if wsl used.
+    - docker run -d -p 82:80 -v nginx-data:/data/db nginx
+      - nginx-data is name of the volume. its location is "/var/lib/docker/volumes"
+      - "Type": "volume",
+      - "Name": "nginx-data"
+      - "Source": "/var/lib/docker/volumes/nginx-data/_data",
+      - "Destination": "/data/db"
+      - "Source" is inside the docker host and "Destination" is inside the container.
+      - docker exec -it 12a053d917c1 /bin/bash
+      - inside shell of the container.
+      - cd /data/db
+      - ls -l
+    - docker run -d -p 80:80 -v C:\Users\mohdr\host-data:/data/db nginx
+      - C:\Users\mohdr\host-data is c drive of my laptop.
+      - "Type": "bind",
+      - "Source": "C:\\Users\\mohdr\\host-data",
+      - "Destination": "/data/db"
+      - "Source" is inside laptop and "Destination" is inside the container.
 # Volumes Demo
 
 
