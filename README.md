@@ -10,6 +10,12 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - WSL 2 (Windows Subsystem for Linux) - DOCKER HOST
   - Linux-kernel based VM.
   - It creates the necessary Linux environment that the Docker Engine needs to run.
+  - "ping host.docker.internal" from inside of a container
+      - print the IP address of the DOCKER HOST.
+  - Connect to a web server running on your machine at port 8080
+      - If you have a service (e.g., a database or API) running on your machine, your container application can connect to it like this:
+      - curl http://host.docker.internal:8080
+  - Docker Host" and your laptop's localhost are technically not the same thing, but Docker Desktop performs networking magic to make them appear the same in many common scenarios 
 - Docker Desktop for Windows
   - A desktop application with GUI and CMD integration.
   - Installs & Manages WSL 2
