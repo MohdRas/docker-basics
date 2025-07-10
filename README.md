@@ -20,15 +20,15 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - With containers, no need to install any application directly on OS.
     - One commmand to fetch the image & start the container.
     - docker run postgres:9.6 -->> download + run an image->> postgres:9.6 => name of the image:version
-      - find first image LOCALLY ( on the host ) ->> if not found then download it from docker hub.
-      - Different versions of the image can be downloaded and run on the same host ( local machine )
+      - find first image LOCALLY ( on the docker host (WSL VM) ) ->> if not found then download it from docker hub.
+      - Different versions of the image can be downloaded and run on the same docker host (WSL VM) ( local machine )
       - each layer of the image is downloaded separately.
       - Downloading two versions of the same image
         - After downloading first version, if we download second version, then the layers which are present LOCALLY, won't be downloaded again. 
   - docker image vs docker container
     - docker image is the one which actually reside on repository ( docker hub )
     - docker image is the portable/movable arftifact.
-    - docker image is pulled and started on my local machine (host)
+    - docker image is pulled and started on my local machine (docker host (WSL VM))
       - it is now "a container running on my local machine".
       - it creates a container environment.
   - With Containers, development & operations team work together, to package an application in a container with all its dependencies & configuration.
@@ -146,9 +146,9 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
       - 
   - "docker run -d --name mongo-db -p 27027:27017 --network mongo-network -e MONGO_INITDB_ROOT_USERNAME=admin -e  MONGO_INITDB_ROOT_PASSWORD=password mongodb/mongodb-community-server"
       - "p 27017:27017"
-          - exposing container to the host(6000).
-          - services running inside this container will be accessible to the external world using "host IP" and "host PORT".
-          - host IP:host PORT will be accesible in browser.
+          - exposing container to the docker host (WSL VM).
+          - services running inside this container will be accessible to the external world using "docker host (WSL VM) IP" and "docker host (WSL VM) PORT".
+          - docker host (WSL VM) IP:docker host (WSL VM) PORT will be accesible in browser.
           - docker port CONTAINER_ID/NAME
             - display the port binding of a container. 
       - "-d"
@@ -196,16 +196,16 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
       - pwd -> print out the directory.
       - cd / -> go to homme directory.
       - ls -> what is inside the home directory.
-- container port vs host port
-  - multiple containers can run on a single host machine.
+- container port vs docker host (WSL VM) port
+  - multiple containers can run on a single docker host (WSL VM) machine.
   - each container will have a port.
   - Multiple container can have the same port.
-  - HOST_PORT to CONTAINER_PORT binding must be UNIQUE on a SINGLE host machine.
-  - Container will listen to the request only if HOST_PORT to CONTAINER_PORT binding is present.
+  - docker host (WSL VM)_PORT to CONTAINER_PORT binding must be UNIQUE on a SINGLE host machine.
+  - Container will listen to the request only if docker host (WSL VM)_PORT to CONTAINER_PORT binding is present.
   - This binding is done while running an image.
-  - docker run -p HOST_PORT:CONTAINER_PORT redis
+  - docker run -p docker host (WSL VM)_PORT:CONTAINER_PORT redis
     - docker run -p 6000:6379 redis 
-    - Binding HOST_PORT 6000 to CONTAINER_PORT 6379.
+    - Binding docker host (WSL VM)_PORT 6000 to CONTAINER_PORT 6379.
   - docker run -p 6000:6379 --name CONTAINER_NAME redis:4.0
     - docker run -p 6000:6379 --name old-redis redis:4.0   
     - "old-redis" is the CONTAINER_NAME
@@ -274,7 +274,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
         - admin is the USER_NAME while running mangodb container.
         - password is the PASSWORD while running mangodb container.
 
-- browser(which is on the host, outside the docker network) will connect to our js application using host:port number (localhost:8080)
+- browser(which is on the host, outside the docker network) will connect to our js application using docker host (WSL VM):port number (localhost:8080)
 - our node js application will connect with the "mangodb" database.
 - Once this application is built, we will push the codebase to GIT. Jenkins will build and create an image out of this.
 - This image can be pushed back to docker repository. 
