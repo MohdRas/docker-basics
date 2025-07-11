@@ -331,6 +331,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - our application ----> Dockerfile -----> docker image.
 - our application developed -----> git commit --------> CI (Jenkins) -------> build application , create docker image and push it to docker repository.
 - copy artifacts ( war, jar, bundle.js ) to Dockerfile.
+- "docker hostory IMAGE_ID"
+    - History of an image
 - Dockerfile
     - FROM node:13-alpine
         - base image for the image to be created. 
@@ -358,6 +360,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - Dockerfile.txt is in the CURRENT_FOLDER (.)
     - building an image from CURRENT_FOLDER(.)
     - -t is the tag.
+    - each INSTRUCTION is executed in the order which is given in the Dockerfile.txt.
+    - each success layer is CASHED. If any layer failed, then in the next build, only that layer will be built again, all other layers will be picked from their CASHED version.
 - running our own IMAGE
     - docker run myapp:1.0
 - When we update the Dockerfile.txt then we need to build the image again.
