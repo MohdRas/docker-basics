@@ -106,6 +106,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 # Docker commands.
 - container and image
+  - a container live as long the process under it running. If no process or running process stopped, container will exit.
+      - "docker run ubuntu"
+      - As there is no process running inside the ubuntu container , it exited soon after start.
+      - "docker ps" won't show any container out of this ubuntu image.
   - container is a running environment(STATE) on local machine for an image.
   - all the environment stuffs ( virtual file system, environment config ) are provided by the container. Only images comes from the registry. 
   - each container has a port.
