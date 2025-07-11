@@ -323,7 +323,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
                 - ME_CONFIG_MANGODB_ADMINUSERNAME : admin
                 - ME_CONFIG_MANGODB_ADMINPASSWORD : password
                 - ME_CONFIG_MANGODB_SERVER : mangodb
-# Dockerfile.txt
+# Dockerfile.txt ( INSTRUCTION + ARGUMENTS )
+- INSTRUCTION ( FROM, RUN, COPY, CMD, ENTRYPOINT )
+- ARGUMENTS ( node:13-alpine, mkdir -p /home/app)
+- Each instruction create a layer on top of existing layer.
 - blueprint for creating docker images.
 - our application ----> Dockerfile -----> docker image.
 - our application developed -----> git commit --------> CI (Jenkins) -------> build application , create docker image and push it to docker repository.
