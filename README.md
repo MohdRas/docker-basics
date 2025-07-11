@@ -355,8 +355,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
         - copy CURRENT FOLDER . to VIRTUAL FOLDER /home/app
         - CURRENT FOLDER is the folder containing the Dockerfile.txt.
     - CMD ["node", "/home/app/server.js']
-        - ONLY ONE entrypoint comment.   
-        - start the app with "node server.js". 
+        - Default command to be executed when the container starts.   
+        - it can be overriden in run command "docker run ubuntu sleep 5". here "sleep 5" override the CMD command
         - Node is preinstalled because of the base image. Entry point command.
 - docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
     - docker build -t myapp:1.0 .
