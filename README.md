@@ -165,6 +165,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
           - environment variables
           - MANGO_INITDB_ROOT_USERNAME=admin
           - MANGO_INITDB_ROOT_PASSWORD=password
+          - use "docker inspect CONTAINER_ID/NAME" to check the "Env" key in the response.
+          - use "docker exec -it CONTAINER_ID/NAME /bin/bash " and then type "env" to check the environment variables of a container.
       - "--name mangodb"
           - define a name to the container.
        - "--net mango-network"
