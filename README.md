@@ -354,8 +354,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
         - Node is preinstalled because of the base image. Entry point command.
 - docker build -t IMAGE_NAME:TAG CURRENT_FOLDER
     - docker build -t myapp:1.0 .
+    - docker build Dockerfile -t myapp:1.0
     - Dockerfile.txt is in the CURRENT_FOLDER (.)
     - building an image from CURRENT_FOLDER(.)
+    - -t is the tag.
 - running our own IMAGE
     - docker run myapp:1.0
 - When we update the Dockerfile.txt then we need to build the image again.
