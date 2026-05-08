@@ -20,6 +20,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - A desktop application with GUI and CMD integration.
   - Installs & Manages WSL 2
   - Installs & Manages Docker Engine
+- Docker host = any machine (bare‑metal, VM, cloud instance) that runs the Docker Engine (dockerd). It is the runtime that creates containers.
+- Docker Desktop = a product (Windows / macOS) that packages a Docker host (a lightweight Linux VM) together with UI helpers, automatic updates, Docker‑Compose, -optional Kubernetes, and deep integration with the host OS (WSL 2, Windows file sharing, etc.).
 
 # What is Container & docker
   - container has its own isolated environment ( application + dependencies + configuration)
