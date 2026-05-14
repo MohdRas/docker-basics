@@ -17,6 +17,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
       - curl http://host.docker.internal:8080
   - Docker Host" and your laptop's localhost are technically not the same thing, but Docker Desktop performs networking magic to make them appear the same in many common scenarios 
 - Docker Desktop for Windows
+  - Docker Desktop runs Linux containers inside a lightweight VM (a Hyper‑V / WSL‑2 VM).
   - A desktop application with GUI and CMD integration.
   - Installs & Manages WSL 2
   - Installs & Manages Docker Engine
