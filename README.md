@@ -8,7 +8,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - background service (called a docker daemon "dockerd") that run instructions for containers, images, storage, and networking.
   - Docker Engine is Linux-kernel based and can only run on Linux natively but cannot run directly on the Windows kernel/os.
   - Path for "dockerd" = C:\Program Files\Docker\Docker\resources\dockerd
-- **WSL 2 (Windows Subsystem for Linux) VM or WSL2 VM or Docker host VM**
+- **WSL2 VM or Docker host VM**
+  - stands for Windows Subsystem for Linux.
   - **Docker host** = any machine (bare‑metal, VM, cloud instance) that runs the Docker Engine (dockerd). **Here it is WSL2 VM.**
   - Docker host (a lightweight Linux VM : **WSL2/Hyper-v)**
   - Linux-kernel based VM running on windows.
