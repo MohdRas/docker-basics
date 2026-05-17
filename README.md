@@ -29,13 +29,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - The real laptop IP (107.108.8.248)
     - The vEthernet IP (172.23.160.1) is the bridge between Windows and the VM; **Windows <----vEthernet---->VM**
  
--Windows (or macOS)
--│
--└─► Hyper‑V  /  WSL‑2  (the **virtual‑machine hypervisor**)
-        -│
-        -└─► **Docker Desktop VM**   ← a tiny Linux VM that runs the Docker Engine (dockerd)
-                -│
-                -└─► Your **containers** (the workloads you build/run)
+- Windows (or macOS)
+  - Hyper‑V  /  WSL‑2  (the **virtual‑machine hypervisor**)
+       - **Docker Desktop VM**   ← a tiny Linux VM that runs the Docker Engine (dockerd)
+                - Your **containers** (the workloads you build/run)
                 
  - Hyper‑V – the hypervisor that Windows ships. It can run many independent virtual machines (VMs).
  - WSL‑2 – a special VM that Microsoft built on top of Hyper‑V; it runs a full Linux kernel and appears to Windows as the network interface vEthernet (WSL) (the  172.23.160.1 address you see in ipconfig).
