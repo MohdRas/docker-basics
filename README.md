@@ -31,8 +31,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
  
 - Windows (or macOS) ->>>>>> Hyper‑V  /  WSL‑2  (the **virtual‑machine hypervisor**) -->>>>>> **Docker Desktop VM**   ← a tiny Linux VM that runs the Docker Engine (dockerd) -->>>>>> Your **containers** (the workloads you build/run)
                 
-                
- - Hyper‑V – the hypervisor that Windows ships. It can run many independent virtual machines (VMs).
+ - Hypervisor
+    -  virtualize the physical resources (RAM, ROM, CPU, Networking & many more) of a physical machine. 
+    -  Host machine ( physical machine ) ----->>>> hypervisor------->> **Many independent Guest machines ( virtual machine )**        
+ - Hyper‑V – microsoft's native hypervisor. It can run many independent virtual machines (VMs).
  - WSL‑2 – a special VM that Microsoft built on top of Hyper‑V; it runs a full Linux kernel and appears to Windows as the network interface vEthernet (WSL) (the  172.23.160.1 address you see in ipconfig).
  - Docker Desktop VM – a Linux VM (a tiny “LinuxKit” image) that Docker Desktop starts inside that underlying hypervisor (either directly on Hyper‑V or inside the WSL‑2 VM).
 
