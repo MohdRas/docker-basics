@@ -34,9 +34,14 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
  - Hypervisor
     -  virtualize the physical resources (RAM, ROM, CPU, Networking & many more) of a physical machine. 
     -  Host machine ( physical machine ) ----->>>> hypervisor------->> **Many independent Guest machines ( virtual machine )**        
- - Hyper‑V – microsoft's native hypervisor. It can run many independent virtual machines (VMs).
- - WSL‑2 – a special VM that Microsoft built on top of Hyper‑V; it runs a full Linux kernel and appears to Windows as the network interface vEthernet (WSL) (the  172.23.160.1 address you see in ipconfig).
- - Docker Desktop VM – a Linux VM (a tiny “LinuxKit” image) that Docker Desktop starts inside that underlying hypervisor (either directly on Hyper‑V or inside the WSL‑2 VM).
+ - Hypervisor Types
+   - Hyper‑V
+       – microsoft's native hypervisor. It can run many independent virtual machines (VMs). Infact runs own windows os as **parent VM** and others are **child VMs**
+   - vEthernet ( virtual Ethenet or virtual cables or virtual switch)
+       - routes network traffic between physical WiFi/Ethernet and VMs.
+   - WSL 2 ( Windows subsystem for linux 2 )
+     – a special VM that Microsoft built on top of Hyper‑V; it runs a full Linux kernel and appears to Windows as the network interface vEthernet (WSL) (the  172.23.160.1 address you see in ipconfig).
+   - Docker Desktop VM – a Linux VM (a tiny “LinuxKit” image) that Docker Desktop starts inside that underlying hypervisor (either directly on Hyper‑V or inside the WSL‑2 VM).
 
 
 # What is Container & docker
