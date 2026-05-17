@@ -4,6 +4,23 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 # how to navigate to directoty on the host and container to check the data stored so far ?
 
 # Docker Engine vs WSL 2 vs Docker Desktop
+- Windows (or macOS) ->>>>>> Hyper‑V  /  WSL‑2  (the **virtual‑machine hypervisor**) -->>>>>> **Docker Desktop VM**   ← a tiny Linux VM that runs the Docker Engine (dockerd) -->>>>>> Your **containers** (the workloads you build/run)
+                
+ - Hypervisor
+    -  virtualize the physical resources (RAM, ROM, CPU, Networking & many more) of a physical machine. 
+    -  Host machine ( physical machine ) ----->>>> hypervisor------->> **Many independent Guest machines ( virtual machine )**        
+ - Hypervisor Types
+   - Hyper‑V
+       – microsoft's native hypervisor. It can run many independent virtual machines (VMs). Infact runs own windows os as **parent VM** and others are **child VMs**
+   - vEthernet ( virtual Ethenet or virtual cables or virtual switch)
+       - routes network traffic between physical WiFi/Ethernet and VMs.
+   - WSL 2 ( Windows subsystem for linux 2 )
+       - Instead of installing full sized linux VM, microsoft allow to install a small **utility VM** on windows. WSL2 is built on top of Hyper‑V; it runs a full Linux kernel. It is fast as it is small. It is like **a process** to windows system. 
+   - Docker Desktop
+       - platform for running applications inside containers ( tiny & lighweight mini VMs).
+       - it connect to WSL2 instance and tells to run containers using its real linux kernel
+       - a Linux VM (a tiny “LinuxKit” image) that Docker Desktop starts inside that underlying hypervisor (either directly on Hyper‑V or inside the WSL‑2 VM).
+
 - Docker Engine
   - background service (called a docker daemon "dockerd") that run instructions for containers, images, storage, and networking.
   - Docker Engine is Linux-kernel based and can only run on Linux natively but cannot run directly on the Windows kernel/os.
@@ -29,19 +46,6 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - The real laptop IP (107.108.8.248)
     - The vEthernet IP (172.23.160.1) is the bridge between Windows and the VM; **Windows <----vEthernet---->VM**
  
-- Windows (or macOS) ->>>>>> Hyper‑V  /  WSL‑2  (the **virtual‑machine hypervisor**) -->>>>>> **Docker Desktop VM**   ← a tiny Linux VM that runs the Docker Engine (dockerd) -->>>>>> Your **containers** (the workloads you build/run)
-                
- - Hypervisor
-    -  virtualize the physical resources (RAM, ROM, CPU, Networking & many more) of a physical machine. 
-    -  Host machine ( physical machine ) ----->>>> hypervisor------->> **Many independent Guest machines ( virtual machine )**        
- - Hypervisor Types
-   - Hyper‑V
-       – microsoft's native hypervisor. It can run many independent virtual machines (VMs). Infact runs own windows os as **parent VM** and others are **child VMs**
-   - vEthernet ( virtual Ethenet or virtual cables or virtual switch)
-       - routes network traffic between physical WiFi/Ethernet and VMs.
-   - WSL 2 ( Windows subsystem for linux 2 )
-     – a special VM that Microsoft built on top of Hyper‑V; it runs a full Linux kernel and appears to Windows as the network interface vEthernet (WSL) (the  172.23.160.1 address you see in ipconfig).
-   - Docker Desktop VM – a Linux VM (a tiny “LinuxKit” image) that Docker Desktop starts inside that underlying hypervisor (either directly on Hyper‑V or inside the WSL‑2 VM).
 
 
 # What is Container & docker
