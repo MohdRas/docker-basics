@@ -8,26 +8,25 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - background service (called a docker daemon "dockerd") that run instructions for containers, images, storage, and networking.
   - Docker Engine is Linux-kernel based and can only run on Linux natively but cannot run directly on the Windows kernel/os.
   - Path for "dockerd" = C:\Program Files\Docker\Docker\resources\dockerd
-- WSL 2 (Windows Subsystem for Linux)
+- **WSL 2 (Windows Subsystem for Linux) VM or WSL2 VM or Docker host VM**
+  - **Docker host** = any machine (bare‑metal, VM, cloud instance) that runs the Docker Engine (dockerd). **Here it is WSL2 VM.**
+  - Docker host (a lightweight Linux VM : **WSL2/Hyper-v)**
   - Linux-kernel based VM running on windows.
   - It creates the necessary Linux environment that the Docker Engine needs to run.
   - "ping host.docker.internal" from inside of a container
-      - print the IP address of gateway of WSL2 VM.
+      - print the IP address of **gateway of WSL2 VM**.
   - Connect to a web server running on your machine at port 8080
       - If you have a service (e.g., a database or API) running on your machine, your container application can connect to it like this:
       - curl http://host.docker.internal:8080
-  - Docker Host" and your laptop's localhost are technically not the same thing, but Docker Desktop performs networking magic to make them appear the same in many common scenarios 
+  - **Docker Host** and your laptop's localhost are technically not the same thing.
 - Docker Desktop for Windows
-  - Docker Desktop runs Linux containers inside a lightweight VM (a Hyper‑V / WSL‑2 VM).
+  - **Docker Desktop runs Linux containers inside a lightweight VM (a Hyper‑V / WSL‑2 VM).**
   - A desktop application with GUI and CMD integration.
-  - Installs & Manages WSL 2
-  - Installs & Manages Docker Engine
-- Docker host = any machine (bare‑metal, VM, cloud instance) that runs the Docker Engine (dockerd). It is the runtime that creates containers.
-- Docker Desktop = a product (Windows / macOS) that packages a Docker host (a lightweight Linux VM : WSL2/Hyper-v)
-- Bottom line
-  - host.docker.internal = 192.168.65.254 (Docker Desktop VM gateway).
-  - The real laptop IP (107.108.8.248)
-  - The vEthernet IP (172.23.160.1) is the bridge between Windows and the VM; Windows <----vEthernet---->VM
+  - Docker Desktop = a product (Windows / macOS) that packages a Docker host (a lightweight Linux VM : WSL2/Hyper-v)
+  - Bottom line
+    - host.docker.internal = 192.168.65.254 (Docker Desktop VM gateway).
+    - The real laptop IP (107.108.8.248)
+    - The vEthernet IP (172.23.160.1) is the bridge between Windows and the VM; **Windows <----vEthernet---->VM**
  
 -Windows (or macOS)
 │
