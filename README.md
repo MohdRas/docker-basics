@@ -14,11 +14,11 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - Docker host (a lightweight Linux VM : **WSL2/Hyper-v)**
   - Linux-kernel based VM running on windows.
   - It creates the necessary Linux environment that the Docker Engine needs to run.
-  - "ping host.docker.internal" from inside of a container
+  - **ping host.docker.internal** from inside of a container
       - print the IP address of **gateway of WSL2 VM**.
   - Connect to a web server running on your machine at port 8080
       - If you have a service (e.g., a database or API) running on your machine, your container application can connect to it like this:
-      - curl http://host.docker.internal:8080
+      - **curl http://host.docker.internal:8080**
   - **Docker Host** and your laptop's localhost are technically not the same thing.
 - Docker Desktop for Windows
   - **Docker Desktop runs Linux containers inside a lightweight VM (a Hyper‑V / WSL‑2 VM).**
