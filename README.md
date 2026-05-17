@@ -8,11 +8,11 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - background service (called a docker daemon "dockerd") that run instructions for containers, images, storage, and networking.
   - Docker Engine is Linux-kernel based and can only run on Linux natively but cannot run directly on the Windows kernel/os.
   - Path for "dockerd" = C:\Program Files\Docker\Docker\resources\dockerd
-- WSL 2 (Windows Subsystem for Linux) - DOCKER HOST
-  - Linux-kernel based VM.
+- WSL 2 (Windows Subsystem for Linux)
+  - Linux-kernel based VM running on windows.
   - It creates the necessary Linux environment that the Docker Engine needs to run.
   - "ping host.docker.internal" from inside of a container
-      - print the IP address of the DOCKER HOST.
+      - print the IP address of gateway of WSL2 VM.
   - Connect to a web server running on your machine at port 8080
       - If you have a service (e.g., a database or API) running on your machine, your container application can connect to it like this:
       - curl http://host.docker.internal:8080
