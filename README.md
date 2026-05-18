@@ -68,6 +68,15 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - host.docker.internal = 192.168.65.254 (Docker Desktop VM gateway).
     - The real laptop IP (107.108.8.248)
     - The vEthernet IP (172.23.160.1) is the bridge between Windows and the VM; **Windows <----vEthernet---->VM**
+# laptop <----> VM communication
+
+- Application inside the container calls host.docker.internal:8080.
+- The container’s DNS resolver (Docker’s built‑in DNS server 127.0.0.11) returns 192.168.65.254.
+- The packet is emitted on the container’s eth0 (e.g., 172.17.0.2 → 192.168.65.254).
+- Inside the Docker Desktop VM, iptables DNATs any traffic destined for 192.168.65.254 to the VM’s host side of the virtual switch.
+- The packet leaves the VM via the vEthernet (WSL) NIC (172.23.160.1).
+- The Hyper‑V/WSL host (Windows) receives the packet, rewrites the source address to the real LAN IP (107.108.8.248), and forwards it to the local service bound on that port (e.g., a web server listening on 0.0.0.0:8080).
+- The response follows the reverse path: service → Windows networking stack → vEthernet NIC → Docker Desktop VM → container’s eth0.
  
 
 
