@@ -22,14 +22,15 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
  - Hypervisor Types
    - Hyper‑V
        – microsoft's native hypervisor. It can run many independent virtual machines (VMs). Infact runs own windows OS as **parent VM** and others are **child VMs**
-   - vEthernet ( virtual **Ethenet** or virtual **cables** or virtual **switch**)
+   - vEthernet ( virtual **Ethernet** or virtual **cables** or virtual **switch**)
        - routes network traffic between physical WiFi/Ethernet and VMs.
    - WSL 2 ( Windows subsystem for linux 2 )
-       - Instead of installing full sized linux VM, microsoft allow to install a small **utility VM** on windows. WSL2 is built on top of Hyper‑V; it runs a full Linux kernel. It is fast because it is small. It is like **a process** on windows system. 
+       - Instead of installing full sized linux VM, microsoft allow to install a small **utility VM** on windows, which is WSL2 VM.
+       - WSL2 is built on top of Hyper‑V; it runs a full Linux kernel. It is fast because it is small. It is like **a process** on windows system. 
    - Docker Desktop
        - platform for running applications inside containers ( tiny & lighweight mini VMs).
-       - it connect to WSL2 instance and tells to run containers using its real linux kernel
-       - a Linux VM (a tiny “LinuxKit” image) that Docker Desktop starts inside that underlying hypervisor (either directly on Hyper‑V or inside the WSL‑2 VM).
+       - it connect to WSL2 instance and tells to run containers using its real linux kernel.
+       - Docker Desktop starts a Linux VM (a tiny “LinuxKit” image) inside that underlying hypervisor (either directly on Hyper‑V or inside the WSL‑2 VM).
 
 - Docker Engine
   - background service (called a docker daemon "dockerd") that run instructions for containers, images, storage, and networking.
