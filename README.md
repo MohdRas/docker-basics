@@ -21,7 +21,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     -  Host machine ( physical machine ) ----->>>> hypervisor------->> **Many independent Guest machines ( virtual machine )**        
  - Hypervisor Types
    - Hyper‑V
-       – microsoft's native hypervisor. It can run many independent virtual machines (VMs). Infact runs own windows OS as **parent VM** and others are **child VMs**
+             - microsoft's native hypervisor. It can run many independent virtual machines (VMs). Infact runs own windows OS as **parent VM** and others are **child VMs**
    - vEthernet ( virtual **Ethernet** or virtual **cables** or virtual **switch**)
        - routes network traffic between physical WiFi/Ethernet and VMs.
    - WSL 2 ( Windows subsystem for linux 2 )
