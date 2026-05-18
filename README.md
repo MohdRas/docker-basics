@@ -78,49 +78,49 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
                     ^                     ^                     ^
                     |                     |                     |
                     |  (host OS – Windows, DNS, firewall)         |
-          |                                             |
-          |                     |                     |
-          |                     |                     |
-          |                     v                     |
-+-------------------------------------------------------------------+
-|  WSL‑2 / Hyper‑V “vEthernet (WSL)” interface (virtual NIC)       |
-|  IPv4: 172.23.160.1      <-- the **host‑side** of Docker Desktop   |
-|  (exposed to Windows, shown by `ipconfig`)                     |
-+-------------------------------------------------------------------+
-          ^                     ^
-          |                     |  (Virtual Switch created by Docker Desktop)
-          |                     |
-          |                     v
-+-------------------------------------------------------------------+
-|  Docker Desktop **VM** (a tiny Linux VM that actually runs the     |
-|  Docker Engine). It lives inside the Hyper‑V/WSL‑2 environment.   |
-|  - Bridge network (Docker “bridge”) : 172.17.0.0/16               |
-|  - Private subnet used for host‑side address: 192.168.65.0/24    |
-|  - **Gateway / “host‑side” IP** : 192.168.65.254  (⇐ `host.docker.internal`) |
-+-------------------------------------------------------------------+
-          ^                     ^
-          |  NAT / routing inside the VM (iptables)               |
-          |  Packets from containers are DNAT‑ed to the host‑side   |
-          |  IP 192.168.65.254 and then forwarded out                |
-          v                     v
-+-------------------------------------------------------------------+
-|  Docker **bridge** (inside the VM)                               |
-|  Container network (default): 172.17.0.0/16                     |
-|  Example containers:                                            |
-|   • container‑A : 172.17.0.2                                    |
-|   • container‑B : 172.17.0.3                                    |
-+-------------------------------------------------------------------+
-          ^                     ^
-          |  Container‑level networking (veth pair)                |
-          |  (each container sees its own interface `eth0`)         |
-          |  Inside the container `host.docker.internal` resolves   |
-          |  to **192.168.65.254**                                   |
-          v                     v
-+-------------------------------------------------------------------+
-|  **Inside the container**                                        |
-|  $ ping host.docker.internal → 192.168.65.254                    |
-|  $ curl http://host.docker.internal:8080/health                 |
-+-------------------------------------------------------------------+
+                    |                                             |
+                    |                     |                     |
+                    |                     |                     |
+                    |                     v                     |
+          +-------------------------------------------------------------------+
+          |  WSL‑2 / Hyper‑V “vEthernet (WSL)” interface (virtual NIC)       |
+          |  IPv4: 172.23.160.1      <-- the **host‑side** of Docker Desktop   |
+          |  (exposed to Windows, shown by `ipconfig`)                     |
+          +-------------------------------------------------------------------+
+                    ^                     ^
+                    |                     |  (Virtual Switch created by Docker Desktop)
+                    |                     |
+                    |                     v
+          +-------------------------------------------------------------------+
+          |  Docker Desktop **VM** (a tiny Linux VM that actually runs the     |
+          |  Docker Engine). It lives inside the Hyper‑V/WSL‑2 environment.   |
+          |  - Bridge network (Docker “bridge”) : 172.17.0.0/16               |
+          |  - Private subnet used for host‑side address: 192.168.65.0/24    |
+          |  - **Gateway / “host‑side” IP** : 192.168.65.254  (⇐ `host.docker.internal`) |
+          +-------------------------------------------------------------------+
+                    ^                     ^
+                    |  NAT / routing inside the VM (iptables)               |
+                    |  Packets from containers are DNAT‑ed to the host‑side   |
+                    |  IP 192.168.65.254 and then forwarded out                |
+                    v                     v
+          +-------------------------------------------------------------------+
+          |  Docker **bridge** (inside the VM)                               |
+          |  Container network (default): 172.17.0.0/16                     |
+          |  Example containers:                                            |
+          |   • container‑A : 172.17.0.2                                    |
+          |   • container‑B : 172.17.0.3                                    |
+          +-------------------------------------------------------------------+
+                    ^                     ^
+                    |  Container‑level networking (veth pair)                |
+                    |  (each container sees its own interface `eth0`)         |
+                    |  Inside the container `host.docker.internal` resolves   |
+                    |  to **192.168.65.254**                                   |
+                    v                     v
+          +-------------------------------------------------------------------+
+          |  **Inside the container**                                        |
+          |  $ ping host.docker.internal → 192.168.65.254                    |
+          |  $ curl http://host.docker.internal:8080/health                 |
+          +-------------------------------------------------------------------+
 
 
 - Application inside the container calls host.docker.internal:8080 to each any service running at laptop's local host.
