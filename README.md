@@ -15,6 +15,20 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 
                                 - Your **containers** (the workloads you build/run)
+- >ipconfig
+
+-Windows IP Configuration
+
+
+-Ethernet adapter Ethernet:
+
+   -IPv4 Address. . . . . . . . . . . : 107.108.8. ==================== LAN IP
+
+
+-Ethernet adapter vEthernet (WSL (Hyper-V firewall)):
+
+
+   -IPv4 Address. . . . . . . . . . . : 172.23.160.1 ================== vEthernet IP
                 
  - Hypervisor
     -  virtualize the physical resources (RAM, ROM, CPU, Networking & many more) of a physical machine. 
