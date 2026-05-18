@@ -49,6 +49,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
       - **curl http://host.docker.internal:8080**
   - **Docker Host** and your laptop's localhost are technically not the same thing.
 - Docker Desktop for Windows
+          -  Docker Desktop therefore starts a small Linux VM (Hyper‑Kit on macOS, WSL‑2/Hyper‑V on Windows) and runs the Linux kernel there. The container then runs inside that VM’s kernel.
+
   - **Docker Desktop runs Linux containers inside a lightweight VM (a Hyper‑V / WSL‑2 VM).**
   - A desktop application with GUI and CMD integration.
   - Docker Desktop = a product (Windows / macOS) that packages a Docker host (a lightweight Linux VM : WSL2/Hyper-v)
