@@ -53,7 +53,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
   - **Docker Desktop runs Linux containers inside a lightweight VM (a Hyper‑V / WSL‑2 VM).**
   - A desktop application with GUI and CMD integration.
-  - Docker Desktop = a product (Windows / macOS) that packages a Docker host (a lightweight Linux VM : WSL2/Hyper-v)
+  - Docker Desktop is a product (Windows / macOS) that packages a Docker host.
+  - **Docker host is a lightweight Linux VM ( WSL2/Hyper-v on windows and Hyper‑Kit on macOS)**
   - Bottom line
     - host.docker.internal = 192.168.65.254 (Docker Desktop VM gateway).
     - The real laptop IP (107.108.8.248)
