@@ -6,8 +6,13 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 # Docker Engine vs WSL 2 vs Docker Desktop
 - Windows (or macOS)
     - Hyper‑V  /  WSL‑2  (the **virtual‑machine hypervisor**)
-    - **Docker Desktop VM**   ← a tiny Linux VM that runs the Docker Engine (dockerd)
-    - Your **containers** (the workloads you build/run)
+
+              - **Docker Desktop VM**   ← a tiny Linux VM that runs the Docker Engine (dockerd)
+
+
+
+
+                          - Your **containers** (the workloads you build/run)
                 
  - Hypervisor
     -  virtualize the physical resources (RAM, ROM, CPU, Networking & many more) of a physical machine. 
