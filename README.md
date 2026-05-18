@@ -72,64 +72,64 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
           
           +-------------------------------------------------------------------+
           |                         YOUR PHYSICAL LAPTOP                      |
-          |   Ethernet or Wi‑Fi adapter (real LAN)                           |
+          |   Ethernet or Wi‑Fi adapter (real LAN)                            |
           |   IPv4: 107.108.8.248      <-- corporate network address          |
           +-------------------------------------------------------------------+
                     ^                     ^                     ^
                     |                     |                     |
-                    |  (host OS – Windows, DNS, firewall)         |
-                    |                                             |
+                    |  (host OS – Windows, DNS, firewall)       |
+                    |                                           |
                     |                     |                     |
                     |                     |                     |
                     |                     v                     |
           +-------------------------------------------------------------------+
-          |  WSL‑2 / Hyper‑V “vEthernet (WSL)” interface (virtual NIC)       |
-          |  IPv4: 172.23.160.1      <-- the **host‑side** of Docker Desktop   |
-          |  (exposed to Windows, shown by `ipconfig`)                     |
+          |  WSL‑2 / Hyper‑V “vEthernet (WSL)” interface (virtual NIC)        |
+          |  IPv4: 172.23.160.1      <-- the **host‑side** of Docker Desktop  |
+          |  (exposed to Windows, shown by `ipconfig`)                        |
           +-------------------------------------------------------------------+
                     ^                     ^
                     |                     |  (Virtual Switch created by Docker Desktop)
                     |                     |
                     |                     v
-          +-------------------------------------------------------------------+
-          |  Docker Desktop **VM** (a tiny Linux VM that actually runs the     |
-          |  Docker Engine). It lives inside the Hyper‑V/WSL‑2 environment.   |
-          |  - Bridge network (Docker “bridge”) : 172.17.0.0/16               |
-          |  - Private subnet used for host‑side address: 192.168.65.0/24    |
+          +------------------------------------------------------------------------------+
+          |  Docker Desktop **VM** (a tiny Linux VM that actually runs the               |
+          |  Docker Engine). It lives inside the Hyper‑V/WSL‑2 environment.              |
+          |  - Bridge network (Docker “bridge”) : 172.17.0.0/16                          |
+          |  - Private subnet used for host‑side address: 192.168.65.0/24                |
           |  - **Gateway / “host‑side” IP** : 192.168.65.254  (⇐ `host.docker.internal`) |
-          +-------------------------------------------------------------------+
+          +-------------------------------------------------------------------------------+
                     ^                     ^
-                    |  NAT / routing inside the VM (iptables)               |
-                    |  Packets from containers are DNAT‑ed to the host‑side   |
-                    |  IP 192.168.65.254 and then forwarded out                |
+                    |  NAT / routing inside the VM (iptables)                 
+                    |  Packets from containers are DNAT‑ed to the host‑side   
+                    |  IP 192.168.65.254 and then forwarded out                
                     v                     v
           +-------------------------------------------------------------------+
-          |  Docker **bridge** (inside the VM)                               |
-          |  Container network (default): 172.17.0.0/16                     |
-          |  Example containers:                                            |
-          |   • container‑A : 172.17.0.2                                    |
-          |   • container‑B : 172.17.0.3                                    |
+          |  Docker **bridge** (inside the VM)                                |
+          |  Container network (default): 172.17.0.0/16                       |
+          |  Example containers:                                              |
+          |   • container‑A : 172.17.0.2                                      |
+          |   • container‑B : 172.17.0.3                                      |
           +-------------------------------------------------------------------+
                     ^                     ^
-                    |  Container‑level networking (veth pair)                |
-                    |  (each container sees its own interface `eth0`)         |
-                    |  Inside the container `host.docker.internal` resolves   |
-                    |  to **192.168.65.254**                                   |
+                    |  Container‑level networking (veth pair)                
+                    |  (each container sees its own interface `eth0`)         
+                    |  Inside the container `host.docker.internal` resolves   
+                    |  to **192.168.65.254**                                   
                     v                     v
           +-------------------------------------------------------------------+
-          |  **Inside the container**                                        |
-          |  $ ping host.docker.internal → 192.168.65.254                    |
-          |  $ curl http://host.docker.internal:8080/health                 |
+          |  **Inside the container**                                         |
+          |  $ ping host.docker.internal → 192.168.65.254                     |
+          |  $ curl http://host.docker.internal:8080/health                   |
           +-------------------------------------------------------------------+
 
 
 - Application inside the container calls host.docker.internal:8080 to each any service running at laptop's local host.
 - The container’s default DNS resolver (Docker’s built‑in DNS server 127.0.0.11) returns 192.168.65.254. Path : etc/resolv.conf
-          - etc/resolv.conf : nameserver 127.0.0.11
+                    - etc/resolv.conf : nameserver 127.0.0.11
 - The packet is emitted on the container’s eth0 (e.g., 172.17.0.2 → 192.168.65.254).
-          - docker inspect container_id  = "NetworkSettings"."Networks"."demo_default"."IPAddress": "172.17.0.2",
+                    - docker inspect container_id  = "NetworkSettings"."Networks"."demo_default"."IPAddress": "172.17.0.2",
 - The packet leaves the VM via the vEthernet (WSL) NIC (172.23.160.1).
-          - ipconfig = Ethernet adapter vEthernet (WSL (Hyper-V firewall)):IPv4 Address. . . . . . . . . . . : 172.23.160.1
+                    - ipconfig = Ethernet adapter vEthernet (WSL (Hyper-V firewall)):IPv4 Address. . . . . . . . . . . : 172.23.160.1
 - The response follows the reverse path: windows service <→ Windows networking stack <→ vEthernet NIC <→ Docker Desktop VM <→ container’s eth0.
  
 
