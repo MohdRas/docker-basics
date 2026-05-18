@@ -69,15 +69,15 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - The real laptop IP (107.108.8.248)
     - The vEthernet IP (172.23.160.1) is the bridge between Windows and the VM; **Windows <----vEthernet---->VM**
 # laptop <----> VM communication
-
-+-------------------------------------------------------------------+
-|                         YOUR PHYSICAL LAPTOP                      |
-|   Ethernet or Wi‑Fi adapter (real LAN)                           |
-|   IPv4: 107.108.8.248      <-- corporate network address          |
-+-------------------------------------------------------------------+
-          ^                     ^                     ^
-          |                     |                     |
-          |  (host OS – Windows, DNS, firewall)         |
+          
+          +-------------------------------------------------------------------+
+          |                         YOUR PHYSICAL LAPTOP                      |
+          |   Ethernet or Wi‑Fi adapter (real LAN)                           |
+          |   IPv4: 107.108.8.248      <-- corporate network address          |
+          +-------------------------------------------------------------------+
+                    ^                     ^                     ^
+                    |                     |                     |
+                    |  (host OS – Windows, DNS, firewall)         |
           |                                             |
           |                     |                     |
           |                     |                     |
