@@ -57,12 +57,11 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - Docker Desktop for Windows
   - Docker Desktop therefore starts a small Linux VM (Hyper‑Kit on macOS, WSL‑2/Hyper‑V on Windows) and runs the Linux kernel there. The container then runs inside that VM’s kernel.
   - platform for running applications inside containers ( tiny & lighweight mini VMs).
-  - it connect to WSL2 instance and tells to run containers using its real linux kernel.
+  - it connect to WSL2 instance and tells WSL2 to run containers using its real linux kernel.
   - Docker Desktop starts a Linux VM (a tiny “LinuxKit” image) inside that underlying hypervisor (either directly on Hyper‑V or inside the WSL‑2 VM).
   - **Docker Desktop runs Linux containers inside a lightweight VM (a Hyper‑V / WSL‑2 VM).**
   - A desktop application with GUI and CMD integration.
-  - Docker Desktop is a product (Windows / macOS) that packages a Docker host.
-  - **Docker host is a lightweight Linux VM ( WSL2/Hyper-v on windows and Hyper‑Kit on macOS)**
+  - Docker Desktop is a product that packages a Docker host. **Docker host is a lightweight Linux VM ( WSL2/Hyper-v on windows and Hyper‑Kit on macOS)**
   - Bottom line
     - host.docker.internal = 192.168.65.254 (Docker Desktop VM gateway).
     - The real laptop IP (107.108.8.248)
