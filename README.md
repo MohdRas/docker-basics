@@ -10,9 +10,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
 
 - Docker Desktop installs two WSL 2 distros:
-        - docker-desktop
-                  - Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
-        - docker-desktop-data
+
+          - docker-desktop
+                   - Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
+          - docker-desktop-data
                    - Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to clean up or reset the engine.
 
   - powershell command to display VMs on windows laptop :
