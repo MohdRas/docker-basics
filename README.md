@@ -36,6 +36,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
              - set WSL 2 as default version.
              - downloads & installs "Ubuntu" as default linux distribution.
 
+- search for "**Turn Windows features on or off**" in windows laptop and check if WSL & virtual machine platform selected or not.
+
 - PS C:\Windows\system32> Get-WindowsOptionalFeature -online -FeatureName Microsoft-Windows-Subsystem-Linux
 
             - FeatureName      : Microsoft-Windows-Subsystem-Linux
