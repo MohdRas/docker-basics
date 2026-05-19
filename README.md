@@ -28,11 +28,12 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 
  - "wsl --install" on powershell
-         - turn on virtual machine platform ( the subset of hyper-v, needed for WSL 2)
-         - turn on WSL feature.
-         - download & install "latest linux kernel"
-         - set WSL 2 as default version.
-         - downloads & installs "Ubuntu" as default linux distribution.
+  
+             - turn on virtual machine platform ( the subset of hyper-v, needed for WSL 2)
+             - turn on WSL feature.
+             - download & install "latest linux kernel"
+             - set WSL 2 as default version.
+             - downloads & installs "Ubuntu" as default linux distribution.
   
 - Windows (or macOS)
 
