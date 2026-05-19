@@ -4,6 +4,15 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 # how to navigate to directoty on the host and container to check the data stored so far ?
 
 # Docker Engine vs WSL 2 vs Docker Desktop
+- wsl -l -v
+- the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
+- 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
+- 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
+
+- Docker Desktop installs two WSL 2 distros:
+ - docker-desktop	- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
+ - docker-desktop-data - 	Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to clean up or reset the engine.
+
 - Windows (or macOS)
 
 
