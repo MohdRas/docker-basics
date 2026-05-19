@@ -13,20 +13,23 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		  	  Ubuntu            Running         2
 		
 		
-		  	- the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
+		  	- **2** after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
 		    - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
 		    - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
 		
 		    - docker-desktop
-				- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
+
+  				- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
 				- Highly stripped down, customized set of linux files created by docker. It does not include tools like apt or nano.
 				- Only job to hold the files, those are needed to run docker engine.
 		
 		  	- docker-desktop-data
-				- Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to 								clean up or reset the engine.
+
+  				- Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to 								clean up or reset the engine.
 		
 		  	- ubuntu
-				- from command  : wsl --install
+
+  				- from command  : wsl --install
 				- full, standard linux file system.
 				- include all normal tools needed to "write code" or "install software"
 
