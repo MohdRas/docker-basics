@@ -5,7 +5,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 # Docker Engine vs WSL 2 vs Docker Desktop
 - wsl -l -v
-                                          NAME              STATE           VERSION
+
+                                              NAME              STATE           VERSION
                                         * docker-desktop    Running         2
 - the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
 - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
