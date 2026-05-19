@@ -133,6 +133,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
                       - ipconfig = Ethernet adapter vEthernet (WSL (Hyper-V firewall)):IPv4 Address. . . . . . . . . . . : 172.23.160.1
 - The response follows the reverse path: windows service <→ Windows networking stack <→ vEthernet NIC <→ Docker Desktop VM <→ container’s eth0.
 
+- #BOTTOM LINE
+
           Hyper‑V = the hypervisor. It can host many VMs.
           WSL‑2 = a special-purpose VM that runs a Linux kernel on top of Hyper‑V. The host‑side NIC you see (172.23.160.1) belongs to the virtual switch that connects Windows to that VM.
           Docker Desktop VM = another Linux VM (either a direct Hyper‑V VM or a VM inside the WSL‑2 VM). Inside it lives the Docker Engine and the containers.
