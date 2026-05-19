@@ -23,11 +23,14 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
             - docker-desktop-data
                      - Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to clean
 up or reset the engine.
- 			- ubuntu
+ 			
+			- ubuntu
+					 
 					 - from command  : wsl --install
 					 - full, standard linux file system.
 					 - include all normal tools needed to "write code" or "install software"
-			- 
+			
+
 - powershell command to display VMs on windows laptop : PS C:\Windows\system32> Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}             
              - Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
              - -------  ------    -----      -----     ------     --  -- -----------
