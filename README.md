@@ -51,6 +51,17 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
                                - ServerComponent\Type : Feature
                                - ServerComponent\UniqueName : Microsoft-Windows-Subsystem-Linux
                                - ServerComponent\Deploys\Update\Name : Microsoft-Windows-Subsystem-Linux
+
+- PS C:\Windows\system32> Get-WindowsOptionalFeature -online -FeatureName VirtualMachinePlatform
+
+                - FeatureName      : VirtualMachinePlatform
+                - DisplayName      : Virtual Machine Platform
+                - Description      : Enables platform support for virtual machines
+                - RestartRequired  : Possible
+                - State            : Enabled
+                - CustomProperties :
+
+
   
 - Windows (or macOS)
 
