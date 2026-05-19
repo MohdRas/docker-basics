@@ -12,24 +12,23 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 			* docker-desktop    Running         2
 			  Ubuntu            Running         2
 
-            - the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
+  
+			- the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
             - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
             - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
 
             - docker-desktop
-
-	  					- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
+						- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
 	 					- Highly stripped down, customized set of linux files created by docker. It does not include tools like apt or nano.
 	 					- Only job to hold the files, those are needed to run docker engine.
-            - docker-desktop-data
 
-					  - Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to clean 						up or reset the engine.
+  			- docker-desktop-data
+						- Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to 								clean up or reset the engine.
 
   			- ubuntu
-					 
-						 - from command  : wsl --install
-						 - full, standard linux file system.
-						 - include all normal tools needed to "write code" or "install software"
+						- from command  : wsl --install
+						- full, standard linux file system.
+  						- include all normal tools needed to "write code" or "install software"
 
 - **distributions/User-Spaces** :
 	- on windows file system
@@ -40,19 +39,25 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - on powershell :
 
 					PS C:\Windows\system32> wsl -l -v
-					  NAME              STATE           VERSION
+
+      				NAME              STATE           VERSION
 					* docker-desktop    Running         2
 					  Ubuntu            Stopped         2
+
 					PS C:\Windows\system32> wsl -d docker-desktop
+
 					docker-desktop:/tmp/docker-desktop-root/mnt/host/c/Windows/system32#
 
-					- "-d" flag will open "docker-desktop" user space ( Linux bash prompt)
+		    		"-d" flag will open "docker-desktop" user space ( Linux bash prompt)
 			
 
-- powershell command to display VMs on windows laptop : PS C:\Windows\system32> Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}             
-             - Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
-             - -------  ------    -----      -----     ------     --  -- -----------
-             -    826      82    17748      31312             44356   0 vmwp
+- powershell command to display VMs on windows laptop
+
+				- PS C:\Windows\system32> Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}             
+
+  				- Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+				- -------  ------    -----      -----     ------     --  -- -----------
+				-    826      82    17748      31312             44356   0 vmwp
 
 
  - "wsl --install" on powershell
