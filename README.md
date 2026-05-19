@@ -7,8 +7,9 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - Linux OS : The Kernel ( The Engine ) + User-Spaces ( Files & Tools)
 - List of distributions/User-Spaces - PS C:\Windows\system32> wsl -l -v
 
-		      NAME                STATE           VERSION
-    		* docker-desktop      Running         2
+			  NAME              STATE           VERSION
+			* docker-desktop    Running         2
+			  Ubuntu            Running         2
 
             - the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
             - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
@@ -22,12 +23,17 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
             - docker-desktop-data
 
 					  - Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to clean 						up or reset the engine.
- 			
-			- ubuntu
+
+  			- ubuntu
 					 
 						 - from command  : wsl --install
 						 - full, standard linux file system.
 						 - include all normal tools needed to "write code" or "install software"
+
+- **distributions/User-Spaces :  on windows file system**
+  
+		- open File Explorer and find "Linux" label parralel to "This PC"
+		- go inside this "Linux" folder, there would the **user-spaces folders** created. we can navogate to see the files & tools inside each folder.
 			
 
 - powershell command to display VMs on windows laptop : PS C:\Windows\system32> Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}             
