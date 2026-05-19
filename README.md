@@ -125,11 +125,14 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 - Application inside the container calls host.docker.internal:8080 to each any service running at laptop's local host.
 - The container’s default DNS resolver (Docker’s built‑in DNS server 127.0.0.11) returns 192.168.65.254. Path : etc/resolv.conf
-                    - etc/resolv.conf : nameserver 127.0.0.11
+
+                      - nameserver 127.0.0.11
 - The packet is emitted on the container’s eth0 (e.g., 172.17.0.2 → 192.168.65.254).
-                    - docker inspect container_id  = "NetworkSettings"."Networks"."demo_default"."IPAddress": "172.17.0.2",
+
+                      - docker inspect container_id  = "NetworkSettings"."Networks"."demo_default"."IPAddress": "172.17.0.2",
 - The packet leaves the VM via the vEthernet (WSL) NIC (172.23.160.1).
-                    - ipconfig = Ethernet adapter vEthernet (WSL (Hyper-V firewall)):IPv4 Address. . . . . . . . . . . : 172.23.160.1
+
+                      - ipconfig = Ethernet adapter vEthernet (WSL (Hyper-V firewall)):IPv4 Address. . . . . . . . . . . : 172.23.160.1
 - The response follows the reverse path: windows service <→ Windows networking stack <→ vEthernet NIC <→ Docker Desktop VM <→ container’s eth0.
  
 
