@@ -5,6 +5,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 # Docker Engine vs WSL 2 vs Docker Desktop
 - Linux OS : The Kernel ( The Engine ) + User-Spaces ( Files & Tools)
+- User-Spaces ( Files & Tools) : run outside of lunix kernel
 - List of distributions/User-Spaces - PS C:\Windows\system32> wsl -l -v
 
 			  NAME              STATE           VERSION
