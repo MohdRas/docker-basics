@@ -47,6 +47,11 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		- DXCore version: 10.0.26100.1-240331-1435.ge-release
 		- Windows version: 10.0.26200.8246
 
+- PS C:\Windows\system32> wsl --status
+		
+		- Default Distribution: docker-desktop
+		- Default Version: 2
+
 - PS C:\Windows\system32> Get-WindowsOptionalFeature -online -FeatureName Microsoft-Windows-Subsystem-Linux
 
             - FeatureName      : Microsoft-Windows-Subsystem-Linux
