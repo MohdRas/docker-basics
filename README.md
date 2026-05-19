@@ -37,6 +37,15 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
              - downloads & installs "Ubuntu" as default linux distribution.
 
 - search for "**Turn Windows features on or off**" in windows laptop and check if WSL & virtual machine platform selected or not.
+- PS C:\Windows\system32> wsl --version
+
+		- WSL version: 2.5.9.0
+		- Kernel version: 6.6.87.2-1
+		- WSLg version: 1.0.66
+		- MSRDC version: 1.2.6074
+		- Direct3D version: 1.611.1-81528511
+		- DXCore version: 10.0.26100.1-240331-1435.ge-release
+		- Windows version: 10.0.26200.8246
 
 - PS C:\Windows\system32> Get-WindowsOptionalFeature -online -FeatureName Microsoft-Windows-Subsystem-Linux
 
