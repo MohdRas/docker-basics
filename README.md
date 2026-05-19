@@ -6,51 +6,51 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 # Docker Engine vs WSL 2 vs Docker Desktop
 - "wsl -l -v" on powershell
 
-                                              NAME              STATE           VERSION
-                                        * docker-desktop    Running         2
+        NAME              STATE           VERSION
+    * docker-desktop    Running         2
 
-                  - the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
-                  - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
-                  - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
+    - the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
+    - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
+    - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
 
 - Docker Desktop installs two WSL 2 distros:
 
-          - docker-desktop
-                   - Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
-          - docker-desktop-data
-                   - Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to clean up or reset the engine.
+    - docker-desktop
+             - Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
+    - docker-desktop-data
+             - Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to clean up or reset the engine.
 
 - powershell command to display VMs on windows laptop :
 - Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}
              
-             - Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
-             - -------  ------    -----      -----     ------     --  -- -----------
-             -    826      82    17748      31312             44356   0 vmwp
+     - Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+     - -------  ------    -----      -----     ------     --  -- -----------
+     -    826      82    17748      31312             44356   0 vmwp
 
 
  - "wsl --install" on powershell
   
-             - turn on virtual machine platform ( the subset of hyper-v, needed for WSL 2)
-             - turn on WSL feature.
-             - download & install "latest linux kernel"
-             - set WSL 2 as default version.
-             - downloads & installs "Ubuntu" as default linux distribution.
+     - turn on virtual machine platform ( the subset of hyper-v, needed for WSL 2)
+     - turn on WSL feature.
+     - download & install "latest linux kernel"
+     - set WSL 2 as default version.
+     - downloads & installs "Ubuntu" as default linux distribution.
 
 - PS C:\Windows\system32> Get-WindowsOptionalFeature -online -FeatureName Microsoft-Windows-Subsystem-Linux
 
-              - FeatureName      : Microsoft-Windows-Subsystem-Linux
-              - DisplayName      : Windows Subsystem for Linux
-              - Description      : Provides services and environments for running native user-mode Linux shells and tools on Windows.
-              - RestartRequired  : Possible
-              - State            : Enabled
-              - CustomProperties :
-                                 - ServerComponent\Description : Provides services and environments for running native user-mode Linux
-                                 - shells and tools on Windows.
-                                 - ServerComponent\DisplayName : Windows Subsystem for Linux
-                                 - ServerComponent\Id : 1033
-                                 - ServerComponent\Type : Feature
-                                 - ServerComponent\UniqueName : Microsoft-Windows-Subsystem-Linux
-                                 - ServerComponent\Deploys\Update\Name : Microsoft-Windows-Subsystem-Linux
+    - FeatureName      : Microsoft-Windows-Subsystem-Linux
+    - DisplayName      : Windows Subsystem for Linux
+    - Description      : Provides services and environments for running native user-mode Linux shells and tools on Windows.
+    - RestartRequired  : Possible
+    - State            : Enabled
+    - CustomProperties :
+                       - ServerComponent\Description : Provides services and environments for running native user-mode Linux
+                       - shells and tools on Windows.
+                       - ServerComponent\DisplayName : Windows Subsystem for Linux
+                       - ServerComponent\Id : 1033
+                       - ServerComponent\Type : Feature
+                       - ServerComponent\UniqueName : Microsoft-Windows-Subsystem-Linux
+                       - ServerComponent\Deploys\Update\Name : Microsoft-Windows-Subsystem-Linux
   
 - Windows (or macOS)
 
