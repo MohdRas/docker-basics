@@ -132,6 +132,15 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
                       - ipconfig = Ethernet adapter vEthernet (WSL (Hyper-V firewall)):IPv4 Address. . . . . . . . . . . : 172.23.160.1
 - The response follows the reverse path: windows service <→ Windows networking stack <→ vEthernet NIC <→ Docker Desktop VM <→ container’s eth0.
+
+          Hyper‑V = the hypervisor. It can host many VMs.
+          WSL‑2 = a special-purpose VM that runs a Linux kernel on top of Hyper‑V. The host‑side NIC you see (172.23.160.1) belongs to the virtual switch that connects Windows to that VM.
+          Docker Desktop VM = another Linux VM (either a direct Hyper‑V VM or a VM inside the WSL‑2 VM). Inside it lives the Docker Engine and the containers.
+          The address you use from inside a container to reach the host is host.docker.internal → 192.168.65.254; it is the gateway of the Docker Desktop VM, not the physical LAN IP of your laptop.
+          With that mental model you can now reason about:
+          Port publishing (-p) – traffic goes host ↔ Docker‑Desktop‑VM ↔ container.
+          Accessing host services – just use host.docker.internal.
+          Network troubleshooting – know which interface belongs to which layer (ipconfig → hyper‑V/WSL NIC, docker network inspect → bridge, nslookup host.docker.internal → Docker‑Desktop‑VM gateway).
  
 
 
