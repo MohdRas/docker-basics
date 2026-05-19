@@ -4,13 +4,14 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 # how to navigate to directoty on the host and container to check the data stored so far ?
 
 # Docker Engine vs WSL 2 vs Docker Desktop
-- wsl -l -v
+- "wsl -l -v" on powershell
 
                                               NAME              STATE           VERSION
                                         * docker-desktop    Running         2
-- the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
-- 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
-- 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
+
+                  - the 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
+                  - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
+                  - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
 
 - Docker Desktop installs two WSL 2 distros:
 
@@ -34,6 +35,22 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
              - download & install "latest linux kernel"
              - set WSL 2 as default version.
              - downloads & installs "Ubuntu" as default linux distribution.
+
+- PS C:\Windows\system32> Get-WindowsOptionalFeature -online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+              - FeatureName      : Microsoft-Windows-Subsystem-Linux
+              - DisplayName      : Windows Subsystem for Linux
+              - Description      : Provides services and environments for running native user-mode Linux shells and tools on Windows.
+              - RestartRequired  : Possible
+              - State            : Enabled
+              - CustomProperties :
+                                 - ServerComponent\Description : Provides services and environments for running native user-mode Linux
+                                 - shells and tools on Windows.
+                                 - ServerComponent\DisplayName : Windows Subsystem for Linux
+                                 - ServerComponent\Id : 1033
+                                 - ServerComponent\Type : Feature
+                                 - ServerComponent\UniqueName : Microsoft-Windows-Subsystem-Linux
+                                 - ServerComponent\Deploys\Update\Name : Microsoft-Windows-Subsystem-Linux
   
 - Windows (or macOS)
 
