@@ -19,14 +19,20 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
           - docker-desktop-data
                    - Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to clean up or reset the engine.
 
-  - powershell command to display VMs on windows laptop :
-  - Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}
+- powershell command to display VMs on windows laptop :
+- Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}
              
              - Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
              - -------  ------    -----      -----     ------     --  -- -----------
              -    826      82    17748      31312             44356   0 vmwp
 
 
+ - "wsl --install" on powershell
+         - turn on virtual machine platform ( the subset of hyper-v, needed for WSL 2)
+         - turn on WSL feature.
+         - download & install "latest linux kernel"
+         - set WSL 2 as default version.
+         - downloads & installs "Ubuntu" as default linux distribution.
   
 - Windows (or macOS)
 
