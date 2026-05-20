@@ -16,6 +16,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 			- 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
 		    - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
 		    - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
+  			- Because Docker Desktop (and most modern dev tools) require WSL 2, the default version matters when you create new distros.
 		
 		    - docker-desktop
 
@@ -94,6 +95,15 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		
 		- Default Distribution: docker-desktop
 		- Default Version: 2
+
+  		Default Distribution tells Windows which Linux distro should be started when you run wsl (or any wsl.exe command) without explicitly naming a distro.
+		Default Version tells Windows what WSL‑version (1 or 2) to assign to any new distribution you create (e.g. when you run wsl --install -d Ubuntu).
+
+		wsl --set-default Ubuntu-22.04
+		wsl --set-default-version 2 
+		wsl --set-default-version 1
+
+
 
 - PS C:\Windows\system32> Get-WindowsOptionalFeature -online -FeatureName Microsoft-Windows-Subsystem-Linux
 
