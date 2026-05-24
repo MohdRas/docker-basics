@@ -5,7 +5,19 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 # Docker Engine vs WSL 2 vs Docker Desktop
 - Linux OS : The Kernel ( The Engine ) + User-Spaces ( Files & Tools)
-- User-Spaces ( Files & Tools) : run outside of lunix kernel
+- The Kernel ( The Engine )
+
+		This is the core program that talks to laptop's hardware, memory & runs processes.
+  		This is the one kernel running inside your one VM.
+- User-Spaces ( Files & Tools) :
+
+		This is the folder structure ( /bin, /etc, /home) & software ( bash, apt or docker engine)
+  		It runs outside the kernel.
+  		wsl- l -v => list all the user spaces ( distributions) on one VM.
+- VM = one 1 exists on windows laptop.
+- The kernel = The core linux engine, only 1 runs inside one VM.
+- The distributions = The file, folders & apps. you can have as many as you want.
+  		
 - List of distributions/User-Spaces - PS C:\Windows\system32> wsl -l -v
 
 		  	  NAME              STATE           VERSION
