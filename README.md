@@ -440,8 +440,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - "docker info" command
         - info about docker engine
  
-- "docker info" command
-    - Docker Root Dir: /var/lib/docker
+- "**docker info**" command
+    - Docker Root Dir: **/var/lib/docker**
     - Server:
         - Images: 3
         - Containers: 33
@@ -449,114 +449,113 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
             - Paused: 0
             - Stopped: 2
 - "help" about a "command"
-    - docker run --help
-    - docker pull --help
-    - docker network --help
-    - docker container --help
-    - docker image --help 
+    - **docker run --help**
+   	- **docker pull --help**
+    - **docker network --help**
+    - **docker container --help**
+    - **docker image --help**
 - Tag 
   - tag is basically the version of an image.
   - Example - lastest/ 9.6 
-- docker pull IMAGE_NAME:TAG
-  - docker pull redis:4.0
+- **docker pull IMAGE_NAME:TAG**
+  - **docker pull redis:4.0**
   - pull an image from docker hub.
       - "docker images" command will show this image.
-  - docker pull docker.io/library/redis:4.0 = [REGISTRY]/[NAMESPACE]/[IMAGE]:[TAG]
-      - In private repository (AWS ECR), we cannot skip [REGISTRY]/[NAMESPACE].
-      - REGISTRY = "docker.io" for "docker hub"
+  - **docker pull docker.io/library/redis:4.0 = [REGISTRY]/[NAMESPACE]/[IMAGE]:[TAG]**
+      - In private repository (AWS ECR), **we cannot skip [REGISTRY]/[NAMESPACE].**
+      - **REGISTRY = "docker.io"** for "docker hub"
       - NAMESPACE
-          - "library" for "official docker" images.
+          - **"library" is the namespace for "official docker" images.**
           - for custom images
               - bitnami/mongodb or jfrog/artifactory-pro
                   - the part before the slash (bitnami or jfrog) is the user/organization namespace
 
-- docker run IMAGE_NAME:TAG
-  - docker run redis:4.0
+- **docker run IMAGE_NAME:TAG**
+  - **docker run redis:4.0**
       - pull an image & start the container. 
       - "pull an image" is optional. It will pull if it is not present LOCALLY.
       - 
-  - "docker run -d --name mongo-db -p 27027:27017 --network mongo-network -e MONGO_INITDB_ROOT_USERNAME=admin -e  MONGO_INITDB_ROOT_PASSWORD=password mongodb/mongodb-community-server"
-      - "p 27017:27017"
+  - **docker run -d --name mongo-db -p 27027:27017 --network mongo-network -e MONGO_INITDB_ROOT_USERNAME=admin -e  MONGO_INITDB_ROOT_PASSWORD=password mongodb/mongodb-community-server**
+      - "**p 27017:27017**"
           - exposing container to the docker host (WSL VM).
           - services running inside this container will be accessible to the external world using "docker host (WSL VM) IP" and "docker host (WSL VM) PORT".
           - docker host (WSL VM) IP:docker host (WSL VM) PORT will be accesible in browser.
           - docker port CONTAINER_ID/NAME
             - display the port binding of a container. 
-      - "-d"
+      - "**-d**"
           - to run container in the "BACKGROUND"
           - manually attaching to the DOCKER CONSOLE
             - docker attach CONTAINER_ID/NAME
-      - "-e"
+      - "**-e**"
           - environment variables
           - MANGO_INITDB_ROOT_USERNAME=admin
           - MANGO_INITDB_ROOT_PASSWORD=password
           - use "docker inspect CONTAINER_ID/NAME" to check the "Env" key in the response.
           - use "docker exec -it CONTAINER_ID/NAME /bin/bash " and then type "env" to check the environment variables of a container.
-      - "--name mangodb"
+      - "**--name mangodb**"
           - define a name to the container.
-       - "--net mango-network"
+       - "**--net mango-network**"
           - attaching a network to this container.
 
-- docker images 
+- **docker images** 
   - list images LOCALLY.
-- docker ps 
+- **docker ps** 
   - RUNNING containers. 
   - ps stands for PROCESS STATUS.
-- docker ps -a 
+- **docker ps -a** 
   - RUNNING / NOT-RUNNING containers. 
   - NOT-RUNNING containers can be started again.
-- docker logs CONTAINER_ID/NAME -f
+- **docker logs CONTAINER_ID/NAME -f**
   - print the logs of a RUNNING container.
-  - "-f" for streaming the logs.
-- docker inspect CONTAINER_ID/NAME
+  - **"-f" for streaming the logs.**
+- **docker inspect CONTAINER_ID/NAME**
   - All details about the container
   - "Mounts" key will show details about the volume type.
   - SOURCE & DESTINATION of the volume.
-- docker inspect VOLUME_NAME
+- **docker inspect VOLUME_NAME**
   - All details about the volume.
-- docker start CONTAINER_ID/NAME 
+- **docker start CONTAINER_ID/NAME**
   - start a STOPPED container.
-- docker stop CONTAINER_ID/NAME 
+- **docker stop CONTAINER_ID/NAME** 
   - stop the RUNNING container.
-- docker exec -it CONTAINER_ID/NAME /bin/bash
-   - docker exec -it CONTAINER_ID/NAME /bin/sh 
+- **docker exec -it CONTAINER_ID/NAME /bin/bash**
+   - **docker exec -it CONTAINER_ID/NAME /bin/sh** 
    - run a linux command from inside a container.
    - All Linux command won't be available as it is light weight linux image.
-   - open "bash" or "sh" shell inside the container
-      - exit -> to come out of the terminal.
-      - env -> print all the environment variables.
-      - ls -> list all the child folder.
-      - pwd -> print out the directory.
-      - cd / -> go to homme directory.
-      - ls -> what is inside the home directory.
+   - **open "bash" or "sh" shell inside the container**
+      - **exit** -> to come out of the terminal.
+      - **env** -> print all the environment variables.
+      - **ls** -> list all the child folder.
+      - **pwd** -> print out the directory.
+      - **cd /** -> go to homme directory.
+      - **ls** -> what is inside the home directory.
 - container port vs docker host (WSL VM) port
   - multiple containers can run on a single docker host (WSL VM) machine.
   - each container will have a port.
   - Multiple container can have the same port.
-  - docker host (WSL VM)_PORT to CONTAINER_PORT binding must be UNIQUE on a SINGLE host machine.
+  - **docker host (WSL VM)_PORT to CONTAINER_PORT binding must be UNIQUE on a SINGLE host machine.**
   - Container will listen to the request only if docker host (WSL VM)_PORT to CONTAINER_PORT binding is present.
   - This binding is done while running an image.
-  - docker run -p docker host (WSL VM)_PORT:CONTAINER_PORT redis
-    - docker run -p 6000:6379 redis 
+  - **docker run -p docker host (WSL VM)_PORT:CONTAINER_PORT redis**
+    - **docker run -p 6000:6379 redis** 
     - Binding docker host (WSL VM)_PORT 6000 to CONTAINER_PORT 6379.
-  - docker run -p 6000:6379 --name CONTAINER_NAME redis:4.0
+  - **docker run -p 6000:6379 --name CONTAINER_NAME redis:4.0**
     - docker run -p 6000:6379 --name old-redis redis:4.0   
-    - "old-redis" is the CONTAINER_NAME
+    - **"old-redis" is the CONTAINER_NAME**
 - docker run vs docker start command
-  - docker run -> optionally download the image if it is not present LOCALLY.
+  - **docker run -> optionally download the image if it is not present LOCALLY.**
   - both commands start the container. 
-  - docker run -> start a NEW container.
-  - docker start -> start a STOPPED container.
-  - Docker run -> can have multiple options ( -d -p --name ) while starting running itself.
-  - docker start -> will start the container with all the options which were already given in docker run command. New options cannot be given.
+  - **docker run -> start a NEW container.**
+  - **docker start -> start a STOPPED container.**
+  - **Docker run -> can have multiple options ( -d -p --name ) while starting running itself.**
+  - **docker start -> will start the container with all the options which were already given in docker run command. New options cannot be given.**
 # Debug a container.
 - docker run -d -p 60001:6379 --name redis-older redis:4.0
   - creating a container with name "redis-older"
 - docker run -d -p 60001:6379 --name redis-latest redis
   - creating a container with name 'redis-latest'
-- docker logs CONTAINER_ID/NAME -> Logs of a container
-- docker logs CONTAINER_NAME -> Logs of a container
-- docker exec -it CONTAINER_ID/NAME /bin/bash
+- **docker logs CONTAINER_ID/NAME -> Logs of a container**
+- **docker exec -it CONTAINER_ID/NAME /bin/bash**
   - inside the container as a root user.
   - virtual file system inside the container.
   - these containers are light weight linux images hence all the linux command won't be available like "curl" command.
