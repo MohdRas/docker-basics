@@ -21,6 +21,52 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - Because I'm using Windows Home, so docker desktop is strictly using WSL 2 backend.
 - The legacy Hyper-v backend is not supoorted on Windows Home.
 - Rather it turn on VMP ( virtual machine platform, the subset of hyper-v) which is needed for WSL 2.
+- **User-space and namespace**
+	- user-space :
+
+  			- In a apartment building, the stuff ( furniture, appliances & decorations)
+			- refers to all code, files, tools and libraries that runn outside of the core linux kernel.
+	- namespace : physical wall between appartments ( the invisible barrier)
+  
+			- security & isolation feature, built directly into the Linux kernel.
+			- takes global system resources ( like networks, process IDs, or mount points) and isolate them.
+	- "Ubuntu" & "docker-desktop" both userspaces uses the same Linux kernel.
+	- The Kernel uses Namespaces ( walls) to devide its memory & networking into isolated rooms.
+	- Inside room A, it runs "Ubuntu" userspace ( the Ubuntu file system, apps & bash shell)
+	- Inside room B, it runs "docker-desktop" userspace ( docker daemon, docker engine).
+	- Because of namespaces, if open "Ubuntu" terminal and type **ps aux**. It will list all the running processes.
+		- **wsl -d Ubuntu > ps aux**
+	- The kernel will not show the docker-desktop processes , it hide docker engine process from you.
+	
+	- **docker info | findstr "Root"**
+	
+	  			-  Docker Root Dir: /var/lib/docker
+	
+	- go inside one userspace ( wsl -d <use-space-name> ) the type "lsns"
+	
+						PS C:\Windows\system32> wsl -d docker-desktop
+	  
+						docker-desktop:/tmp/docker-desktop-root/run/desktop/mnt/host/c/Windows/system32# lsns
+						        NS TYPE   NPROCS   PID USER COMMAND
+						4026531834 time       25     1 root /init
+						4026531835 cgroup     23     1 root /init
+						4026531837 user       25     1 root /init
+						4026531840 net        12     1 root /init
+						4026532206 ipc        23     1 root /init
+						4026532217 mnt        11     1 root /init
+						4026532218 uts        23     1 root /init
+						4026532219 pid        12     1 root /init
+						4026532229 net        11    43 root /initd
+						4026532288 mnt        12    42 root unshare -mpf --propagation=unchanged --kill-child /usr/local/bin/wsl-bootstrap jump
+						4026532289 pid        11    43 root └─/initd
+						4026532290 net         0       root
+						4026532385 mnt         2   406 root java -jar app.jar
+						4026532386 uts         2   406 root java -jar app.jar
+						4026532387 ipc         2   406 root java -jar app.jar
+						4026532388 pid         2   406 root java -jar app.jar
+						4026532389 cgroup      2   406 root java -jar app.jar
+						4026532390 net         2   406 root java -jar app.jar
+
   		
 - List of distributions/User-Spaces - open powershell as administrator PS C:\Windows\system32> **wsl -l -v**
 
@@ -149,51 +195,6 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
                 - CustomProperties :
 
 
-- User-space and namespace
-- user-space :
-
-  			- In a apartment building, the stuff ( furniture, appliances & decorations)
-			- refers to all code, files, tools and libraries that runn outside of the core linux kernel.
-- namespace : physical wall between appartments ( the invisible barrier)
-  
-			- security & isolation feature, built directly into the Linux kernel.
-			- takes global system resources ( like networks, process IDs, or mount points) and isolate them.
-- "Ubuntu" & "docker-desktop" both userspaces uses the same Linux kernel.
-- The Kernel uses Namespaces ( walls) to devide its memory & networking into isolated rooms.
-- Inside room A, it runs "Ubuntu" userspace ( the Ubuntu file system, apps & bash shell)
-- Inside room B, it runs "docker-desktop" userspace ( docker daemon, docker engine).
-- Because of namespaces, if open "Ubuntu" terminal and type **ps aux**. It will list all the running processes.
-	- **wsl -d Ubuntu > ps aux**
-- The kernel will not show the docker-desktop processes , it hide docker engine process from you.
-
-- **docker info | findstr "Root"**
-
-  			-  Docker Root Dir: /var/lib/docker
-
-- go inside one userspace ( wsl -d <use-space-name> ) the type "lsns"
-
-					PS C:\Windows\system32> wsl -d docker-desktop
-  
-					docker-desktop:/tmp/docker-desktop-root/run/desktop/mnt/host/c/Windows/system32# lsns
-					        NS TYPE   NPROCS   PID USER COMMAND
-					4026531834 time       25     1 root /init
-					4026531835 cgroup     23     1 root /init
-					4026531837 user       25     1 root /init
-					4026531840 net        12     1 root /init
-					4026532206 ipc        23     1 root /init
-					4026532217 mnt        11     1 root /init
-					4026532218 uts        23     1 root /init
-					4026532219 pid        12     1 root /init
-					4026532229 net        11    43 root /initd
-					4026532288 mnt        12    42 root unshare -mpf --propagation=unchanged --kill-child /usr/local/bin/wsl-bootstrap jump
-					4026532289 pid        11    43 root └─/initd
-					4026532290 net         0       root
-					4026532385 mnt         2   406 root java -jar app.jar
-					4026532386 uts         2   406 root java -jar app.jar
-					4026532387 ipc         2   406 root java -jar app.jar
-					4026532388 pid         2   406 root java -jar app.jar
-					4026532389 cgroup      2   406 root java -jar app.jar
-					4026532390 net         2   406 root java -jar app.jar
 
 
   
