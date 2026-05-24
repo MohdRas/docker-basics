@@ -45,7 +45,6 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		
 		  	  - ubuntu
 
-  						- from command  : wsl --install
 						- full, standard linux file system.
 						- include all normal tools needed to "write code" or "install software"
   - If you ever need to reset Docker’s storage, you can stop Docker Desktop and delete the docker-desktop-data distro
@@ -63,14 +62,13 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		- go inside this "Linux" folder, there would the **user-spaces folders** created. we can navogate to see the files & tools inside each folder.
  
     - open powershell as administrator & type :
-
-					PS C:\Windows\system32> wsl -l -v
+	- PS C:\Windows\system32> **wsl -l -v**
 
       				NAME              STATE           VERSION
 					* docker-desktop    Running         2
 					  Ubuntu            Stopped         2
 
-					PS C:\Windows\system32> wsl -d docker-desktop
+	 - PS C:\Windows\system32> **wsl -d docker-desktop**
 
 					docker-desktop:/tmp/docker-desktop-root/mnt/host/c/Windows/system32#
 
@@ -79,7 +77,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 - open powershell as administrator & type below command to **display VMs on windows laptop**
 
-				- PS C:\Windows\system32> Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}           
+	- PS C:\Windows\system32> **Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}**          
 
   				- Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
 				- -------  ------    -----      -----     ------     --  -- -----------
@@ -114,17 +112,17 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   		- Default Distribution tells Windows which Linux distro should be started when you run wsl (or any wsl.exe command) without explicitly naming a distro.
 		- Default Version tells Windows what WSL‑version (1 or 2) to assign to any new distribution you create (e.g. when you run wsl --install -d Ubuntu).
 
-		wsl --set-default Ubuntu-22.04 => set default distribution
-		wsl --set-default-version 2 => set "2" as default version for WSL
-		wsl --set-default-version 1 => set "1" as default version for WSL
+	- **wsl --set-default Ubuntu** => set default distribution
+    - **wsl --set-default-version 2** => set "2" as default version for WSL
+	- **wsl --set-default-version 1** => set "1" as default version for WSL
 		
-  		wsl => will open default distribution
-		wsl -d docker-desktop => will open "docker-desktop" distribution
-  		wsl -d Ubuntu => will open "Ubuntu" distribution
+	- **wsl** => will open default distribution
+	- **wsl -d docker-desktop** => will open "docker-desktop" distribution
+	- **wsl -d Ubuntu** => will open "Ubuntu" distribution
 
 
 
-- PS C:\Windows\system32> Get-WindowsOptionalFeature -online -FeatureName Microsoft-Windows-Subsystem-Linux
+- PS C:\Windows\system32> **Get-WindowsOptionalFeature -online -FeatureName Microsoft-Windows-Subsystem-Linux**
 
             - FeatureName      : Microsoft-Windows-Subsystem-Linux
             - DisplayName      : Windows Subsystem for Linux
@@ -140,7 +138,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
                                - ServerComponent\UniqueName : Microsoft-Windows-Subsystem-Linux
                                - ServerComponent\Deploys\Update\Name : Microsoft-Windows-Subsystem-Linux
 
-- PS C:\Windows\system32> Get-WindowsOptionalFeature -online -FeatureName VirtualMachinePlatform
+- PS C:\Windows\system32> **Get-WindowsOptionalFeature -online -FeatureName VirtualMachinePlatform**
 
                 - FeatureName      : VirtualMachinePlatform
                 - DisplayName      : Virtual Machine Platform
@@ -164,8 +162,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - Inside room A, it runs "Ubuntu" userspace ( the Ubuntu file system, apps & bash shell)
 - Inside room B, it runs "docker-desktop" userspace ( docker daemon, docker engine).
 - Because of namespaces, if open "Ubuntu" terminal and type **ps aux**. It will list all the running processes.
-
-		- **wsl -d Ubuntu > ps aux**
+	- **wsl -d Ubuntu > ps aux**
 - The kernel will not show the docker-desktop processes , it hide docker engine process from you.
 
 - **docker info | findstr "Root"**
