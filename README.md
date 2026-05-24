@@ -167,8 +167,14 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - Inside room A, it runs "Ubuntu" userspace ( the Ubuntu file system, apps & bash shell)
 - Inside room B, it runs "docker-desktop" userspace ( docker daemon, docker engine).
 - Because of namespaces, if open "Ubuntu" terminal and type **ps aux**. It will list all the running processes.
+
 		- **wsl -d Ubuntu > ps aux**
 - The kernel will not show the docker-desktop processes , it hide docker engine process from you.
+
+- **docker info | findstr "Root"**
+
+  			-  Docker Root Dir: /var/lib/docker
+  			
 
 
   
