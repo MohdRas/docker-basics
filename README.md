@@ -174,7 +174,31 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - **docker info | findstr "Root"**
 
   			-  Docker Root Dir: /var/lib/docker
-  			
+
+- go inside one userspace ( wsl -d <use-space-name> ) the type "lsns"
+
+					PS C:\Windows\system32> wsl -d docker-desktop
+  
+					docker-desktop:/tmp/docker-desktop-root/run/desktop/mnt/host/c/Windows/system32# lsns
+					        NS TYPE   NPROCS   PID USER COMMAND
+					4026531834 time       25     1 root /init
+					4026531835 cgroup     23     1 root /init
+					4026531837 user       25     1 root /init
+					4026531840 net        12     1 root /init
+					4026532206 ipc        23     1 root /init
+					4026532217 mnt        11     1 root /init
+					4026532218 uts        23     1 root /init
+					4026532219 pid        12     1 root /init
+					4026532229 net        11    43 root /initd
+					4026532288 mnt        12    42 root unshare -mpf --propagation=unchanged --kill-child /usr/local/bin/wsl-bootstrap jump
+					4026532289 pid        11    43 root └─/initd
+					4026532290 net         0       root
+					4026532385 mnt         2   406 root java -jar app.jar
+					4026532386 uts         2   406 root java -jar app.jar
+					4026532387 ipc         2   406 root java -jar app.jar
+					4026532388 pid         2   406 root java -jar app.jar
+					4026532389 cgroup      2   406 root java -jar app.jar
+					4026532390 net         2   406 root java -jar app.jar
 
 
   
