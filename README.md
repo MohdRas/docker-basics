@@ -17,7 +17,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - VM = one 1 exists on windows laptop.
 - The kernel = The core linux engine, only 1 runs inside one VM.
 - The distributions = The file, folders & apps. you can have as many as you want.
-- Because I'm using windows home 11, so docker desktop is strictly using WSL 2 backend, the legacy Hyper-v backend is not supoorted on Home
+- Because I'm using Windows Home, so docker desktop is strictly using WSL 2 backend.
+- The legacy Hyper-v backend is not supoorted on Windows Home.
 - Rather it turn on VMP ( virtual machine platform, the subset of hyper-v) which is needed for WSL 2.
   		
 - List of distributions/User-Spaces - open powershell as administrator
