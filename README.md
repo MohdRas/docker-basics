@@ -7,13 +7,14 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - Linux OS : The Kernel ( The Engine ) + User-Spaces ( Files & Tools)
 - The Kernel ( The Engine )
 
-		This is the core program that talks to laptop's hardware, memory & runs processes.
-  		This is the one kernel running inside your one VM.
+		- This is the core program that talks to laptop's hardware, memory & runs processes.
+  		- This is the one kernel running inside your one VM.
 - User-Spaces ( Files & Tools) :
 
-		This is the folder structure ( /bin, /etc, /home) & software ( bash, apt or docker engine)
-  		It runs outside the kernel.
-  		open powershell as administrator & type wsl- l -v => list all the user spaces ( distributions) on one VM.
+		- This is the folder structure ( /bin, /etc, /home) & software ( bash, apt or docker engine)
+  		- It runs outside the kernel.
+  		- type wsl- l -v => list all the user spaces ( distributions) on one VM.
+  
 - VM = one 1 exists on windows laptop.
 - The kernel = The core linux engine, only 1 runs inside one VM.
 - The distributions = The file, folders & apps. you can have as many as you want.
