@@ -219,10 +219,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
                        -IPv4 Address. . . . . . . . . . . : 172.23.160.1 ================== vEthernet IP
                 
- - Hypervisor
+ - **Hypervisor**
     -  virtualize the physical resources (RAM, ROM, CPU, Networking & many more) of a physical machine. 
     -  Host machine ( physical machine ) ----->>>> hypervisor------->> **Many independent Guest machines ( virtual machine )**        
- - Hypervisor Types
+ - **Hypervisor Types**
    - Hyper‑V
              - microsoft's native hypervisor. It can run many independent virtual machines (VMs). Infact runs own windows OS as **parent VM** and others are **child VMs**
    - vEthernet ( virtual **Ethernet** or virtual **cables** or virtual **switch**)
@@ -232,10 +232,11 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
        - WSL2 is built on top of Hyper‑V; it runs a full Linux kernel. It is fast because it is small. It is like **a process** on windows system. 
        
 
-- Docker Engine
+- **Docker Engine**
   - background service (called a docker daemon "dockerd") that run instructions for containers, images, storage, and networking.
   - Docker Engine is Linux-kernel based and can only run on Linux natively but cannot run directly on the Windows kernel/os.
-  - Path for "dockerd" = C:\Program Files\Docker\Docker\resources\dockerd
+  - Path for "**dockerd" = C:\Program Files\Docker\Docker\resources\dockerd**
+
 - **WSL2 VM or Docker host VM**
   - stands for Windows Subsystem for Linux.
   - **Docker host** = any machine (bare‑metal, VM, cloud instance) that runs the Docker Engine (dockerd). **Here it is WSL2 VM.**
@@ -248,7 +249,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
       - If you have a service (e.g., a database or API) running on your machine, your container application can connect to it like this:
       - **curl http://host.docker.internal:8080**
   - **Docker Host** and your **laptop's localhost** are technically not the same thing.
-- Docker Desktop for Windows
+  - 
+- **Docker Desktop for Windows**
   - Docker Desktop therefore starts a small Linux VM (Hyper‑Kit on macOS, WSL‑2/Hyper‑V on Windows) and runs the Linux kernel there. The container then runs inside that VM’s kernel.
   - platform for running applications inside containers ( tiny & lighweight mini VMs).
   - it connect to WSL2 instance and tells WSL2 to run containers using its real linux kernel.
@@ -316,7 +318,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 
 - Application inside the container calls host.docker.internal:8080 to each any service running at laptop's local host.
-- The container’s default DNS resolver (Docker’s built‑in DNS server 127.0.0.11) returns 192.168.65.254. Path : etc/resolv.conf
+- The container’s default DNS resolver (Docker’s built‑in DNS server 127.0.0.11) returns 192.168.65.254. Path : **etc/resolv.conf**
 
                       - nameserver 127.0.0.11
 - The packet is emitted on the container’s eth0 (e.g., 172.17.0.2 → 192.168.65.254).
