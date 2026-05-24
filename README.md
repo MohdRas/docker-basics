@@ -47,8 +47,9 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 						- full, standard linux file system.
 						- include all normal tools needed to "write code" or "install software"
 
-		      - If you ever need to reset Docker’s storage, you can stop Docker Desktop and delete the docker-desktop-data distro
-  				(**wsl --unregister docker-desktop-data**), but that will erase all Docker images/volumes.
+		      - If you ever need to reset Docker’s storage,
+  				you can stop Docker Desktop and delete the docker-desktop-data distro
+  				(wsl --unregister docker-desktop-data), but that will erase all Docker images/volumes.
   			  - Updating WSL (if you want a newer kernel or bug fixes)
 
 						# Run as Administrator
@@ -63,13 +64,13 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
  
     - open powershell as administrator & type :
 
-					PS C:\Windows\system32> **wsl -l -v**
+					PS C:\Windows\system32> wsl -l -v
 
       				NAME              STATE           VERSION
 					* docker-desktop    Running         2
 					  Ubuntu            Stopped         2
 
-					PS C:\Windows\system32> **wsl -d docker-desktop**
+					PS C:\Windows\system32> wsl -d docker-desktop
 
 					docker-desktop:/tmp/docker-desktop-root/mnt/host/c/Windows/system32#
 
@@ -78,7 +79,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 - open powershell as administrator & type below command to **display VMs on windows laptop**
 
-				- PS C:\Windows\system32> **Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}**             
+				- PS C:\Windows\system32> Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}           
 
   				- Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
 				- -------  ------    -----      -----     ------     --  -- -----------
