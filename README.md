@@ -113,12 +113,17 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		- Default Distribution: docker-desktop
 		- Default Version: 2
 
-  		Default Distribution tells Windows which Linux distro should be started when you run wsl (or any wsl.exe command) without explicitly naming a distro.
-		Default Version tells Windows what WSL‑version (1 or 2) to assign to any new distribution you create (e.g. when you run wsl --install -d Ubuntu).
+		- Default Distribution: docker-desktop = when I type "wsl" in powershell then "docker-desktop" distribution will open by default.
+  		- Default Distribution tells Windows which Linux distro should be started when you run wsl (or any wsl.exe command) without explicitly naming a distro.
+		- Default Version tells Windows what WSL‑version (1 or 2) to assign to any new distribution you create (e.g. when you run wsl --install -d Ubuntu).
 
-		wsl --set-default Ubuntu-22.04
-		wsl --set-default-version 2 
-		wsl --set-default-version 1
+		wsl --set-default Ubuntu-22.04 => set default distribution
+		wsl --set-default-version 2 => set "2" as default version for WSL
+		wsl --set-default-version 1 => set "1" as default version for WSL
+		
+  		wsl => will open default distribution
+		wsl -d docker-desktop => will open "docker-desktop" distribution
+  		wsl -d Ubuntu => will open "Ubuntu" distribution
 
 
 
