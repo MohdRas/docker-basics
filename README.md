@@ -21,8 +21,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - The legacy Hyper-v backend is not supoorted on Windows Home.
 - Rather it turn on VMP ( virtual machine platform, the subset of hyper-v) which is needed for WSL 2.
   		
-- List of distributions/User-Spaces - open powershell as administrator
-		      PS C:\Windows\system32> wsl -l -v
+- List of distributions/User-Spaces - open powershell as administrator PS C:\Windows\system32> **wsl -l -v**
 
 		  	  NAME              STATE           VERSION
 		  	* docker-desktop    Running         2
@@ -36,28 +35,24 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		
 		      - docker-desktop
 
-		  				- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
+  						- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
 						- Highly stripped down, customized set of linux files created by docker. It does not include tools like apt or nano.
 						- Only job to hold the files, those are needed to run docker engine.
 		
 		  	  - docker-desktop-data
 
-		  				- Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to 								clean up or reset the engine.
+  						- Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to 								clean up or reset the engine.
 		
 		  	  - ubuntu
 
-		  				- from command  : wsl --install
+  						- from command  : wsl --install
 						- full, standard linux file system.
 						- include all normal tools needed to "write code" or "install software"
-
-		      - If you ever need to reset Docker’s storage,
-  				you can stop Docker Desktop and delete the docker-desktop-data distro
-  				(wsl --unregister docker-desktop-data), but that will erase all Docker images/volumes.
-  			  - Updating WSL (if you want a newer kernel or bug fixes)
-
-						# Run as Administrator
-						wsl --update           # pulls the latest kernel, WSL drivers, and WSLg components
-						wsl --shutdown        # restarts the WSL VM so the new kernel is used
+  - If you ever need to reset Docker’s storage, you can stop Docker Desktop and delete the docker-desktop-data distro
+  				(**wsl --unregister docker-desktop-data**), but that will erase all Docker images/volumes.
+  - Updating WSL (if you want a newer kernel or bug fixes)
+     **wsl --update**           # pulls the latest kernel, WSL drivers, and WSLg components
+	 **wsl --shutdown**        # restarts the WSL VM so the new kernel is used
 
 - **distributions/User-Spaces** :
 	- on windows file system
