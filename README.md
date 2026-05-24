@@ -13,46 +13,47 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 		This is the folder structure ( /bin, /etc, /home) & software ( bash, apt or docker engine)
   		It runs outside the kernel.
-  		wsl- l -v => list all the user spaces ( distributions) on one VM.
+  		open powershell as administrator & type wsl- l -v => list all the user spaces ( distributions) on one VM.
 - VM = one 1 exists on windows laptop.
 - The kernel = The core linux engine, only 1 runs inside one VM.
 - The distributions = The file, folders & apps. you can have as many as you want.
   		
-- List of distributions/User-Spaces - PS C:\Windows\system32> wsl -l -v
+- List of distributions/User-Spaces - open powershell as administrator
+		      PS C:\Windows\system32> wsl -l -v
 
 		  	  NAME              STATE           VERSION
 		  	* docker-desktop    Running         2
 		  	  Ubuntu            Running         2
 		
 		
-			- 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
-		    - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
-		    - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
-  			- Because Docker Desktop (and most modern dev tools) require WSL 2, the default version matters when you create new distros.
+			  - 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
+		      - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
+		      - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
+  			  - Because Docker Desktop (and most modern dev tools) require WSL 2, the default version matters when you create new distros.
 		
-		    - docker-desktop
+		      - docker-desktop
 
-	  				- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
-					- Highly stripped down, customized set of linux files created by docker. It does not include tools like apt or nano.
-					- Only job to hold the files, those are needed to run docker engine.
+		  				- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
+						- Highly stripped down, customized set of linux files created by docker. It does not include tools like apt or nano.
+						- Only job to hold the files, those are needed to run docker engine.
 		
-		  	- docker-desktop-data
+		  	  - docker-desktop-data
 
-	  				- Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to 								clean up or reset the engine.
+		  				- Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to 								clean up or reset the engine.
 		
-		  	- ubuntu
+		  	  - ubuntu
 
-	  				- from command  : wsl --install
-					- full, standard linux file system.
-					- include all normal tools needed to "write code" or "install software"
+		  				- from command  : wsl --install
+						- full, standard linux file system.
+						- include all normal tools needed to "write code" or "install software"
 
-  			- If you ever need to reset Docker’s storage, you can stop Docker Desktop and delete the docker-desktop-data distro
-  				(wsl --unregister docker-desktop-data), but that will erase all Docker images/volumes.
-  			- Updating WSL (if you want a newer kernel or bug fixes)
+		      - If you ever need to reset Docker’s storage, you can stop Docker Desktop and delete the docker-desktop-data distro
+  				(**wsl --unregister docker-desktop-data**), but that will erase all Docker images/volumes.
+  			  - Updating WSL (if you want a newer kernel or bug fixes)
 
-					# Run as Administrator
-					wsl --update           # pulls the latest kernel, WSL drivers, and WSLg components
-					wsl --shutdown        # restarts the WSL VM so the new kernel is used
+						# Run as Administrator
+						wsl --update           # pulls the latest kernel, WSL drivers, and WSLg components
+						wsl --shutdown        # restarts the WSL VM so the new kernel is used
 
 - **distributions/User-Spaces** :
 	- on windows file system
@@ -60,31 +61,31 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		- open File Explorer and find "Linux" label parralel to "This PC"
 		- go inside this "Linux" folder, there would the **user-spaces folders** created. we can navogate to see the files & tools inside each folder.
  
-    - on powershell :
+    - open powershell as administrator & type :
 
-					PS C:\Windows\system32> wsl -l -v
+					PS C:\Windows\system32> **wsl -l -v**
 
       				NAME              STATE           VERSION
 					* docker-desktop    Running         2
 					  Ubuntu            Stopped         2
 
-					PS C:\Windows\system32> wsl -d docker-desktop
+					PS C:\Windows\system32> **wsl -d docker-desktop**
 
 					docker-desktop:/tmp/docker-desktop-root/mnt/host/c/Windows/system32#
 
 		    		"-d" flag will open "docker-desktop" user space ( Linux bash prompt)
 			
 
-- powershell command to display VMs on windows laptop
+- open powershell as administrator & type below command to **display VMs on windows laptop**
 
-				- PS C:\Windows\system32> Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}             
+				- PS C:\Windows\system32> **Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}**             
 
   				- Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
 				- -------  ------    -----      -----     ------     --  -- -----------
 				-    826      82    17748      31312             44356   0 vmwp
 
 
- - "wsl --install" on powershell
+ - open powershell as administrator & type **wsl --install** on powershell
   
              - turn on virtual machine platform ( the subset of hyper-v, needed for WSL 2)
              - turn on WSL feature.
@@ -93,7 +94,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
              - downloads & installs "Ubuntu" as default linux distribution.
 
 - search for "**Turn Windows features on or off**" in windows laptop and check if WSL & virtual machine platform selected or not.
-- PS C:\Windows\system32> wsl --version
+- PS C:\Windows\system32> **wsl --version**
 
 		- WSL version: 2.5.9.0
 		- Kernel version: 6.6.87.2-1
@@ -103,7 +104,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		- DXCore version: 10.0.26100.1-240331-1435.ge-release
 		- Windows version: 10.0.26200.8246
 
-- PS C:\Windows\system32> wsl --status
+- PS C:\Windows\system32> **wsl --status**
 		
 		- Default Distribution: docker-desktop
 		- Default Version: 2
