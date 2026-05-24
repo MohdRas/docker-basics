@@ -50,9 +50,11 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 						- include all normal tools needed to "write code" or "install software"
   - If you ever need to reset Docker’s storage, you can stop Docker Desktop and delete the docker-desktop-data distro
   				(**wsl --unregister docker-desktop-data**), but that will erase all Docker images/volumes.
+
   - Updating WSL (if you want a newer kernel or bug fixes)
-     **wsl --update**           # pulls the latest kernel, WSL drivers, and WSLg components
-	 **wsl --shutdown**        # restarts the WSL VM so the new kernel is used
+    
+     -  **wsl --update**           # pulls the latest kernel, WSL drivers, and WSLg components
+	 -  **wsl --shutdown**        # restarts the WSL VM so the new kernel is used
 
 - **distributions/User-Spaces** :
 	- on windows file system
