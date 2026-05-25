@@ -873,14 +873,14 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
                 - ME_CONFIG_MANGODB_ADMINPASSWORD : password
                 - ME_CONFIG_MANGODB_SERVER : mangodb
 # Volumes
-  - data persistence for databases and other statefull applications.
+  - Volumes is used as data persistence for databases and other statefull applications.
   - The data of a container is stored in its virtual file system. It is not-persist.
   - when we start a container, a FRESH virtual file system is created. Hence data lost.
-  - use mounts ( volume or bind )
+  - **use mounts ( volume or bind )**
       - -v c_drive_path:/data/db
           -  c_drive_path = "C:\Users\mohd.rasid\data-folder", if WSL is not used.
           -  c_drive_path = "/mnt/C:/Users/mohd.rasid/file_name", if wsl used.
-    - docker run -d -p 82:80 -v nginx-data:/data/db nginx
+    - **docker run -d -p 82:80 -v nginx-data:/data/db nginx**
       - nginx-data is name of the volume. its location is "/var/lib/docker/volumes"
       - "Type": "volume",
       - "Name": "nginx-data"
@@ -891,7 +891,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
       - inside shell of the container.
       - cd /data/db
       - ls -l
-    - docker run -d -p 80:80 -v C:\Users\mohdr\host-data:/data/db nginx
+    - **docker run -d -p 80:80 -v C:\Users\mohdr\host-data:/data/db nginx**
       - C:\Users\mohdr\host-data is c drive of my laptop.
       - "Type": "bind",
       - "Source": "C:\\Users\\mohdr\\host-data",
