@@ -663,10 +663,11 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - **docker start -> will start the container with all the options which were already given in docker run command. New options cannot be given.**
 # Debug a container.
 - docker run -d -p 60001:6379 --name redis-older redis:4.0
-  - creating a container with name "redis-older"
+      - creating a container with name "redis-older"
 - docker run -d -p 60001:6379 --name redis-latest redis
-  - creating a container with name 'redis-latest'
-- **docker logs CONTAINER_ID/NAME -> Logs of a container**
+      - creating a container with name 'redis-latest' 
+- **docker logs CONTAINER_ID/NAME** -> Logs of a container
+- **docker debug CONTAINER_ID/NAME** -> inside a container, same like exec command.
 - **docker exec -it CONTAINER_ID/NAME /bin/bash**
   - inside the container as a root user.
   - virtual file system inside the container.
