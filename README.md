@@ -389,24 +389,23 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   # Docker vs VM.
   - Both are virtualization tools.
   - What part of OS, Docker virtualize ?
-    - Docker virtualize the Applications layer and uses the Kernel of the Host machine.
-    - Size -->> Docker image smaller than VM
-    - Speed ->> Docker containers start & run faster than VM
-    - Compatibility -->> VM of any OS can run on any Host OS.
+    - Docker virtualize **the Applications layer** and uses **the Kernel of the Host machine.**
+    - Size -->> **Docker image smaller than VM**
+    - Speed ->> **Docker containers start & run faster than VM**
   - What part of OS, VM virtualize ?
-    - VM virtualizes the applications layer and OS Kernel layer. 
-    - it virtualizes the complete OS layer (OS Kernel + Applications).
+    - VM virtualizes **the applications layer and OS Kernel layer.** 
+    - it virtualizes **the complete OS layer (OS Kernel + Applications).**
+	- Compatibility -->> **VM of any OS can run on any Host OS.**
+
   - OS architecture ( Hardware -> OS -> Software Applications (Excel) )
   - Layers of any OS
-    - Applications layer 
-      - run on OS Kernel Layer
-    - OS Kernel layer 
-      - communicate with Hardware ( CPU + MEMORY )
-    - Hardware laqyer
-      - CPU + MEMORY
-    - Running Linux based image might not be compatible on windows host ( Windows Kernel + Windows Applications ) 
+    - **Applications layer** - run on OS Kernel Layer
+    - **OS Kernel layer** - communicate with Hardware ( CPU + MEMORY )
+    - **Hardware layer** - CPU + MEMORY
+        
+    - **Running Linux based image might not be compatible on windows host** ( Windows Kernel + Windows Applications ) 
       - it is true for windows version < 10 and old mac versions.
-      - This problem can be solved through WSL2 ( WINDOWS SUB SYSTEM FOR LINUX ). It is Linux-based Kernel inside VM of Windows.
+      - This problem can be solved through WSL2 ( WINDOWS SUB SYSTEM FOR LINUX 2). It is Linux-based Kernel inside VM of Windows.
       - This means Linux image is not directly running on windows kernel, rather on the Linux kernel inside windows VM.
       - Windows kernel can not run Linux based image natively
       - Docker ToolBox(Legacy Solution) is used to run any OS based image on any Host OS.
@@ -427,18 +426,131 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
 # Docker commands.
 - container and image
-  - a container live as long the process under it running. If no process or running process stopped, container will exit.
+  - **a container live as long the process under it running. If no process or running process stopped, container will exit.**
       - "docker run ubuntu"
       - As there is no process running inside the ubuntu container , it exited soon after start.
       - "docker ps" won't show any container out of this ubuntu image.
-  - container is a running environment(STATE) on local machine for an image.
+  - **container is a running environment(STATE) on local machine for an image.**
   - all the environment stuffs ( virtual file system, environment config ) are provided by the container. Only images comes from the registry. 
-  - each container has a port.
-  - file system is vitual in containers.
+  - **each container has a port.**
+  - **file system is vitual in containers.**
 - starting docker desktop from CMD
     - copy past in CMD "C:\Program Files\Docker\Docker\Docker Desktop.exe" 
-    - "docker info" command
+    - **docker info** command
         - info about docker engine
+
+		  			Client:
+					 Version:    29.4.3
+					 Context:    desktop-linux
+					 Debug Mode: false
+					 Plugins:
+					  agent: Docker AI Agent Runner (Docker Inc.)
+					    Version:  v1.57.0
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-agent.exe
+					  ai: Docker AI Agent - Ask Gordon (Docker Inc.)
+					    Version:  v1.20.2
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-ai.exe
+					  buildx: Docker Buildx (Docker Inc.)
+					    Version:  v0.33.0-desktop.1
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-buildx.exe
+					  compose: Docker Compose (Docker Inc.)
+					    Version:  v5.1.4
+					    Path:     C:\Users\mohd.rasid.CORP\.docker\cli-plugins\docker-compose.exe
+					  debug: Get a shell into any image or container (Docker Inc.)
+					    Version:  0.0.47
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-debug.exe
+					  desktop: Docker Desktop commands (Docker Inc.)
+					    Version:  v0.3.0
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-desktop.exe
+					  dhi: CLI for managing Docker Hardened Images (Docker Inc.)
+					    Version:  v0.0.3
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-dhi.exe
+					  extension: Manages Docker extensions (Docker Inc.)
+					    Version:  v0.2.31
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-extension.exe
+					  init: Creates Docker-related starter files for your project (Docker Inc.)
+					    Version:  v1.4.0
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-init.exe
+					  mcp: Docker MCP Plugin (Docker Inc.)
+					    Version:  v0.42.1
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-mcp.exe
+					  model: Docker Model Runner (Docker Inc.)
+					    Version:  v1.1.37
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-model.exe
+					  offload: Docker Offload (Docker Inc.)
+					    Version:  v0.5.89
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-offload.exe
+					  pass: Docker Pass Secrets Manager Plugin (beta) (Docker Inc.)
+					    Version:  v0.0.27
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-pass.exe
+					  sandbox: Docker Sandbox (Docker Inc.)
+					    Version:  v0.12.0
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-sandbox.exe
+					  sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+					    Version:  0.6.0
+					    Path:     C:\Program Files\Docker\cli-plugins\docker-sbom.exe
+					  scout: Docker Scout (Docker Inc.)
+					    Version:  v1.21.0
+					    Path:     C:\Users\mohd.rasid.CORP\.docker\cli-plugins\docker-scout.exe
+					
+					Server:
+					 Containers: 2
+					  Running: 1
+					  Paused: 0
+					  Stopped: 1
+					 Images: 3
+					 Server Version: 29.4.3
+					 Storage Driver: overlay2
+					  Backing Filesystem: extfs
+					  Supports d_type: true
+					  Using metacopy: false
+					  Native Overlay Diff: true
+					  userxattr: false
+					 Logging Driver: json-file
+					 Cgroup Driver: cgroupfs
+					 Cgroup Version: 2
+					 Plugins:
+					  Volume: local
+					  Network: bridge host ipvlan macvlan null overlay
+					  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+					 CDI spec directories:
+					  /etc/cdi
+					  /var/run/cdi
+					 Discovered Devices:
+					  cdi: docker.com/gpu=webgpu
+					 Swarm: inactive
+					 Runtimes: io.containerd.runc.v2 nvidia runc
+					 Default Runtime: runc
+					 Init Binary: docker-init
+					 containerd version: 77c84241c7cbdd9b4eca2591793e3d4f4317c590
+					 runc version: v1.3.5-0-g488fc13e
+					 init version: de40ad0
+					 Security Options:
+					  seccomp
+					   Profile: builtin
+					  cgroupns
+					 Kernel Version: 6.6.114.1-microsoft-standard-WSL2
+					 Operating System: Docker Desktop
+					 OSType: linux
+					 Architecture: x86_64
+					 CPUs: 12
+					 Total Memory: 15.46GiB
+					 Name: docker-desktop
+					 ID: 8f3ca43d-1aa9-4e03-a63a-cc17b944b9c6
+					 Docker Root Dir: /var/lib/docker
+					 Debug Mode: false
+					 HTTP Proxy: http.docker.internal:3128
+					 HTTPS Proxy: http.docker.internal:3128
+					 No Proxy: hubproxy.docker.internal
+					 Labels:
+					  com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+					 Experimental: false
+					 Insecure Registries:
+					  hubproxy.docker.internal:5555
+					  ::1/128
+					  127.0.0.0/8
+					 Live Restore Enabled: false
+					 Firewall Backend: iptables
  
 - "**docker info**" command
     - Docker Root Dir: **/var/lib/docker**
@@ -480,7 +592,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
           - exposing container to the docker host (WSL VM).
           - services running inside this container will be accessible to the external world using "docker host (WSL VM) IP" and "docker host (WSL VM) PORT".
           - docker host (WSL VM) IP:docker host (WSL VM) PORT will be accesible in browser.
-          - docker port CONTAINER_ID/NAME
+          - **docker port CONTAINER_ID/NAME**
             - display the port binding of a container. 
       - "**-d**"
           - to run container in the "BACKGROUND"
