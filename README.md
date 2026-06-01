@@ -880,12 +880,15 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 	-docker volume rm	- Remove one or more volumes
 	-docker volume update	- Update a volume (cluster volumes only) 
   - Volumes is used as data persistence for databases and other statefull applications.
-  - The data of a container is stored in its virtual file system. It is not-persist.
-  - when we start a container, a FRESH virtual file system is created. Hence data lost.
+  - **The data of a container is stored in its virtual file system. It is not-persist.**
+  - **when we start a container, a FRESH virtual file system is created. Hence data lost.**
+
+  - 
   - **use mounts ( volume or bind )**
-      - -v c_drive_path:/data/db
-          -  c_drive_path = "C:\Users\mohd.rasid\data-folder", if WSL is not used.
-          -  c_drive_path = "/mnt/C:/Users/mohd.rasid/file_name", if wsl used.
+      - -v E:\dkms\dkms-credentials:/data/db
+      		- if WSL is not used.
+      - -v /mnt/E:/dkms/dkms-credentials:/data/db
+          	- if wsl used.
     - **docker run -d -p 82:80 -v nginx-data:/data/db nginx**
       - nginx-data is name of the volume. its location is "/var/lib/docker/volumes"
       - "Type": "volume",
