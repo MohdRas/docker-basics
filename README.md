@@ -872,40 +872,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
                 - ME_CONFIG_MANGODB_ADMINUSERNAME : admin
                 - ME_CONFIG_MANGODB_ADMINPASSWORD : password
                 - ME_CONFIG_MANGODB_SERVER : mangodb
-# Volumes
-    -docker volume create	 - Create a volume
-	-docker volume inspect	- Display detailed information on one or more volumes
-	-docker volume ls	- List volumes
-	-docker volume prune	- Remove unused local volumes
-	-docker volume rm	- Remove one or more volumes
-	-docker volume update	- Update a volume (cluster volumes only) 
-  - Volumes is used as data persistence for databases and other statefull applications.
-  - **The data of a container is stored in its virtual file system. It is not-persist.**
-  - **when we start a container, a FRESH virtual file system is created. Hence data lost.**
 
-  - 
-  - **use mounts ( volume or bind )**
-      - -v E:\dkms\dkms-credentials:/data/db
-      		- if WSL is not used.
-      - -v /mnt/E:/dkms/dkms-credentials:/data/db
-          	- if wsl used.
-    - **docker run -d -p 82:80 -v nginx-data:/data/db nginx**
-      - nginx-data is name of the volume. its location is "/var/lib/docker/volumes"
-      - "Type": "volume",
-      - "Name": "nginx-data"
-      - "Source": "/var/lib/docker/volumes/nginx-data/_data",
-      - "Destination": "/data/db"
-      - "Source" is inside the docker host and "Destination" is inside the container.
-      - docker exec -it 12a053d917c1 /bin/bash
-      - inside shell of the container.
-      - cd /data/db
-      - ls -l
-    - **docker run -d -p 80:80 -v C:\Users\mohdr\host-data:/data/db nginx**
-      - C:\Users\mohdr\host-data is c drive of my laptop.
-      - "Type": "bind",
-      - "Source": "C:\\Users\\mohdr\\host-data",
-      - "Destination": "/data/db"
-      - "Source" is inside laptop and "Destination" is inside the container.
 # Volumes Demo
 
 
