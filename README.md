@@ -586,7 +586,17 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - **docker run redis:4.0**
       - pull an image & start the container. 
       - "pull an image" is optional. It will pull if it is not present LOCALLY.
-      - 
+  - **docker run -i redis:4.0**
+      - input from keyboard is allowed.
+  - **docker run -t redis:4.0**
+      - input froo keyboard not allowed.
+	  - output is formatted.
+    - **docker run -it redis:4.0**
+      - input from keyword & output to the terminal console is allowed.
+ - **docker run -it redis:4.0 /bin/bash**
+      - input from keyword & output to the terminal console is allowed.
+	  - shell is open.
+        
   - **docker run -d --name mongo-db -p 27027:27017 --network mongo-network -e MONGO_INITDB_ROOT_USERNAME=admin -e  MONGO_INITDB_ROOT_PASSWORD=password mongodb/mongodb-community-server**
       - "**p 27017:27017**"
           - exposing container to the docker host (WSL VM).
