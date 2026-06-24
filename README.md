@@ -747,10 +747,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - start mango-express
       - docker run -p 8081:8081 -d --name mango-expressdb --net mango-network -e ME_CONFIG_MANGODB_ADMINUSERNAME=admin -e ME_CONFIG_MANGODB_ADMINPASSWORD=password -e ME_CONFIG_MANGODB_SERVER=mangodb  mango-express
   - All above 3 can be done using docker-compose file and commmand.
-      - docker-compose -f FILE_NAME.yaml up.
+      - **docker-compose -f FILE_NAME.yaml up -d**
           - FILE_NAME is docker-compose-file.
           - create DOCKER_NETWORK and starts the CONTAINERS.
-      - docker-compose -f FILE_NAME.yaml down.
+      - **docker-compose -f FILE_NAME.yaml down**
           - FILE_NAME is docker-compose-file.
           - stop & remove DOCKER_NETWORK and CONTAINERS.
       - docker-compose-file.yaml
@@ -860,7 +860,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - "mangodb" and "mango-express" image pulled from dockerhub.
 - docker-compose to deploy "my-app" to "dev" environment.
 - "dev" environment must need to LOGIN to ECR.
-- docker-compose -f docker-compose-file.yaml up                                                                                                                                       
+- **docker-compose -f docker-compose-file.yaml up -d**                                                                                                                                     
 - docker-compose-file.yaml
 - version : '3'
         - my-app :
