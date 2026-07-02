@@ -641,6 +641,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - start a STOPPED container.
 - **docker stop CONTAINER_ID/NAME** 
   - stop the RUNNING container.
+- **docker exec -it 1ca04189a243 cat /etc/shells**
+  - Available login shells to container. 
 - **docker exec -it CONTAINER_ID/NAME /bin/bash**
    - **docker exec -it CONTAINER_ID/NAME /bin/sh** 
    - run a linux command from inside a container.
