@@ -36,6 +36,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 	- Inside room B, it runs "docker-desktop" userspace ( docker daemon, docker engine).
 	- Because of namespaces, if open "Ubuntu" terminal and type **ps aux**. It will list all the running processes.
 		- **wsl -d Ubuntu > ps aux**
+    	- **wsl -d Ubuntu > ps aux | grep mongo**
 	- The kernel will not show the docker-desktop processes , it hide docker engine process from you.
 	
 	- **docker info | findstr "Root"**
