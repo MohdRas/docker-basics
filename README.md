@@ -569,7 +569,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
     - **docker image --help**
 - Tag 
   - tag is basically the version of an image.
-  - Example - lastest/ 9.6 
+  - Example - lastest/ 9.6
+- **docker pull --all-tags IMAGE_NAME:TAG**
 - **docker pull IMAGE_NAME:TAG**
   - **docker pull redis:4.0**
   - pull an image from docker hub.
@@ -582,7 +583,8 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
           - for custom images
               - bitnami/mongodb or jfrog/artifactory-pro
                   - the part before the slash (bitnami or jfrog) is the user/organization namespace
-
+- **docker create IMAGE_NAME:TAG**
+ - create a stopped container.
 - **docker run IMAGE_NAME:TAG**
   - **docker run redis:4.0**
       - pull an image & start the container. 
