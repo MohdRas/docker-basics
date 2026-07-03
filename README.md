@@ -593,8 +593,11 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
       - input from keyboard is allowed.
   - **docker run -t redis:4.0**
       - container's console data to our terminal in a formatted way
+      - -t flag means = just to format out in the terminal.
   - **docker run -it redis:4.0**
       - input from keyword & output to the terminal console is allowed.
+      - -i flag to take input from keyword.
+      - **RULE OF THUMB = if input from keyboard is required then always take -t flag to format out in the terminal.**
   - **docker run -it redis:4.0 /bin/bash**
       - input from keyword & output to the terminal console is allowed.
 	  - shell is open.
