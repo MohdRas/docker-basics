@@ -592,11 +592,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - **docker run -i redis:4.0**
       - input from keyboard is allowed.
   - **docker run -t redis:4.0**
-      - input froo keyboard not allowed.
-	  - output is formatted.
-    - **docker run -it redis:4.0**
+      - container's console data to our terminal in a formatted way
+  - **docker run -it redis:4.0**
       - input from keyword & output to the terminal console is allowed.
- - **docker run -it redis:4.0 /bin/bash**
+  - **docker run -it redis:4.0 /bin/bash**
       - input from keyword & output to the terminal console is allowed.
 	  - shell is open.
         
