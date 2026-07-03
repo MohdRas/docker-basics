@@ -645,6 +645,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
   - start a STOPPED container.
 - **docker stop CONTAINER_ID/NAME** 
   - stop the RUNNING container.
+- **docker exec 2e672d17e78e /bin/bash**
+	- closes the terminal immediately as interactive (-i) & terminal session ( -t) , both not provided. 
+- **docker exec 2e672d17e78e login**
+	- closes the terminal immediately as interactive (-i) & terminal session ( -t) , both not provided. 
 - **docker exec 1ca04189a243 ls**
 	-  without input enabled & without format
 - **docker exec -t 1ca04189a243 ls**
