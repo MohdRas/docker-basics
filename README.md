@@ -570,6 +570,16 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - Tag 
   - tag is basically the version of an image.
   - Example - lastest/ 9.6
+- **all obejects ( image, container, volume, network) = ls , inspect, rm, prune**
+- **container, volume & network = create**
+- **container = start, stop, exec, logs**
+- **image = run, build, pull, push, tag, history**
+- **networks = connect, disconnet**
+- **docker rm -f container_id** => remove container forcefully
+- **docker rmi -f image_id** => remove image forcefully
+- **docker logs -f container_id** => follow logs of the container -> logs will display live on console.
+- **docker inspect image_id** => inspecting an image
+- **docker history image_id** => show image layers
 - **docker pull --all-tags IMAGE_NAME:TAG**
 - **docker pull IMAGE_NAME:TAG**
   - **docker pull redis:4.0**
@@ -657,6 +667,9 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 	-  input enabled
 - **docker exec -it 1ca04189a243 ls**
 	-  input enabled & with formatted
+	-  cat /etc/os-release => which type of image ( Ubuntu/Debian/Alipne)
+	-  apt --version  => if apt based image
+	-  apk --version  => if apk based image
 - **docker exec -it 1ca04189a243 cat /etc/shells**
   - Available login shells to container. 
 - **docker exec -it CONTAINER_ID/NAME /bin/bash**
