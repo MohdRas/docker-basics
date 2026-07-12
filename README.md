@@ -829,6 +829,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
         - It runs on HOST machine.
         - copy CURRENT FOLDER . to VIRTUAL FOLDER /home/app
         - CURRENT FOLDER is the folder containing the Dockerfile.txt.
+        - Copy command can copy from the build context only not from any other folder.
     - CMD ["node", "/home/app/server.js']           => **forth layer after base image**
         - Default command to be executed when the container starts.   
         - it can be overriden in run command "docker run ubuntu sleep 5". here "sleep 5" override the CMD command
