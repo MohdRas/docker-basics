@@ -1,26 +1,41 @@
-
-PS C:\Windows\system32> wsl --version
-Windows Subsystem for Linux must be updated to the latest version to proceed. You can update by running 'wsl.exe --update'.
-For more information please visit https://aka.ms/wslinstall
-
-Press any key to install Windows Subsystem for Linux.
-Press ESC or CTRL-C to cancel.
-This prompt will time out in 60 seconds.
-Operation aborted
-PS C:\Windows\system32> wsl --install
-Downloading: Windows Subsystem for Linux 3.0.5
-Installing: Windows Subsystem for Linux 3.0.5
-Windows Subsystem for Linux 3.0.5 has been installed.
-The operation completed successfully.
-Downloading: Ubuntu
-Installing: Ubuntu
-Distribution successfully installed. It can be launched via 'wsl.exe -d Ubuntu'
-Launching Ubuntu...
-
-Provisioning the new WSL instance Ubuntu
-This might take a while...
-Create a default Unix user account: mohdrasid
-New password:
-Retype new password:
-passwd: password updated successfully
-usermod: no changes
+- WSL : allowing users to run Linux distributions alongside Windows applications without the need for a virtual machine.
+- install WSL - https://learn.microsoft.com/en-us/windows/wsl/install
+- turn on "Virtual Machine platform"
+		=> dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+  		=> or seach "turn windows features on or off" and select "Virtual Machine platform" and apply and restart the laptop.
+- wsl --install => install default distribution, which is Ubuntu
+- wsl --install -d <DistroName> => install given distribution
+- wsl --install --web-download -d  => first download then install
+- wsl --list --online => listing of online distributions
+- wsl -l -o => listing of online distributions
+- wsl --list --verbose => listing of installed distributions
+- wsl -l -v => listing of installed distributions
+- wsl --set-default-version 1 => set default version to 1 of the default distribution
+- wsl --set-default-version 2 => set default version to 2 of the default distribution
+- wsl --set-default <DistroName> => set default distribution
+- PS C:\Windows\system32> wsl --version
+- Windows Subsystem for Linux must be updated to the latest version to proceed. You can update by running 'wsl.exe --update'.
+- For more information please visit https://aka.ms/wslinstall
+- 
+- Press any key to install Windows Subsystem for Linux.
+- Press ESC or CTRL-C to cancel.
+- This prompt will time out in 60 seconds.
+- Operation aborted
+- PS C:\Windows\system32> wsl --install
+- Downloading: Windows Subsystem for Linux 3.0.5
+- Installing: Windows Subsystem for Linux 3.0.5
+- Windows Subsystem for Linux 3.0.5 has been installed.
+- The operation completed successfully.
+- Downloading: Ubuntu
+- Installing: Ubuntu
+- Distribution successfully installed. It can be launched via 'wsl.exe -d Ubuntu'
+- Launching Ubuntu...
+- 
+- Provisioning the new WSL instance Ubuntu
+- This might take a while...
+- Create a default Unix user account: mohdrasid
+- New password:
+- Retype new password:
+- passwd: password updated successfully
+- usermod: no changes
+- mohdrasid@mohd-rasid01:/mnt/c/Windows/system32$
