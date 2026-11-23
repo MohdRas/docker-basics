@@ -3,7 +3,7 @@
 - turn on "Virtual Machine platform"
 		=> dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
   		=> or seach "turn windows features on or off" and select "Virtual Machine platform" and apply and restart the laptop.
-- wsl --install => install default distribution, which is Ubuntu
+- wsl --install => download & install (WSL) + download & install (Ubuntu) + username & password for default distribution.
 - wsl --install -d <DistroName> => install given distribution
 - wsl --install --web-download -d  => first download then install
 - wsl --list --online => listing of online distributions
@@ -13,6 +13,9 @@
 - wsl --set-default-version 1 => set default version to 1 of the default distribution
 - wsl --set-default-version 2 => set default version to 2 of the default distribution
 - wsl --set-default <DistroName> => set default distribution
+- wsl --update
+- wsl --unregister <DistroName>
+- wsl --uninstall  => removing default distribution
 - PS C:\Windows\system32> wsl --version
 - Windows Subsystem for Linux must be updated to the latest version to proceed. You can update by running 'wsl.exe --update'.
 - For more information please visit https://aka.ms/wslinstall
