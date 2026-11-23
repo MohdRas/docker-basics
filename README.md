@@ -7,14 +7,14 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - Linux OS : The Kernel ( The Engine ) + User-Spaces ( Files & Tools)
 - The Kernel ( The Engine )
 
-		- This is the core program that talks to laptop's hardware, memory & runs processes.
-  		- This is the one kernel running inside your one VM.
+- This is the core program that talks to laptop's hardware, memory & runs processes.
+- This is the one kernel running inside your one VM.
 - User-Spaces ( Files & Tools) :
 
-		- This is the folder structure ( /bin, /etc, /home) & software ( bash, apt or docker engine)
-  		- It runs outside the kernel.
-  		- type wsl- l -v => list all the user spaces ( distributions) on one VM.
-  
+- This is the folder structure ( /bin, /etc, /home) & software ( bash, apt or docker engine)
+- It runs outside the kernel.
+- type wsl- l -v => list all the user spaces ( distributions) on one VM.
+
 - VM = one 1 exists on windows laptop.
 - The kernel = The core linux engine, only 1 runs inside one VM.
 - The distributions = The file, folders & apps. you can have as many as you want.
@@ -23,203 +23,199 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - **Rather it turn on VMP ( virtual machine platform, the subset of hyper-v) which is needed for WSL 2.**
 - 
 - **User-space and namespace**
-	- user-space :
+- user-space :
 
-  			- In a apartment building, the stuff ( furniture, appliances & decorations)
-			- refers to all code, files, tools and libraries that runn outside of the core linux kernel.
-	- namespace : physical wall between appartments ( the invisible barrier)
-  
-			- security & isolation feature, built directly into the Linux kernel.
-			- takes global system resources ( like networks, process IDs, or mount points) and isolate them.
-	- "Ubuntu" & "docker-desktop" both userspaces uses the same Linux kernel.
-	- The Kernel uses Namespaces ( walls) to devide its memory & networking into isolated rooms.
-	- Inside room A, it runs "Ubuntu" userspace ( the Ubuntu file system, apps & bash shell)
-	- Inside room B, it runs "docker-desktop" userspace ( docker daemon, docker engine).
-	- Because of namespaces, if open "Ubuntu" terminal and type **ps aux**. It will list all the running processes.
-		- **wsl -d Ubuntu > ps aux**
-    	- **wsl -d Ubuntu > ps aux | grep mongo**
-	- The kernel will not show the docker-desktop processes , it hide docker engine process from you.
-	
-	- **docker info | findstr "Root"**
-	
-	  			-  Docker Root Dir: /var/lib/docker
-	
-	- go inside one userspace ( wsl -d <use-space-name> ) the type "lsns"
-	
-						PS C:\Windows\system32> wsl -d docker-desktop
-	  
-						docker-desktop:/tmp/docker-desktop-root/run/desktop/mnt/host/c/Windows/system32# lsns
-						        NS TYPE   NPROCS   PID USER COMMAND
-						4026531834 time       25     1 root /init
-						4026531835 cgroup     23     1 root /init
-						4026531837 user       25     1 root /init
-						4026531840 net        12     1 root /init
-						4026532206 ipc        23     1 root /init
-						4026532217 mnt        11     1 root /init
-						4026532218 uts        23     1 root /init
-						4026532219 pid        12     1 root /init
-						4026532229 net        11    43 root /initd
-						4026532288 mnt        12    42 root unshare -mpf --propagation=unchanged --kill-child /usr/local/bin/wsl-bootstrap jump
-						4026532289 pid        11    43 root └─/initd
-						4026532290 net         0       root
-						4026532385 mnt         2   406 root java -jar app.jar
-						4026532386 uts         2   406 root java -jar app.jar
-						4026532387 ipc         2   406 root java -jar app.jar
-						4026532388 pid         2   406 root java -jar app.jar
-						4026532389 cgroup      2   406 root java -jar app.jar
-						4026532390 net         2   406 root java -jar app.jar
+- In a apartment building, the stuff ( furniture, appliances & decorations)
+- refers to all code, files, tools and libraries that runn outside of the core linux kernel.
+- namespace : physical wall between appartments ( the invisible barrier)
 
-  		
+- security & isolation feature, built directly into the Linux kernel.
+- takes global system resources ( like networks, process IDs, or mount points) and isolate them.
+- "Ubuntu" & "docker-desktop" both userspaces uses the same Linux kernel.
+- The Kernel uses Namespaces ( walls) to devide its memory & networking into isolated rooms.
+- Inside room A, it runs "Ubuntu" userspace ( the Ubuntu file system, apps & bash shell)
+- Inside room B, it runs "docker-desktop" userspace ( docker daemon, docker engine).
+- Because of namespaces, if open "Ubuntu" terminal and type **ps aux**. It will list all the running processes.
+- **wsl -d Ubuntu > ps aux**
+- **wsl -d Ubuntu > ps aux | grep mongo**
+- The kernel will not show the docker-desktop processes , it hide docker engine process from you.
+
+- **docker info | findstr "Root"**
+
+-  Docker Root Dir: /var/lib/docker
+
+- go inside one userspace ( wsl -d <use-space-name> ) the type "lsns"
+
+		PS C:\Windows\system32> wsl -d docker-desktop
+
+		docker-desktop:/tmp/docker-desktop-root/run/desktop/mnt/host/c/Windows/system32# lsns
+				NS TYPE   NPROCS   PID USER COMMAND
+		4026531834 time       25     1 root /init
+		4026531835 cgroup     23     1 root /init
+		4026531837 user       25     1 root /init
+		4026531840 net        12     1 root /init
+		4026532206 ipc        23     1 root /init
+		4026532217 mnt        11     1 root /init
+		4026532218 uts        23     1 root /init
+		4026532219 pid        12     1 root /init
+		4026532229 net        11    43 root /initd
+		4026532288 mnt        12    42 root unshare -mpf --propagation=unchanged --kill-child /usr/local/bin/wsl-bootstrap jump
+		4026532289 pid        11    43 root └─/initd
+		4026532290 net         0       root
+		4026532385 mnt         2   406 root java -jar app.jar
+		4026532386 uts         2   406 root java -jar app.jar
+		4026532387 ipc         2   406 root java -jar app.jar
+		4026532388 pid         2   406 root java -jar app.jar
+		4026532389 cgroup      2   406 root java -jar app.jar
+		4026532390 net         2   406 root java -jar app.jar
+
+
 - List of distributions/User-Spaces - open powershell as administrator PS C:\Windows\system32> **wsl -l -v**
 
-		  	  NAME              STATE           VERSION
-		  	* docker-desktop    Running         2
-		  	  Ubuntu            Running         2
-		
-		
-			  - 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
-		      - 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
-		      - 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
-  			  - Because Docker Desktop (and most modern dev tools) require WSL 2, the default version matters when you create new distros.
-		
-		      - docker-desktop
+NAME              STATE           VERSION
+* docker-desktop    Running         2
+Ubuntu            Running         2
 
-  						- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
-						- Highly stripped down, customized set of linux files created by docker. It does not include tools like apt or nano.
-						- Only job to hold the files, those are needed to run docker engine.
-		
-		  	  - docker-desktop-data
 
-  						- Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to 								clean up or reset the engine.
-		
-		  	  - ubuntu
+- 2 after the distro name (docker‑desktop) is the WSL version that the distribution is running under.
+- 1 = WSL 1 – the “translation layer” that maps Linux syscalls to Windows kernel calls.
+- 2 = WSL 2 – a real Linux kernel running inside a lightweight Hyper‑V virtual machine (VM).
+- Because Docker Desktop (and most modern dev tools) require WSL 2, the default version matters when you create new distros.
 
-						- full, standard linux file system.
-						- include all normal tools needed to "write code" or "install software"
-  - If you ever need to reset Docker’s storage, you can stop Docker Desktop and delete the docker-desktop-data distro
-  				(**wsl --unregister docker-desktop-data**), but that will erase all Docker images/volumes.
+- docker-desktop
 
-  - Updating WSL (if you want a newer kernel or bug fixes)
-    
-     -  **wsl --update**          # pulls the latest kernel, WSL drivers, and WSLg components
-	 -  **wsl --shutdown**        # restarts the WSL VM so the new kernel is used
+		- Contains the Docker Engine binary (dockerd), Docker CLI, and the embedded DNS server (127.0.0.11 → 192.168.65.7).
+		- Highly stripped down, customized set of linux files created by docker. It does not include tools like apt or nano.
+		- Only job to hold the files, those are needed to run docker engine.
+
+- docker-desktop-data
+
+		- Holds Docker’s data files (images, layers, volumes, build cache, etc.) on a dedicated VHDX. Keeping data separate makes it easier to 								clean up or reset the engine.
+
+- ubuntu
+
+		- full, standard linux file system.
+		- include all normal tools needed to "write code" or "install software"
+- If you ever need to reset Docker’s storage, you can stop Docker Desktop and delete the docker-desktop-data distro
+(**wsl --unregister docker-desktop-data**), but that will erase all Docker images/volumes.
+
+- Updating WSL (if you want a newer kernel or bug fixes)
+
+-  **wsl --update**          # pulls the latest kernel, WSL drivers, and WSLg components
+-  **wsl --shutdown**        # restarts the WSL VM so the new kernel is used
 
 - **distributions/User-Spaces** :
-	- on windows file system
-  
-		- open File Explorer and find "Linux" label parralel to "This PC"
-		- go inside this "Linux" folder, there would the **user-spaces folders** created. we can navogate to see the files & tools inside each folder.
- 
-    - open powershell as administrator & type :
-	- PS C:\Windows\system32> **wsl -l -v**
+- on windows file system
 
-      				NAME              STATE           VERSION
-					* docker-desktop    Running         2
-					  Ubuntu            Stopped         2
+- open File Explorer and find "Linux" label parralel to "This PC"
+- go inside this "Linux" folder, there would the **user-spaces folders** created. we can navogate to see the files & tools inside each folder.
 
-	 - PS C:\Windows\system32> **wsl -d docker-desktop**
+- open powershell as administrator & type :
+- PS C:\Windows\system32> **wsl -l -v**
 
-					docker-desktop:/tmp/docker-desktop-root/mnt/host/c/Windows/system32#
+	NAME              STATE           VERSION
+	* docker-desktop    Running         2
+	  Ubuntu            Stopped         2
 
-		    		"-d" flag will open "docker-desktop" user space ( Linux bash prompt)
-			
+- PS C:\Windows\system32> **wsl -d docker-desktop**
+
+	docker-desktop:/tmp/docker-desktop-root/mnt/host/c/Windows/system32#
+
+	"-d" flag will open "docker-desktop" user space ( Linux bash prompt)
+
 
 - open powershell as administrator & type below command to **display VMs on windows laptop**
 
-	- PS C:\Windows\system32> **Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}**          
+- PS C:\Windows\system32> **Get-Process | Where-Object {$_.Name -match "vmwp|vmware-vmx|VirtualBoxVM"}**          
 
-  				- Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
-				- -------  ------    -----      -----     ------     --  -- -----------
-				-    826      82    17748      31312             44356   0 vmwp
+- Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+- -------  ------    -----      -----     ------     --  -- -----------
+-    826      82    17748      31312             44356   0 vmwp
 
 
- - open powershell as administrator & type **wsl --install** on powershell
-  
-             - turn on virtual machine platform ( the subset of hyper-v, needed for WSL 2)
-             - turn on WSL feature.
-             - download & install "latest linux kernel"
-             - set WSL 2 as default version.
-             - downloads & installs "Ubuntu" as default linux distribution.
+- open powershell as administrator & type **wsl --install** on powershell
+
+- turn on virtual machine platform ( the subset of hyper-v, needed for WSL 2)
+- turn on WSL feature.
+- download & install "latest linux kernel"
+- set WSL 2 as default version.
+- downloads & installs "Ubuntu" as default linux distribution.
 
 - search for "**Turn Windows features on or off**" in windows laptop and check if WSL & virtual machine platform selected or not.
 - PS C:\Windows\system32> **wsl --version**
 
-		- WSL version: 2.5.9.0
-		- Kernel version: 6.6.87.2-1
-		- WSLg version: 1.0.66
-		- MSRDC version: 1.2.6074
-		- Direct3D version: 1.611.1-81528511
-		- DXCore version: 10.0.26100.1-240331-1435.ge-release
-		- Windows version: 10.0.26200.8246
+- WSL version: 2.5.9.0
+- Kernel version: 6.6.87.2-1
+- WSLg version: 1.0.66
+- MSRDC version: 1.2.6074
+- Direct3D version: 1.611.1-81528511
+- DXCore version: 10.0.26100.1-240331-1435.ge-release
+- Windows version: 10.0.26200.8246
 
 - PS C:\Windows\system32> **wsl --status**
-		
-		- Default Distribution: docker-desktop
-		- Default Version: 2
 
-		- Default Distribution: docker-desktop = when I type "wsl" in powershell then "docker-desktop" distribution will open by default.
-  		- Default Distribution tells Windows which Linux distro should be started when you run wsl (or any wsl.exe command) without explicitly naming a distro.
-		- Default Version tells Windows what WSL‑version (1 or 2) to assign to any new distribution you create (e.g. when you run wsl --install -d Ubuntu).
+- Default Distribution: docker-desktop
+- Default Version: 2
+
+- Default Distribution: docker-desktop = when I type "wsl" in powershell then "docker-desktop" distribution will open by default.
+- Default Distribution tells Windows which Linux distro should be started when you run wsl (or any wsl.exe command) without explicitly naming a distro.
+- Default Version tells Windows what WSL‑version (1 or 2) to assign to any new distribution you create (e.g. when you run wsl --install -d Ubuntu).
 - C:\Users\mohd.rasid.CORP>wsl --update
-	- **wsl --set-default Ubuntu** => set default distribution
-    - **wsl --set-default-version 2** => set "2" as default version for WSL
-	- **wsl --set-default-version 1** => set "1" as default version for WSL
-		
-	- **wsl** => will open default distribution
-	- **wsl -d docker-desktop** => will open "docker-desktop" distribution
-	- **wsl -d Ubuntu** => will open "Ubuntu" distribution
+- **wsl --set-default Ubuntu** => set default distribution
+- **wsl --set-default-version 2** => set "2" as default version for WSL
+- **wsl --set-default-version 1** => set "1" as default version for WSL
+
+- **wsl** => will open default distribution
+- **wsl -d docker-desktop** => will open "docker-desktop" distribution
+- **wsl -d Ubuntu** => will open "Ubuntu" distribution
 
 
 
 - PS C:\Windows\system32> **Get-WindowsOptionalFeature -online -FeatureName Microsoft-Windows-Subsystem-Linux**
 
-            - FeatureName      : Microsoft-Windows-Subsystem-Linux
-            - DisplayName      : Windows Subsystem for Linux
-            - Description      : Provides services and environments for running native user-mode Linux shells and tools on Windows.
-            - RestartRequired  : Possible
-            - State            : Enabled
-            - CustomProperties :
-                               - ServerComponent\Description : Provides services and environments for running native user-mode Linux
-                               - shells and tools on Windows.
-                               - ServerComponent\DisplayName : Windows Subsystem for Linux
-                               - ServerComponent\Id : 1033
-                               - ServerComponent\Type : Feature
-                               - ServerComponent\UniqueName : Microsoft-Windows-Subsystem-Linux
-                               - ServerComponent\Deploys\Update\Name : Microsoft-Windows-Subsystem-Linux
+- FeatureName      : Microsoft-Windows-Subsystem-Linux
+- DisplayName      : Windows Subsystem for Linux
+- Description      : Provides services and environments for running native user-mode Linux shells and tools on Windows.
+- RestartRequired  : Possible
+- State            : Enabled
+- CustomProperties :
+			   - ServerComponent\Description : Provides services and environments for running native user-mode Linux
+			   - shells and tools on Windows.
+			   - ServerComponent\DisplayName : Windows Subsystem for Linux
+			   - ServerComponent\Id : 1033
+			   - ServerComponent\Type : Feature
+			   - ServerComponent\UniqueName : Microsoft-Windows-Subsystem-Linux
+			   - ServerComponent\Deploys\Update\Name : Microsoft-Windows-Subsystem-Linux
 
 - PS C:\Windows\system32> **Get-WindowsOptionalFeature -online -FeatureName VirtualMachinePlatform**
 
-                - FeatureName      : VirtualMachinePlatform
-                - DisplayName      : Virtual Machine Platform
-                - Description      : Enables platform support for virtual machines
-                - RestartRequired  : Possible
-                - State            : Enabled
-                - CustomProperties :
+- FeatureName      : VirtualMachinePlatform
+- DisplayName      : Virtual Machine Platform
+- Description      : Enables platform support for virtual machines
+- RestartRequired  : Possible
+- State            : Enabled
+- CustomProperties :
 
 
 
 
-  
+
 - Windows (or macOS)
 
 
-          - Hyper‑V  /  WSL‑2  (the **virtual‑machine hypervisor**)
-
-
-                      - **Docker Desktop VM**   ← a tiny Linux VM that runs the Docker Engine (dockerd)
-
-
-
-                                - Your **containers** (the workloads you build/run)
- - ipconfig
-
-             - Ethernet adapter Ethernet:
-
-                       - IPv4 Address. . . . . . . . . . . : 107.108.8. ==================== LAN IP
-
-             - Ethernet adapter vEthernet (WSL (Hyper-V firewall)):
-
-                       -IPv4 Address. . . . . . . . . . . : 172.23.160.1 ================== vEthernet IP
+	- Hyper‑V  /  WSL‑2  (the **virtual‑machine hypervisor**)
+	
+			- **Docker Desktop VM**   ← a tiny Linux VM that runs the Docker Engine (dockerd)
+			- Your **containers** (the workloads you build/run)
+	- ipconfig
+	
+		- Ethernet adapter Ethernet:
+		
+			- IPv4 Address. . . . . . . . . . . : 107.108.8. ==================== LAN IP
+		
+		- Ethernet adapter vEthernet (WSL (Hyper-V firewall)):
+		
+			-IPv4 Address. . . . . . . . . . . : 172.23.160.1 ================== vEthernet IP
                 
  - **Hypervisor**
     -  virtualize the physical resources (RAM, ROM, CPU, Networking & many more) of a physical machine. 
@@ -231,7 +227,13 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
        - routes network traffic between physical WiFi/Ethernet and VMs.
    - WSL 2 ( Windows subsystem for linux 2 )
        - Instead of installing full sized linux VM, microsoft allow to install a small **utility VM** on windows, which is WSL2 VM.
-       - WSL2 is built on top of Hyper‑V; it runs a full Linux kernel. It is fast because it is small. It is like **a process** on windows system. 
+       - WSL2 is built on top of Hyper‑V; it runs a full Linux kernel. It is fast because it is small. It is like **a process** on windows system.
+	   
+	   - Docker Desktop Installer
+    		- https://docs.docker.com/desktop/setup/install/windows-install/ ( click Docker Desktop for Windows - x86_64 )
+			- Run installer as Adminstrator
+		   		- Use **WSL2** instead of Hyper-v
+	      		- Add shortcut to desktop
        
 
 - **Docker Engine**
