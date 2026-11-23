@@ -18,9 +18,10 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 - VM = one 1 exists on windows laptop.
 - The kernel = The core linux engine, only 1 runs inside one VM.
 - The distributions = The file, folders & apps. you can have as many as you want.
-- Because I'm using Windows Home, so docker desktop is strictly using WSL 2 backend.
-- The legacy Hyper-v backend is not supoorted on Windows Home.
-- Rather it turn on VMP ( virtual machine platform, the subset of hyper-v) which is needed for WSL 2.
+- **Because I'm using Windows Home, so docker desktop is strictly using WSL 2 backend.**
+- **The legacy Hyper-v backend is not supoorted on Windows Home.**
+- **Rather it turn on VMP ( virtual machine platform, the subset of hyper-v) which is needed for WSL 2.**
+- 
 - **User-space and namespace**
 	- user-space :
 
@@ -100,7 +101,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 
   - Updating WSL (if you want a newer kernel or bug fixes)
     
-     -  **wsl --update**           # pulls the latest kernel, WSL drivers, and WSLg components
+     -  **wsl --update**          # pulls the latest kernel, WSL drivers, and WSLg components
 	 -  **wsl --shutdown**        # restarts the WSL VM so the new kernel is used
 
 - **distributions/User-Spaces** :
@@ -159,7 +160,7 @@ https://www.youtube.com/watch?v=3c-iBn73dDE
 		- Default Distribution: docker-desktop = when I type "wsl" in powershell then "docker-desktop" distribution will open by default.
   		- Default Distribution tells Windows which Linux distro should be started when you run wsl (or any wsl.exe command) without explicitly naming a distro.
 		- Default Version tells Windows what WSL‑version (1 or 2) to assign to any new distribution you create (e.g. when you run wsl --install -d Ubuntu).
-
+- C:\Users\mohd.rasid.CORP>wsl --update
 	- **wsl --set-default Ubuntu** => set default distribution
     - **wsl --set-default-version 2** => set "2" as default version for WSL
 	- **wsl --set-default-version 1** => set "1" as default version for WSL
